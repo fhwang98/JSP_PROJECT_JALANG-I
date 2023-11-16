@@ -11,16 +11,63 @@ import com.project.jr.qna.model.QnaDTO;
 
 public class QnaDAO {
 
-	private Connection conn;
-	private Statement stat;
-	private PreparedStatement pstat;
-	private ResultSet rs;
 	
-	public QnaDAO() {
-		this.conn = DBUtil.open();
+	
+		private Connection conn;
+		private Statement stat;
+		private PreparedStatement pstat;
+		private ResultSet rs;
+		
+		public QnaDAO() {
+			this.conn = DBUtil.open();
+			
+		
 	}
 
-	public ArrayList<QnaDTO> getRecentQna() {
+
+
+		public ArrayList<QnaDTO> getList() {
+			
+			
+			try {
+				
+				String seq="select qnaseq , id , qnatitle , qnacontent , attachfile , to_char(qnawritedate,'yyyy-mm-dd') AS qnawritedate from tblQna";
+				
+				stat=conn.createStatement();
+				rs=stat.executeQuery(seq);
+				
+				ArrayList<QnaDTO> result=new ArrayList<QnaDTO>();
+			
+				while(rs.next()) {
+					
+					
+					QnaDTO dto= new QnaDTO();
+					
+					dto.setQnaSeq(rs.getString("qnaSeq"));
+					dto.setId(rs.getString("id"));
+					dto.setQnaTitle(rs.getString("qnaTitle"));
+					dto.setQnaContent(rs.getString("qnaContent"));
+					dto.setAttachFile(rs.getString("attachFile"));
+					dto.setQnaWriteDate(rs.getString("qnaWriteDate"));
+					
+					
+					result.add(dto);
+				}
+				
+				return result;
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			return null;
+		}
+
+
+
+public ArrayList<QnaDTO> getRecentQna() {
 		
 		try {
 			
@@ -53,5 +100,39 @@ public class QnaDAO {
 		
 		return null;
 	}
-	
+
+		public ArrayList<QnaDTO> getMyQnaList(String id) {
+			try {
+
+				String sql = "select qnaTitle, qnaContent,id,qnaSeq from tblQna where id = ?";
+
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, id);
+
+				rs = pstat.executeQuery();	
+
+				ArrayList<QnaDTO> list = new ArrayList<QnaDTO>();
+
+				while (rs.next()) {
+
+					QnaDTO dto = new QnaDTO();
+
+					dto.setId(rs.getString("id"));
+					dto.setQnaTitle(rs.getString("qnaTitle"));
+					dto.setQnaContent(rs.getString("qnaContent"));
+					dto.setQnaSeq(rs.getString("qnaSeq"));
+
+					list.add(dto);
+				}	
+
+				return list;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return null;
+		}
+		
+
 }
