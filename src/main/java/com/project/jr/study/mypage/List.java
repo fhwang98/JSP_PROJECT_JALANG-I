@@ -60,7 +60,7 @@ public class List extends HttpServlet {
 			int seq=(int) iterS.next();
 			
 			int total=dao.totalCh(seq);
-			int prog=dao.progCh(id);
+			int prog=dao.progCh(id,seq);
 			
 			int count=prog*100/total;
 			System.out.println(count);
@@ -71,7 +71,21 @@ public class List extends HttpServlet {
 			sbs2.add(dto2);
 		}
 		
-		System.out.println(sbs2.toString());
+		//System.out.println(sbs2.toString());
+		
+		
+		int dCount=dao.dCount(id);
+		
+		int jCount=1;
+		
+		if(dCount != 0) jCount=0;
+		int wCount=0;
+		
+		
+		
+		req.setAttribute("dCount", dCount);
+		req.setAttribute("jCount", jCount);
+		req.setAttribute("wCount", wCount);
 		
 		req.setAttribute("list", sbs2);
 		

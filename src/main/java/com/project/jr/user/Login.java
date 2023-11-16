@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
 		
 		if (userResult != null) {						//사용자 회원의 로그인 성공
 			
-			if(userResult.getUserStatus() == 2) {		//활동여부 확인(활동 중 회원)
+			if(userResult.getUserStatus() == 1) {		//활동여부 확인(활동 중 회원)
 				//인증 티켓
 				req.getSession().setAttribute("id", id); 
 				req.getSession().setAttribute("name", userResult.getName());

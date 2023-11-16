@@ -129,14 +129,16 @@
 			    <div class="col">
 			    	<h5 style="text-align: left;">진행 률</h5>
 			    </div>
-			    <div class="progress">
-  					<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: ${count}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${count}%</div>
+			    <div class="progress" style=" padding: 0;">
+  					<div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: ${count}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${count}%</div>
 				</div>
+				
+				
 			  </div>
 			</div>
         </div>
-        <div class="form-check" style="margin-top: 50px">
-        	<div id="bookcheck">
+        <div class="form-check" style="margin-top: 50px;">
+        	<div id="bookcheck" style="margin-top: 50px; margin-left: 400px;">
         	
         	<!-- 반복될곳 -->
         	<c:forEach items="${list }" var="dto">
