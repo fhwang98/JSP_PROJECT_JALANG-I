@@ -1,0 +1,224 @@
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Gothic:wght@700&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@500;600&display=swap');
+body {
+	font-family: 'Nanum Gothic', sans-serif; 
+	/* font-family: 'Nanum Brush Script', cursive; */
+	margin: 0;
+    padding: 0;
+}
+/* #crtrec-wrap */
+#crtrec-wrap {
+	background-image : url('../resources/img/crtrec_back(1320x2500).png');
+	width: 100%;
+    height: 1850px; 
+    
+    position: relative;
+}
+
+.back_title {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+	
+}
+
+.back_title img {
+	width: 900px;
+}
+
+.toggle-btn {
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    
+}
+
+.btn-group input {
+	border-radius: 10px;
+}
+
+.btn {
+	font-size: 30px;
+}
+
+#job-btn {
+    /* background-color:  #490984;	 */
+    
+}
+
+.btn-outline {
+	--bs-btn-color: #490984;
+    --bs-btn-border-color:#490984;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg:#490984;
+    --bs-btn-hover-border-color:#490984;
+    --bs-btn-focus-shadow-rgb: 13,110,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg:#490984;
+    --bs-btn-active-border-color:#490984;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color:#490984;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color:#490984;
+    --bs-gradient: none;
+}
+
+
+/* ------------순위 테이블---------------- */
+.rank-table-flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 210px;
+	border-radius: 20px;
+}
+
+.rank-table {
+	width: 250px;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 20px;
+	background-color: #fff;
+	border-collapse: collapse;
+	border-radius: 10px;
+	border-style: hidden;
+	box-shadow: 0 0 0 1px #000;
+}
+
+.rank-table th {
+	
+	background-color: #490984;
+	font-size: 23px;
+	padding: 15px;
+	color: #fff;
+	border-bottom: 1px solid black;
+	height: 100px;
+	
+}
+
+.rank-table td {
+	padding: 15px;
+}
+
+.rank-table td > a {
+	color: black;
+}
+	
+/* --------------탭 메뉴--------------- */ 
+.tabMenu-bx {
+	margin-top: 40px;
+}
+
+.tabMenu2 {
+	font-size: 22px;
+    font-weight: 700;
+    justify-content: center;
+}
+
+.tabMenu2 a {
+	padding: 25px 100px;
+	border: 2px solid blue;
+}
+	
+.tabMenu-btn-ul {
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    grid-gap: 20px;
+    gap: 20px;
+    margin-bottom: 30px;
+    list-style: none;
+}
+	
+.tabMenu-btn-ul li{
+	width: calc(20% - 16px);
+	margin-top: 15px;
+}
+
+.tabMenu-btn-ul > li > button{
+    cursor: pointer;
+    width: 100%;
+    height: 55px;
+    background: #fff;
+    border-radius: 50px;
+    padding: 0 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    font-weight: 500;
+    color: #292929;
+    
+}
+
+.nav2 {
+    --bs-nav-link-padding-x: 1rem;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-font-weight: ;
+    --bs-nav-link-color: var(--bs-link-color);
+    --bs-nav-link-hover-color: var(--bs-link-hover-color);
+    --bs-nav-link-disabled-color: var(--bs-secondary-color);
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-tabs2 .nav-link2.active {
+    color: var(--bs-nav-tabs-link-active-color);
+   
+    background-color: #F0F4FE;
+    border-color: #F0F4FE;
+}
+.nav-tabs2 .nav-link2 {
+    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+    border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    border-top-right-radius: var(--bs-nav-tabs-border-radius);
+}
+
+
+
+.nav-link2 {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: #fff;
+    text-decoration: none;
+    background: 0 0;
+    border: 0;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    background-color: #053987;
+}
+
+
+
+
+/* --------------버튼 + 차트 메뉴--------------- */
+.container-color {
+	background-color: #F0F4FE;
+	padding-bottom: 30px;
+}
+
+.chartWrap{
+	background-color: #F0F4FE;
+	/* box-shadow: 0 3px 20px -2px rgba(108, 117, 125, 0.15); */
+}
+
+.tabMenu-chart-btn {
+	
+}
+
+
+.chart-bx {
+	box-shadow: 0 3px 20px -2px rgba(108, 117, 125, 0.15); 
+}
+
+
+
+ 
+

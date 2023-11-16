@@ -1,0 +1,181 @@
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Gothic:wght@700&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@500;600&display=swap');
+body {
+	 font-family: 'Nanum Gothic', sans-serif; 
+	/* font-family: 'Nanum Brush Script', cursive; */
+}
+
+/* ---------------자격증명 정보 --------------------*/
+.crtTitle {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 1320px;
+	margin: 0px auto;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 0px;
+	
+}
+
+.crtTitle img {
+	width: 30px;
+}
+
+.crtTitle h1 {
+	font-weight: 700;
+	text-align: center;
+	
+}
+
+.crtagency  {	 
+	padding-top: 0px;
+	padding-bottom: 30px;
+	color: #4f4f4f;
+	margin: 0px auto;
+}
+.crtagency span {
+	text-align: center;
+}
+
+.action_btn {
+	width: 50px;
+	background-color: #fff;
+	border: none;
+	border-radius: 4px;
+	font-size: 30px;
+	cursor: pointer;
+	text-align: right; 
+}
+
+.action_btn:hover {
+	color: red;
+}
+
+.fa-solid {
+	color: red;
+}
+
+.listBtn {
+	text-align: left;
+	
+}
+
+.likeBtn {
+	text-align: right;
+}
+
+.row {
+	justify-content: space-between;
+}
+
+/* ---------------탭 메뉴 --------------------*/
+.tabMenu2 {
+	font-size: 22px;
+    font-weight: 700;
+    justify-content: center;
+}
+
+.tabMenu2 a {
+	padding: 30px 160px;
+	border: 2px solid blue;
+}
+
+/* ---------------신청하기 제목 및 정보 --------------------*/
+.apply-header h2, h5 {
+	font-family: 'Nanum Gothic', sans-serif; 
+	font-weight: 400;
+	margin: 15px;
+}
+
+.apply-header img {
+	width : 20px;
+}
+
+.info-img {
+	display: flex;
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+
+.info-img p{
+	margin: 0px;
+}
+
+.point {
+	color: tomato;
+}
+
+
+/* ---------------신청 폼 --------------------*/
+.form-center {
+	display: flex;
+	justify-content: center;
+}
+
+.apply-form {
+	
+	width: 900px;
+	display: flex;
+	flex-direction: column;
+	/* text-align: center; */
+	
+	border: 2px solid gray;
+	border-radius: 10px;
+	padding: 15px;
+}
+
+.apply-form h3{
+	text-align: center;
+	margin: 30px;
+	font-family: 'Nanum Gothic', sans-serif; 
+}
+
+.form-semititle {
+	/* color : #4f4f4f; */
+	background: linear-gradient(to top, #ddecff 50%, transparent 50%);
+	font-size: 20px;
+}
+
+.apply-form hr {
+	margin-top : 0px;
+	margin-bottom : 20px;
+}
+
+.apply-form select {
+	margin-bottom: 15px;
+}
+
+.apply-form select:nth-child(1) {
+	margin-bottom: 30px;
+}
+
+.apply-form p {
+	margin-bottom: 10px;
+	color : #4f4f4f;
+}
+
+.checkbox {
+	margin: 10px;
+}
+
+/* input[type="submit"] { */
+.applybtn {
+	background-color: #007bff;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	border-radius: 4px;
+	padding: 10px 20px;
+	font-size: 16px;
+}
+
+.form-check {
+	margin: 20px;
+}
+
+.apply-form button {
+	width: 866px;
+	
+}
+

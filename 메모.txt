@@ -1,0 +1,185 @@
+
+
+
+
+기본틀
+com.project.jr.main
+
+com.project.jr
+
+-로그인
+com.project.jr.user					//로그인 기능 , 개인정보변경
+com.project.jr.user.admin			//유저 관리
+com.project.jr.user.repository		//DB DAO
+com.project.jr.user.model			//DB DTO
+
+-자격증
+com.project.jr.crt					//자격증, 일정, 추천, 나의 자격증
+com.project.jr.crt.admin			//관리자
+com.project.jr.crt.mypage
+com.project.jr.crt.repository
+com.project.jr.crt.model
+
+-교재
+com.project.jr.book					//교재, 추천
+com.project.jr.book.admin			//관리자
+com.project.jr.book.mypage
+com.project.jr.book.repository
+com.project.jr.book.model
+
+-학원
+com.project.jr.academy
+com.project.jr.academy.admin		//
+com.project.jr.academy.repository
+com.project.jr.academy.model
+
+-직업
+com.project.jr.job					//직업, 적성검사(추천)
+com.project.jr.job.admin			//
+com.project.jr.job.repository
+com.project.jr.job.model
+
+-게시판
+com.project.jr.board
+com.project.jr.board.admin			//
+com.project.jr.board.faq
+com.project.jr.board.faq.admin
+com.project.jr.board.repository
+com.project.jr.board.model
+
+
+
+-기업서비스
+com.project.jr.company				
+
+
+
+
+
+
+-금지어
+com.project.jr.forbidden.admin
+com.project.jr.forbidden.repository
+com.project.jr.forbidden.model
+
+-직업군
+com.project.jr.jobgroup.admin
+com.project.jr.jobgroup.repository
+com.project.jr.jobgroup.model
+
+-신고글
+com.project.jr.report.admin
+com.project.jr.report.repository
+com.project.jr.report.model
+
+-관리자 정보
+com.project.jr.admin
+com.project.jr.admin.repository
+com.project.jr.admin.model
+
+
+
+
+
+
+-스터디
+com.project.jr.study
+com.project.jr.study.admin
+com.project.jr.study.mypage
+com.project.jr.study.repository
+com.project.jr.study.model
+
+-문의 : question
+com.project.jr.qna
+com.project.jr.qna.admin
+com.project.jr.qna.mypage
+com.project.jr.qna.repository
+com.project.jr.qna.model
+
+-좋아요
+com.project.jr.like.mypage
+com.project.jr.like.repository
+com.project.jr.like.model
+
+-포인트
+com.project.jr.point
+com.project.jr.point.repository
+com.project.jr.point.model
+
+
+
+
+-WEB-INF
+index.jsp
+
+
+-WEB-INF_views
+user
+	user.admin
+crt
+	crt.admin
+	crt.mypage
+book
+	book.admin
+academy
+	academy.admin
+job
+	job.admin
+board
+	board.admin
+	board.faq
+	board.faq.admin
+company
+forbidden
+	forbidden.admin
+jobgroup
+	jobgroup.admin
+report
+	report.admin
+admin
+study
+	sutudy.admin
+	sutudy.mypage
+qna
+	qna.admin
+	qna.mypage
+like
+	like.mypage
+point
+
+-WEB-INF_inc : 헤더 어셋
+
+
+
+
+
+---------------------------------------SQL 계정 생성
+
+
+create user jr identified by java1234;
+
+grant connect, resource, dba to jr;
+
+alter user project4team account lock;
+alter user project4team account unlock;
+
+select * from tabs;
+
+
+-----------------------------------------참고
+
+-이미지 파일 경로 폴더
+WEB-INF/resources/img/
+예시 : <%=request.getContextPath() %>/resources/img/hero-img.svg
+
+-상단 메뉴 위치
+WEB-INF/views/inc/haeder.jsp
+
+
+
+
+
+
+
+
+
