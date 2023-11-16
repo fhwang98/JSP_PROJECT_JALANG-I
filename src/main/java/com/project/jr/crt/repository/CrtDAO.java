@@ -802,4 +802,40 @@ public class CrtDAO {
 		
 		return 0;
 	}
+	
+	
+	
+	
+	public int plusliked(CrtLikeDTO dto) {
+		
+		try {
+			String sql = "update tblCrt set likecnt = likecnt+1 where crtseq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setInt(1, dto.getCrtSeq());
+			
+			System.out.println("CrtDao pulsliked:" + sql);
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public int minusliked(CrtLikeDTO dto) {
+		
+		try {
+
+			String sql = String.format("update tblCrt set likecnt = likecnt - 1 where crtseq = '%s'", dto.getCrtSeq());
+			System.out.println("CrtDao minusliked:" + sql);
+			stat = conn.createStatement();
+
+			return stat.executeUpdate(sql);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }

@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-import com.project.jr.faq.model.FaqDTO;
+import com.project.jr.faq.model.FAQDTO;
 import com.project.jr.main.DBUtil;
 
 public class FaqDAO {
@@ -27,7 +27,7 @@ public class FaqDAO {
 
 	
 
-	public ArrayList<FaqDTO> getList() {
+	public ArrayList<FAQDTO> getList() {
 		
 		
 try {
@@ -37,12 +37,12 @@ try {
 			stat=conn.createStatement();
 			rs=stat.executeQuery(seq);
 			
-			ArrayList<FaqDTO> result=new ArrayList<FaqDTO>();
+			ArrayList<FAQDTO> result=new ArrayList<FAQDTO>();
 			
 			while(rs.next()) {
 				
 				
-				FaqDTO dto= new FaqDTO();
+				FAQDTO dto= new FAQDTO();
 				
 				dto.setFaqSeq(rs.getString("faqSeq"));
 				dto.setFaqTitle(rs.getString("faqTitle"));

@@ -9,8 +9,8 @@
 	<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 		
 		<a href="/jr/index.do" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
-			<<%-- img src="<%=request.getContextPath() %>/resources/img/logo.png" alt=""> --%>
-			<h1>자랑이</h1>
+			<img src="<%=request.getContextPath() %>/resources/img/jalangi.png" alt="">
+			<!-- <h1>자랑이</h1> -->
 		</a> 
 		
 		
@@ -25,8 +25,8 @@
 						<i class="bi bi-chevron-down dropdown-indicator"></i>
 					</a>
 					<ul>
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/jr/crt/crtlist.do">자격증 조회</a></li>
+						<li><a href="/jr/crt/crtschlist.do">자격증 시험 일정 조회</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -35,18 +35,17 @@
 						<i class="bi bi-chevron-down dropdown-indicator"></i>
 					</a>
 					<ul>
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/jr/crt/crtrec.do">직업군 별 자격증 추천</a></li>
+						<li><a href="/jr/crt/crtrecforme">나만의 자격증 추천</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#">
-						<span>교재 조회 및 맞춤 추천</span> 
+						<span>교재 조회</span> 
 						<i class="bi bi-chevron-down dropdown-indicator"></i>
 					</a>
 					<ul>
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/jr/book/booklist.do">교재 조회</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -55,8 +54,8 @@
 						<i class="bi bi-chevron-down dropdown-indicator"></i>
 					</a>
 					<ul>
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/jr/academy/academylist.do">학원 조회</a></li>
+						<li><a href="#">우리동네 학원</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -65,8 +64,7 @@
 						<i class="bi bi-chevron-down dropdown-indicator"></i>
 					</a>
 					<ul>
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/jr/job/list.do">직업 정보 조회</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -75,8 +73,8 @@
 						<i class="bi bi-chevron-down dropdown-indicator"></i>
 					</a>
 					<ul>
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/jr/board/boardlist.do">자유 게시판</a></li>
+						<li><a href="/jr/faq.do">FAQ</a></li>
 					</ul>
 				</li>
 				
@@ -88,8 +86,6 @@
 					</a>
 					<ul>
 						<li><a href="/jr/user/changemyinfo.do">개인정보 변경</a></li>
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">FAQ</a></li>
 						<li><a href="/jr/user/deleteuser.do">회원탈퇴</a></li>
 					</ul>
 				</li>
@@ -102,12 +98,14 @@
 						<i class="bi bi-chevron-down dropdown-indicator"></i>
 					</a>
 					<ul>
+						<li><a href="/jr/admin/home.do">관리자 홈</a></li>
 						<li><a href="/jr/user/admin/useradminlist.do">회원 관리</a></li>
 						<li><a href="/jr/crt/admin/crtadminlist.do">자격증 관리</a></li>
 						<li><a href="/jr/crt/admin/crtschadminlist.do">자격증 시험 일정 관리</a></li>
 						<li><a href="/jr/crt/admin/crttestadminlist.do">자격증 시험 관리</a></li>
 						<li><a href="/jr/faq/admin/faqadminlist.do">FAQ</a></li>
 						<li><a href="/jr/forbidden/admin/forbiddenadminlist.do">금지어 관리</a></li>
+						<li><a href="/jr/user/admin/academy/list.do">학원 관리</a></li>
 
 					</ul>
 				</li>

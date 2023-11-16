@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.project.jr.faq.model.FaqDTO;
+import com.project.jr.faq.model.FAQDTO;
 import com.project.jr.faq.repository.FaqDAO;
 
 
@@ -22,7 +22,7 @@ public class Faq extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-	ArrayList<FaqDTO> list=new ArrayList<FaqDTO>(); 
+	ArrayList<FAQDTO> list=new ArrayList<FAQDTO>(); 
 	
 		
 		FaqDAO dao=new FaqDAO();
