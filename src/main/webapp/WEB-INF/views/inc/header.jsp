@@ -102,8 +102,13 @@
 						<i class="bi bi-chevron-down dropdown-indicator"></i>
 					</a>
 					<ul>
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/jr/user/admin/useradminlist.do">회원 관리</a></li>
+						<li><a href="/jr/crt/admin/crtadminlist.do">자격증 관리</a></li>
+						<li><a href="/jr/crt/admin/crtschadminlist.do">자격증 시험 일정 관리</a></li>
+						<li><a href="/jr/crt/admin/crttestadminlist.do">자격증 시험 관리</a></li>
+						<li><a href="/jr/faq/admin/faqadminlist.do">FAQ</a></li>
+						<li><a href="/jr/forbidden/admin/forbiddenadminlist.do">금지어 관리</a></li>
+
 					</ul>
 				</li>
 				</c:if>
