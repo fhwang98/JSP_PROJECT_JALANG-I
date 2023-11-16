@@ -57,6 +57,17 @@
 		margin-left: 10px; /* 버튼 사이의 간격 조절을 위한 마진 설정 (선택적) */
 	}
   	
+  	#table div{
+  		border: 1px solid #dddddd;
+  		border-collapse: collapse;
+  	}
+  	
+  	#menu {
+  		background-color: #f2f2f2;
+  	}
+  	
+  	
+  	
   
   </style>
   
@@ -106,7 +117,7 @@
         <!-- 시작 -->
 		<div class="container">
 			<div class="row">
-			    <div class="col-12"><h3>${dto.studyName } &#91;${crtTestName }&#93; </h3></div>
+			    <div class="col-12"><h2><b>${dto.studyName }</b></h2> &#91;${crtTestName }&#93; </div>
 			    <div class="col-12">
 			    스터디원 : 
 			    <c:forEach items="${nameList }" var="name">
@@ -119,9 +130,9 @@
     			<div class="col-6"><h2><span class="badge bg-secondary">스터디 일정</span></h2></div>
   			</div>
   			<div class="row" style="height: 400px;">
-			    <div class="col-12">
+			    <div class="col-12" id="table">
 			    
-			    	<div class="row">
+			    	<div class="row" id="menu">
 			    		<div class="col-3">toDoList</div>
 			    		<div class="col-3">완료 일</div>
 			    		<div class="col-3">신청 자</div>
@@ -129,31 +140,35 @@
 			    	</div>
 			    	
 			    	<!-- 내용반복 -->
+			    	<c:forEach items="${list }" var="dto">
 			    	<div class="row">
-			    		<div class="col-3">교재 15페이지까지</div>
-			    		<div class="col-3">2023-11-04</div>
-			    		<div class="col-3">김수진</div>
-			    		<div class="col-3">메모 블라블라</div>
+			    		<div class="col-3">${dto.toDo }</div>
+			    		<div class="col-3">${dto.completeDate }</div>
+			    		<div class="col-3">${dto.name }</div>
+			    		<div class="col-3">${dto.toDoComment }</div>
 			    	</div>
+			    	</c:forEach>
 			    	<!-- /내용반복 -->
-			    	<form action="/jr/study/mypage/study/todoadd.do" method="POST">
-			    	<div class="row">
-			    		<div class="col-3"><input type="text" name="toDoList" class="form-control"></div>
-			    		<div class="col-3"><input type="text" id="datepicker" name="date" class="form-control" placeholder="YYYY-MM-DD" required></div>
-			    		<div class="col-3"><input type="text" name="name" disabled value="${name }" class="form-control"></div>
-			    		<div class="col-3"><input type="text" name="memo" class="form-control"></div>
-			    		<input type="hidden" name="studySeq" value="${dto.studySeq }">
-			    	</div>
-			    	</form>
-			    	<div class="row text-center">
-			    		<div class="col-12">
-			    			<input type="submit">
-			    		</div>
-			    	</div>
 			    	
 			    	
 			    </div>
-			    
+			    <div class="col-12">
+			    <form action="/jr/study/mypage/todoadd.do" method="POST">
+			    	<div class="row" id="input">
+			    		<div class="col-3"><input type="text" name="toDoList" class="form-control" placeholder="할일"></div>
+			    		<div class="col-3"><input type="text" id="datepicker" name="date" class="form-control" placeholder="YYYY-MM-DD" required></div>
+			    		<div class="col-3"><input type="text" name="name" disabled value="${name }" class="form-control"></div>
+			    		<div class="col-3"><input type="text" name="memo" class="form-control" placeholder="메모"></div>
+			    		<input type="hidden" name="studySeq" value="${dto.studySeq }">
+			    	</div>
+			    	
+			    	<div class="row text-center" >
+			    		<div class="col-12">
+			    			<button type="submit" class="btn btn-secondary">할일 올리기</button>
+			    		</div>
+			    	</div>
+			    </form>
+			    </div>
   			</div>
   			
 		</div>

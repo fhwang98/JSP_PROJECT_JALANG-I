@@ -12,5 +12,7 @@ public class ToDoDTO {
 	private String toDo;
 	private String completeDate;
 	private String id;
-	private String ToDoComment;
+	private String toDoComment;
+	
+	private String name;
 }

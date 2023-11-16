@@ -1,6 +1,7 @@
 package com.project.jr.study.mypage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,13 +16,13 @@ import com.project.jr.study.repository.StudyDAO;
 public class ToDoAdd extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		
 		int studySeq=Integer.parseInt(req.getParameter("studySeq"));
 		String toDo=req.getParameter("toDoList");
 		String completeDate=req.getParameter("date");
-		String id=req.getParameter("name");
+		String id=req.getSession().getAttribute("id").toString();
 		String ToDoComment=req.getParameter("memo");
 		
 		
@@ -30,6 +31,16 @@ public class ToDoAdd extends HttpServlet {
 		
 		int result=dao.setToDo(studySeq, toDo, completeDate, id, ToDoComment);
 		
+		System.out.println(result);
+		if (result == 1) {
+			
+			resp.sendRedirect("/jr/study/mypage/study/detail.do");
+			
+		} else {
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('failed');history.back();</script>");
+			writer.close();
+		}
 	}
 
 }

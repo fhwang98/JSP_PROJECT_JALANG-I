@@ -10,6 +10,7 @@ import com.project.jr.main.DBUtil;
 import com.project.jr.study.model.StudyBookDTO;
 import com.project.jr.study.model.StudyDTO;
 import com.project.jr.study.model.StudyJoinDTO;
+import com.project.jr.study.model.ToDoDTO;
 
 public class StudyDAO {
 	private Connection conn;
@@ -113,7 +114,7 @@ public class StudyDAO {
 		return 0;
 	}
 
-	public int progCh(String id) {
+	public int progCh(String id, int seq) {
 
 		try {
 
@@ -124,10 +125,11 @@ public class StudyDAO {
 					+ "        on bp.indexSeq = i.indexSeq\r\n"
 					+ "            inner join tblBook b\r\n"
 					+ "                on i.bookSeq = b.bookSeq\r\n"
-					+ "                    where bp.id = ? and bp.learnCheck = 1";
+					+ "                    where bp.id = ? and bp.learnCheck = 1 and i.bookSeq = ?";
 
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, id);
+			pstat.setInt(2, seq);
 
 			rs = pstat.executeQuery();
 
@@ -346,13 +348,82 @@ public class StudyDAO {
 
 		try {
 			
-			String sql = "sql";
+			String sql = "INSERT INTO tblToDoList values (toDoListSeq.NextVal, ?, ?, default, ?, ?)";
+			
+			pstat=conn.prepareStatement(sql);
+			pstat.setInt(1, studySeq);
+			pstat.setString(2, toDo);
+			pstat.setString(3, id);
+			pstat.setString(4, toDoComment);
+			
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+
+	public ArrayList<ToDoDTO> getList(int studySeq) {
+
+		try {
+			
+			String sql = "select * from tblToDoList tl inner join tblUserInfo u on tl.id = u.id where tl.studySeq = ?";
 			
 			pstat=conn.prepareStatement(sql);
 			pstat.setInt(1, studySeq);
 			
-			return pstat.executeUpdate();
+			rs=pstat.executeQuery();
 			
+			ArrayList<ToDoDTO> list=new ArrayList<ToDoDTO>();
+			
+			while(rs.next()) {
+				ToDoDTO dto=new ToDoDTO();
+				
+				dto.setToDoListSeq(rs.getInt("toDoListSeq"));
+				dto.setStudySeq(rs.getInt("studySeq"));
+				dto.setToDo(rs.getString("toDo"));
+				String date=rs.getString("completeDate").substring(0,11);
+				dto.setCompleteDate(date);
+				dto.setId(rs.getString("id"));
+				dto.setToDoComment(rs.getString("toDoComment"));
+				
+				dto.setName(rs.getString("name"));
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return null;
+	}
+
+	public int dCount(String id) {
+
+		try {
+
+			String sql = "select count(*) as count from tblStudyJoin where id = ? and status = 0";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+
+			rs = pstat.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt("count");
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

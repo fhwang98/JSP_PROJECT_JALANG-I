@@ -96,12 +96,15 @@
 		
 
   		
-  		<h5 style="padding-top: 20px; text-decoration: underline;">
-  			<a class="btn btn-primary" href="#" role="button">등록</a>
-  		</h5>
+  		
 		</div>
+		<c:if test="${empty list}">
+			<div class="col-md-12" >
+				<h1>학습 중인 교재가 없습니다</h1>
+			</div>
+		</c:if>
 		
-		
+		<c:if test="${not empty list}">
 		<c:forEach items="${list}" var="dto">
       	<div class="col-md-3" >
         	<img src="${dto.bookImg }" class="" alt="">
@@ -115,8 +118,8 @@
 			    <div class="col">
 			    	<h5 style="text-align: left;">진행 률</h5>
 			    </div>
-			    <div class="progress">
-  					<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: ${dto.count }%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${dto.count }%</div>
+			    <div class="progress" style=" padding: 0;">
+  					<div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: ${dto.count }%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${dto.count }%</div>
 				</div>
 				</div>
 			  </div>
@@ -124,7 +127,7 @@
 		
 		<hr>
 		</c:forEach>
-		
+		</c:if>
 		
 		
 			

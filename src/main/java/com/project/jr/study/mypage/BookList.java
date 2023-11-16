@@ -61,7 +61,7 @@ public class BookList extends HttpServlet {
 			int seq=(int) iterS.next();
 			
 			int total=dao.totalCh(seq);
-			int prog=dao.progCh(id);
+			int prog=dao.progCh(id,seq);
 			
 			int count=prog*100/total;
 			System.out.println(count);

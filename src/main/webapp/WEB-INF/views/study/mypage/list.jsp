@@ -124,7 +124,7 @@
 			    <div class="col">
 			    	<h5 style="text-align: left;">진행 률</h5>
 			    </div>
-			    <div class="progress">
+			    <div class="progress" style=" padding: 0;">
   					<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: ${dto.count }%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${dto.count }%</div>
 				</div>
 				</div>
@@ -162,23 +162,25 @@
       	<div class="row gy-4">
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <a href="/jr/study/mypage/study/detail.do">
             <div class="pricing-item featured">
               <h3>진행중</h3>
-              <h4>30</h4>
+              <h4>${jCount }</h4>
             </div>
+            </a>
           </div><!-- End Pricing Item -->
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="pricing-item featured">
               <h3>대기중</h3>
-              <h4>30</h4>
+              <h4>${dCount }</h4>
             </div>
           </div><!-- End Pricing Item -->
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="pricing-item featured">
               <h3>완료</h3>
-              <h4>30</h4>
+              <h4>${wCount }</h4>
             </div>
           </div><!-- End Pricing Item -->
 

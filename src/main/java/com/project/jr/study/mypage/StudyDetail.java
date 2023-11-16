@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.jr.study.model.StudyDTO;
+import com.project.jr.study.model.ToDoDTO;
 import com.project.jr.study.repository.StudyDAO;
 
 @WebServlet("/study/mypage/study/detail.do")
@@ -32,8 +33,9 @@ public class StudyDetail extends HttpServlet {
 		
 		ArrayList<String> nl=dao.getNameList(studySeq);
 		
+		ArrayList<ToDoDTO> list=dao.getList(studySeq);
 		
-		
+		req.setAttribute("list", list);
 		req.setAttribute("nameList", nl);
 		req.setAttribute("crtTestName", crtTestName);
 		req.setAttribute("dto", dto);
