@@ -1,0 +1,49 @@
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Gothic:wght@700&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@500;600&display=swap');
+body {
+	font-family: 'Nanum Gothic', sans-serif;
+	/* font-family: 'Nanum Brush Script', cursive; */
+}
+
+
+section .container{
+	width: 1000px;
+}
+
+#box {
+	background-color: #f2f2f2;
+	border-radius: 9px;
+	display: flex;
+	justify-content: center;
+	padding: 30px;
+	color: #333333;
+}
+
+
+
+#box > div:first-child {
+	width: 400px;
+	border-right: 1px solid grey;
+}
+
+
+#detail {
+	width: 600px;
+}
+
+#detail div:nth-child(even) {
+	padding-left: 40px;
+}
+
+#box > div > div{
+	padding: 10px;
+}
+#box h3 {
+	padding-top: 10px;
+}
+
+#box a {
+	color: #333333;
+	text-decoration: underline;
+}
+
