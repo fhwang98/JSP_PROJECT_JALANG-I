@@ -38,4 +38,12 @@ public class CrtDTO {
 	private String expiryDate; //시험이름
 	private String passLine; //시험이름
 
+	
+	
+	
+	private String testStartDate;
+	private String round;
+	private String testRcStartDate;
+	private int ddDay;
+	
 }

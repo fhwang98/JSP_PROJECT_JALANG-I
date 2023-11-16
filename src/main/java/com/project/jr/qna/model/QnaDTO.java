@@ -1,7 +1,12 @@
 package com.project.jr.qna.model;
 
+import lombok.Data;
+
+@Data
 public class QnaDTO {
 	
+	private int qnaSeqint;
+	private int answerSeqint;
 	private String qnaSeq;
 	private String id;
 	private String qnaTitle;

@@ -105,7 +105,7 @@
 						<li><a href="/jr/crt/admin/crttestadminlist.do">자격증 시험 관리</a></li>
 						<li><a href="/jr/faq/admin/faqadminlist.do">FAQ</a></li>
 						<li><a href="/jr/forbidden/admin/forbiddenadminlist.do">금지어 관리</a></li>
-						<li><a href="/jr/user/admin/academy/list.do">학원 관리</a></li>
+						<li><a href="/jr/academy/admin/list.do">학원 관리</a></li>
 
 					</ul>
 				</li>

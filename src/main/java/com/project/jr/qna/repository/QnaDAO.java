@@ -82,8 +82,8 @@ public ArrayList<QnaDTO> getRecentQna() {
 				
 				QnaDTO dto = new QnaDTO();
 				
-				dto.setQnaSeq(rs.getInt("qnaSeq"));
-				dto.setAnswerSeq(rs.getInt("answerSeq"));
+				dto.setQnaSeqint(rs.getInt("qnaSeq"));
+				dto.setAnswerSeqint(rs.getInt("answerSeq"));
 				dto.setId(rs.getString("id"));
 				dto.setQnaTitle(rs.getString("qnaTitle"));
 				dto.setQnaWriteDate(rs.getString("qnaWriteDate"));

@@ -1,6 +1,7 @@
 package com.project.jr.crt;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ public class CrtSchDetail extends HttpServlet {
 		
 		
 		CrtSchDAO dao = new CrtSchDAO();
-		CrtSchDTO dto = dao.list(crtschseq);
+		ArrayList<CrtSchDTO> dto = dao.list(crtschseq);
 		
 		
 		req.setAttribute("dto", dto);

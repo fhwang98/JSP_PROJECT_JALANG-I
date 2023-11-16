@@ -67,14 +67,34 @@
 	    background: #9c57f5;
 	    border-radius: 10px;
  	 }
- 	 .hide {
- 	 	display:none;
+ 	 
+ 	 .info {
+ 	 	width: 100%;
  	 }
  	 
- 	 .card:hover .hide {
+ 	 /* 
+ 	 .card {
+ 	 	position: relative;
+ 	 	left: 0;
+ 	 	top: 0;
+ 	 }
+ 	  */
+ 	 
+ 	 .hide {
+ 	 	display:none;
+ 	 	/* position: absolute;
+ 	 	background-color: white;
+ 	 	width: 200px;
+ 	 	height: 100px;
+ 	 	top: 150px;
+ 	 	z-index: 10; */
+ 	 }
+ 	 
+ 	 
+ 	 /* .card:hover .hide {
  	 	display:block;
  
- 	 }
+ 	 } */
   
   
   </style>
@@ -89,7 +109,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero d-flex align-items-center">
     <div class="container">
-      <div class="row gy-4 d-flex justify-content-between">
+      <div class="row gy-4 d-flex justify-content-around">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h2 data-aos="fade-up">자격증, 자랑이와!</h2>
 
@@ -103,8 +123,8 @@
 
         <div id="banner" style="text-align: center;" class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
         
-        <img alt="" src="" style="width: 245px; height:250px;">
-        <img alt="" src="" style="width: 245px; height:250px;">
+        <img alt="" src="<%=request.getContextPath() %>/resources/img/bookbanner.png" style="width: 245px; height:320px;">
+        <img alt="" src="<%=request.getContextPath() %>/resources/img/crtbanner.png" style="width: 245px; height:320px;">
         
           <%-- <img src="<%=request.getContextPath() %>/resources/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt=""> --%>
         </div>
@@ -135,21 +155,45 @@
     <section id="featured-services" class="featured-services" style="padding: 30px 0;">
       </div>
       <div class="container">
-        <div class="row gy-4">
+        <div class="row gy-4" style="align-items: flex-start;">
 
 
 		<c:forEach items="${ clist }" var="dto">
 		  <div class="col-lg-3 col-md-4">
-		  <div class="card service-item d-flex" data-aos="fade-up" data-aos-delay="200" style="padding:20px 20px 0 20px;">
-              <div class="d-day">d-000</div>
-              <h4 class="title" style="padding-top:40px;">${ dto.crtName }</h4>
-              <p class="description">시행기관 ${ dto.agency }</p>
-              <p class="description">시 험 일 </p>
-              
-              <div class="hide">
+		  <div class="card service-item d-flex" data-aos="fade-up" data-aos-delay="200" style="padding:20px;">
+		      
+		      <c:if test="${dto.ddDay > 0 }">
+              <div class="d-day">d-${ dto.ddDay }</div>
+              </c:if>
+              <h4 class="title" style="font-size: 1.1rem; padding-top:20px;">${ dto.crtName }</h4>
+              <div class="description">
+				<table class="info">
+					<tbody>
+						<tr>
+							<th>시행기관</th>
+							<td>${ dto.agency }</td>
+						</tr>
+						<tr>
+							<th>시험일</th>
+							<td>${ dto.testStartDate }</td>
+						</tr>
+					</tbody>
+				</table>
+								</div>
+              <div class="hide description">
               <hr>
-              <p class="description">시험명 </p>
-              <p class="description">접수일 </p>
+              <table class="info" style="margin-bottom:10px;">
+					<tbody>
+						<tr>
+							<th>시험명</th>
+							<td>${ dto.round }</td>
+						</tr>
+						<tr>
+							<th>접수일</th>
+							<td>${ dto.testRcStartDate }</td>
+						</tr>
+					</tbody>
+				</table>
               <a href="#" class="readmore stretched-link"><span>자격증 상세보기</span><i class="bi bi-arrow-right"></i></a>
               </div>
               </div>
@@ -182,7 +226,21 @@
   <%@ include file="/WEB-INF/views/inc/side.jsp" %>
   
   <script>
-  	
+  
+/*   
+  	$('.card').mouseover(function() {
+  		$(event.currentTarget).find('.hide').show();
+  	});
+ */
+ 
+ $('.card').mouseover(function(event) {
+	  $(event.currentTarget).find('.hide').show();
+	});
+
+	$('.card').mouseout(function(event) {
+	  $(event.currentTarget).find('.hide').hide();
+	});
+
   
   </script>
 

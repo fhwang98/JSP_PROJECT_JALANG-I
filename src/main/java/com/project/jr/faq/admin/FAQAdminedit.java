@@ -46,7 +46,7 @@ public class FAQAdminedit extends HttpServlet {
 		FAQDTO dto = new FAQDTO();
 		
 		dto.setFaqSeq(faqSeq);
-		dto.setFaqtitle(faqtitle);
+		dto.setFaqTitle(faqtitle);
 		dto.setFaqContent(faqContent);
 		
 		int result = dao.edit(dto);

@@ -1,4 +1,4 @@
-package com.project.jr.point;
+package com.project.jr.main.point;
 
 public class Point {
 

@@ -335,12 +335,12 @@ options: {
 									<tr>
 										<td>${ dto.id }</td>
 										<!-- 링크 수정 필요 -->
-										<td><a href="/jr/qna/admin/detail.do?seq=${ dto.qnaSeq }" class="text-primary">${dto.qnaTitle }</a></td>
+										<td><a href="/jr/qna/admin/detail.do?seq=${ dto.qnaSeqint }" class="text-primary">${dto.qnaTitle }</a></td>
 										<td>${dto.qnaWriteDate }</td>
-										<c:if test="${ dto.answerSeq != 0 }">
+										<c:if test="${ dto.answerSeqint != 0 }">
 										<td><span class="badge bg-success">완료</span></td>
 										</c:if>
-										<c:if test="${ dto.answerSeq == 0 }">
+										<c:if test="${ dto.answerSeqint == 0 }">
 										<td><span class="badge bg-warning">대기</span></td>
 										</c:if>
 									</tr>

@@ -23,6 +23,27 @@ public class Index extends HttpServlet {
 		//자격증 top 100
 		CrtDAO cdao = new CrtDAO();
 		ArrayList<CrtDTO> clist = cdao.getTop100();
+		
+		for (CrtDTO dto : clist) {
+			if (dto.getTestRcStartDate() != null && !dto.getTestRcStartDate().equals("")) {
+//				System.out.println(dto.getTestRcStartDate());
+				dto.setTestRcStartDate(dto.getTestRcStartDate().substring(0, 10));
+			} else {
+				dto.setTestRcStartDate("공시예정");
+			}
+			
+			if (dto.getTestStartDate() != null && !dto.getTestStartDate().equals("")) {
+				dto.setTestStartDate(dto.getTestStartDate().substring(0, 10));
+			} else {
+				dto.setTestStartDate("공시예정");
+			}
+			
+			if (dto.getRound() == null || dto.getRound().equals("")) {
+				dto.setRound("공시예정");
+			}
+			
+		}
+		
 		req.setAttribute("clist", clist);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/index.jsp");

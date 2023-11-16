@@ -19,9 +19,6 @@ import com.project.jr.crt.model.CrtSchDdayDTO;
 import com.project.jr.crt.model.MyCrtDTO;
 import com.project.jr.main.DBUtil;
 
-
-import com.project.jr.main.DBUtil;
-
 public class CrtDAO {
 
 	private Connection conn;
@@ -593,18 +590,8 @@ public class CrtDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM\n"
-					+ "(SELECT s.*, rownum AS rnum\n"
-					+ "FROM\n"
-					+ "(SELECT\n"
-					+ "	c.crtseq,\n"
-					+ "	crtname,\n"
-					+ "	totalcnt,\n"
-					+ "	(SELECT agency FROM tblagency a WHERE a.agencyseq = c.agencyseq ) AS agency\n"
-					+ "FROM tblCrt c \n"
-					+ "ORDER BY c.totalcnt DESC) s)\n"
-					+ "WHERE rnum BETWEEN 1 AND 100";
-			
+			String sql = "SELECT * FROM vwcrttop";
+				
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);	
 			
@@ -617,8 +604,11 @@ public class CrtDAO {
 				dto.setCrtSeq(rs.getInt("crtseq"));
 				dto.setCrtName(rs.getString("crtname"));
 				dto.setAgency(rs.getString("agency"));
-				dto.setTotalCnt(rs.getInt("totalcnt"));
-				
+				dto.setTestRcStartDate(rs.getString("testrcstartdate"));
+				dto.setTestStartDate(rs.getString("teststartdate"));
+				dto.setRound(rs.getString("round"));
+				dto.setDdDay(rs.getInt("dday"));
+			
 				
 				list.add(dto);
 			}

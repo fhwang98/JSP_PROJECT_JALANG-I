@@ -1,5 +1,8 @@
 package com.project.jr.faq.model;
 
+import lombok.Data;
+
+@Data
 public class FAQDTO {
 	
 

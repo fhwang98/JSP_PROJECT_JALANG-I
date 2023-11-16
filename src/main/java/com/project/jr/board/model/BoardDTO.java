@@ -1,6 +1,8 @@
 package com.project.jr.board.model;
 
+import lombok.Data;
 
+@Data
 public class BoardDTO {
 
 	
@@ -11,9 +13,10 @@ public class BoardDTO {
 	private String boardWriteDate;
 	private String boardLike;
 	private String boardHits;
-	private String boardReprort;
+	private String boardReport;
 	private String boardType;
 	private String boardIsBoardShow;
+	private String isBoardShow;
     private String ccnt;
 	
 	
@@ -62,10 +65,10 @@ public class BoardDTO {
 		this.boardHits = boardHits;
 	}
 	public String getBoardReprort() {
-		return boardReprort;
+		return boardReport;
 	}
 	public void setBoardReprort(String boardReprort) {
-		this.boardReprort = boardReprort;
+		this.boardReport = boardReprort;
 	}
 	public String getBoardType() {
 		return boardType;

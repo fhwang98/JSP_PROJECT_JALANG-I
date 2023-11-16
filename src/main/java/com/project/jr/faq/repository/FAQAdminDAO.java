@@ -36,7 +36,7 @@ public class FAQAdminDAO {
 				FAQDTO dto = new FAQDTO();
 				
 				dto.setFaqSeq(rs.getString("faqSeq"));
-				dto.setFaqtitle(rs.getString("faqtitle"));
+				dto.setFaqTitle(rs.getString("faqtitle"));
 				dto.setFaqContent(rs.getString("faqContent"));
 				dto.setFaqWriteDate(rs.getString("faqWriteDate"));
 				
@@ -68,7 +68,7 @@ public class FAQAdminDAO {
 				FAQDTO dto = new FAQDTO();
 				
 				dto.setFaqSeq(rs.getString("faqSeq"));
-				dto.setFaqtitle(rs.getString("faqtitle"));
+				dto.setFaqTitle(rs.getString("faqtitle"));
 				dto.setFaqContent(rs.getString("faqContent"));
 				dto.setFaqWriteDate(rs.getString("faqWriteDate"));
 				
@@ -89,7 +89,7 @@ public class FAQAdminDAO {
 			String sql = "update tblfaq set faqtitle = ?, faqContent = ? where faqSeq = ?";
 
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, dto.getFaqtitle());
+			pstat.setString(1, dto.getFaqTitle());
 			pstat.setString(2, dto.getFaqContent());
 			pstat.setString(3, dto.getFaqSeq());
 
