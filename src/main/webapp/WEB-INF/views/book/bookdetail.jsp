@@ -256,7 +256,7 @@
 				  <path onclick="like(${dto.bookseq})" fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 				</svg>	
               <br></br>
-      <label class="btn btn-primary" for="btn-check">등록하기</label>
+      <label class="btn btn-primary" for="btn-check" onclick="insertbook('${seq}','${dto.bookseq}');">등록하기</label>
             </td>
           </tr>
         </table>
@@ -304,6 +304,23 @@
   <%@ include file="/WEB-INF/views/inc/side.jsp" %>
 
   <Script>
+  function insertbook(seq,bookseq) {
+	$.ajax({
+		type:'POST',
+		url:'/jr/book/bookadd.do',
+		data: {
+			seq: seq,
+			bookseq: bookseq
+		},
+		dataType: 'json',
+		success:function(result){
+			alert('축하');
+		},
+		error:function(a,b,c){	
+			console.log(a,b,c);
+		}
+	});
+}
   function like(seq) {
 	$.ajax({
 		type:'get',
@@ -323,7 +340,6 @@
 }
 	
 	$("#more-view").click(function() {
-		//alert($(".table-list-hide").is(":hidden"));
 		if (!$(".table-list-hide").is(":hidden")){
 			$(".table-list-hide").slideUp();
 			$("#more-view").val("더보기");
@@ -334,20 +350,7 @@
 			
 		}
 	});
-    /* // Add any custom scripts here
-    $(document).ready(function () {
-            // 처음에는 첫 세 개의 행을 제외하고 나머지 모두 숨김
-            $('.contents-table tr:gt(2)').addClass('hidden');
 
-            // "더보기" 버튼 클릭 처리
-            $('#more-view').click(function () {
-                // 숨겨진 행을 모두 표시
-                $('.contents-table tr.hidden').removeClass('hidden');
-                
-                // 모든 행을 표시한 후 "더보기" 버튼 숨김
-                $(this).hide();
-            });
-        }); */
   </Script>
 
 </body>

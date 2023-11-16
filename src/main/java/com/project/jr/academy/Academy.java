@@ -2,6 +2,7 @@ package com.project.jr.academy;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -28,6 +29,7 @@ public class Academy extends HttpServlet {
 	*/	
 	
 	//검색
+	String column = req.getParameter("column");
 	String word = req.getParameter("word");
 	String search = "n";  //검색중("y") 목록보기("n")
 	
@@ -40,6 +42,7 @@ public class Academy extends HttpServlet {
 	HashMap<String, String> map = new HashMap<String, String>();
 	map.put("word", word);
 	map.put("search", search);
+	map.put("column", column);
 		
 		
 	//페이징
@@ -48,9 +51,8 @@ public class Academy extends HttpServlet {
 	int pageSize =10;
 	int totalPage =0;
 	int begin =0;
-	
 	int end =0;
-	
+	int loop=0;
 	int blockSize=10;
 	
 	String page = req.getParameter("page");
@@ -113,7 +115,7 @@ public class Academy extends HttpServlet {
 	StringBuilder sb = new StringBuilder();
 	
 	//이전,다음 버튼
-	int loop =1;
+	loop =1;
 	int n = ((nowPage-1)/blockSize) * blockSize +1;
 	
 	

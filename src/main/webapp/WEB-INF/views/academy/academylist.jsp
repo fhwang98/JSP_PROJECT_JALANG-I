@@ -94,6 +94,11 @@
       color: #fff;
       text-align: center;
     }
+    
+    .custom-row{
+    	
+    	background-color:#eaf7ff;
+    }
 
     .breadcrumbs h2 {
       font-size: 32px;
@@ -147,9 +152,9 @@
       border-radius: 5px;
     }
 
-    /* #main {
+    #main {
       padding: 40px 0;
-    } */
+    }
 
     .container {
       position: relative;
@@ -176,12 +181,35 @@
 }
 
 .eduname {
-	font-size: 30px;
+	font-size: 20px;	
 }
 
+.crtname{
+	font-size: 30px;
+	background-color: #f4f6fb;
+	border: 1px solid white;
+	
+}
 
-
-
+        #pagebar-container {
+            text-align: center;
+            color: black;
+        }
+	#tbl-list > tbody > tr:nth-child(1) > th {
+		border-radius: 30px;
+		border: 1px solid white;
+	}
+	
+.search{
+	display: flex;
+	padding-left: 38%;
+}
+.form-control{
+	width: 200px;
+}
+#column{
+	padding-top: 5px;
+}
 </style>
 
   <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
@@ -216,13 +244,24 @@
             <li><a href="index.html">Home</a></li>
             <li>학원 조회</li>
           </ol>
-          
-               <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" name="word" class="form-control" placeholder="학원을 검색해보세요">
-            <button type="submit" class="btn btn-primary">Search</button>
-     </form>
-        </div>
+          			<div class="search">
+					<form action="/jr/academy/academylist.do"
+						class="form-search d-flex align-items-stretch mb-3"
+						data-aos="fade-up" data-aos-delay="200" method="GET">
+						<select id="column" name="column">
+							<option value="academyName">학원명</option>
+							<option value="crtName">자격증</option>
+							<option value="eduName">교육명</option>
+						</select>
+						 <input type="text" name="word" class="form-control"
+							placeholder="검색해보세요">
+						<input type="submit" class="btn btn-primary" value="검색하기">
+					</form>
+				</div>
+					
+				
       </nav>
+
       
     </div><!-- End Breadcrumbs -->
     <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
@@ -244,7 +283,7 @@
                         <div>${dto.academyTel}</div>
                     </a>
                 </th>
-                <td class="eduname">${dto.crtName}<br>${dto.eduName}</td>
+                <td class="crtname">${dto.crtName}<br><div class="eduname">${dto.eduName}</div></td>
             </tr>
             <tr>
                 <td>모집일: ${dto.eduRcStartDate}~${dto.eduRcEndDate}</td>
@@ -269,7 +308,9 @@
 
 
       <!-- 페이지바 표시 -->
-      <div id="pagebar">${pagebar}</div>
+  		 <div id="pagebar-container">
+      		  <div id="pagebar">${pagebar}</div>
+   		 </div>
     </div>
   </main><!-- End #main -->
 
@@ -283,13 +324,14 @@
   
   <%@ include file="/WEB-INF/views/inc/ad.jsp" %>
   <%@ include file="/WEB-INF/views/inc/side.jsp" %>
-  <Script>
+ 
+ 
+   <Script>
   
   <c:if test="${map.search == 'y'}">
-	$('input[name=word]').val('$(map.word)');  
+  	$('select[name=column]').val('${map.column}');
+	$('input[name=word]').val('${map.word}');  
   </c:if>
-  
-  $('selPage').val(${nowPage});
   </Script>
 
 

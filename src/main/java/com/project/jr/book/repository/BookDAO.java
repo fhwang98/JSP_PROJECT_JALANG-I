@@ -28,10 +28,18 @@ public class BookDAO {
 			String where = "";
 			
 			if(map.get("search").equals("y")) {
-				where = String.format("where bookName %s like'%%%s%%'", map.get("word"));
+				where = String.format("where b.bookName %s like'%%%s%%'", map.get("word"));
 			}
 			
-			String sql = String.format("select * from(select a.*, rownum as rnum from tblBook a %s)where rnum between %s and %s"
+			String sql = String.format("select * from(select \r\n"
+					+ "    b.*,\r\n"
+					+ "    c.crtName,\r\n"
+					+ "    rownum as rnum\r\n"
+					+ "from tblCrtByBook bb \r\n"
+					+ "    inner join tblBook b \r\n"
+					+ "        on bb.bookSeq = b.bookSeq\r\n"
+					+ "            inner join tblCrt c\r\n"
+					+ "                on bb.crtSeq = c.crtSeq %s)where rnum between %s and %s"
 										, where
 										, map.get("begin")
 										, map.get("end"));
@@ -54,39 +62,11 @@ public class BookDAO {
 				dto.setBookLike(rs.getInt("bookLike"));
 				dto.setLv(rs.getInt("lv"));
 				dto.setBookImg(rs.getString("bookImg"));
+				dto.setCrtName(rs.getString("crtName"));
 				
 				
 			list.add(dto);
-			}
-			return list;
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-			
-			
-	}
-		
-	public ArrayList<HashMap<String, String>> getLikeTop() {
-		
-		try {
-			
-			String sql = "SELECT * FROM (SELECT a.*, rownum AS rnum FROM (SELECT bookname, booklike FROM tblbook ORDER BY booklike DESC) a) WHERE rnum BETWEEN 1 AND 3";
-			
-			stat = conn.createStatement();
-			rs = stat.executeQuery(sql);	
-			
-			ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
-			
-			while (rs.next()) {
-				
-				HashMap<String,String> map = new HashMap<String,String>();
-				
-				map.put("bookName", rs.getString("bookName"));
-				map.put("bookLike", rs.getString("bookLike"));
-				
-				list.add(map);
-			}
+			}	
 			
 			return list;
 			
@@ -145,12 +125,12 @@ public class BookDAO {
 				dto.setAuthor(rs.getString("author"));
 				dto.setBookLike(rs.getInt("booklike"));
 				dto.setLv(rs.getInt("lv"));
+				dto.setBookImg(rs.getNString("bookImg"));
 				
 				return dto;
 			}	
 			
 		} catch (Exception e) {
-			System.out.println("BookDAO.getLikeTop()");
 			e.printStackTrace();
 		}
 		
@@ -178,7 +158,6 @@ public class BookDAO {
 				dto.setListNum(rs.getInt("listnum"));
 				dto.setList(rs.getString("list"));
 				dto.setTitleStep(rs.getInt("titlestep"));
-				
 				list.add(dto);
 			}	
 			
@@ -208,5 +187,87 @@ public class BookDAO {
 		return 0;
 	}
 
+	public ArrayList<String> getbookindexlist(String bookseq) {
+
+		try {
+			
+			String sql = "select indexseq from tblindex where bookseq = ? and titlestep = 0";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, bookseq);
+			
+			rs = pstat.executeQuery();
+
+			ArrayList<String> list = new ArrayList<String>();
+
+			while (rs.next()) {
+
+				list.add(rs.getString("indexseq"));
+			}	
+
+			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
+public ArrayList<HashMap<String, String>> getLikeTop() {
+		
+		try {
+			
+			String sql = "SELECT * FROM (SELECT a.*, rownum AS rnum FROM (SELECT bookname, booklike FROM tblbook ORDER BY booklike DESC) a) WHERE rnum BETWEEN 1 AND 3";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);	
+			
+			ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
+			
+			while (rs.next()) {
+				
+				HashMap<String,String> map = new HashMap<String,String>();
+				
+				map.put("bookName", rs.getString("bookName"));
+				map.put("bookLike", rs.getString("bookLike"));
+				
+				list.add(map);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return null;
+	}
+
+
+	public int insertbook(String seq, String index) {
+		
+		try {
+
+			String sql = "insert into tblbookprgbyuser (bookprcbyuserseq, id, indexseq, learncheck) values((select max(bookprcbyuserseq) from tblbookprgbyuser)+1, ?, ?, 0)";
+
+			System.out.println("a");
+			pstat = conn.prepareStatement(sql);
+			System.out.println("b");
+			pstat.setString(1, seq);
+			pstat.setString(2, index);
+			System.out.println("c");
+
+			int result = pstat.executeUpdate();
+			System.out.println(result);
+			return result;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;	
+		
+	}
+
 }

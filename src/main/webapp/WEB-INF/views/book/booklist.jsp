@@ -106,6 +106,7 @@
 	font-size: 16px;
 }
 
+
 .name{
 	font-weight: bold;
 	color: black;
@@ -115,6 +116,17 @@
 	font-weight: normal;
 	color: black;
 }
+
+#pagebar-container {
+    text-align: center;
+    color: black;
+}
+        
+        
+#pagebar{
+    color:black;
+}
+
   
   </style>
   
@@ -150,8 +162,8 @@
             <li>교재 조회</li>
           </ol>
           
-               <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="dropdown">
+               <form action="/jr/book/booklist.do" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200" method="GET">
+            <!-- <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     검색항목
   </button>
@@ -161,7 +173,13 @@
     <li><a class="dropdown-item" href="#">자격증</a></li>
     <li><a class="dropdown-item" href="#">난이도</a></li>
   </ul>
-</div>
+</div> -->
+			
+				<select id="column" name="column">
+					<option value="bookname">교재명</option>
+					<option value="publisher">출판사</option>
+					<option value="crtname">자격증</option>
+				</select>
             <input type="text" name="word" class="form-control" placeholder="교재를 검색해보세요">
             <button type="submit" class="btn btn-primary">Search</button>
      </form>
@@ -189,7 +207,7 @@
                            	<br>
                             <a href="#" class="desc">${dto.author}</a>
                             <hr>
-                            <a>관련 자격증</a>
+                            <a>${dto.crtName}</a>
                         </td>
                         <td>
                             <ul>	
@@ -197,35 +215,16 @@
                             </ul>
                         </td>
                            
+             
                     </tr>
                    </c:forEach>
                    
-                   <!-- 페이지바 -->
-    <!--              <tr>
-                        <td><a href="#" class="thumb">
-                            <img src="https://via.placeholder.com/120x120" alt="상품이미지">
-                        </a></td>
-                        <td>
-                            <h3 class="name">교재명</h3>
-                            <a href="#" class="desc">저자</a>
-                            <hr>
-                            <a>관련 자격증</a>
-                        </td>
-                        <td>
-                            <ul>	
-                                <li><ins class="dis-price">27,000</ins></li>
-
-                            </ul>
-                        </td>
-                        <td>
-                           
-                            <h6 class="rating star1">상품평</h6>
-                        </td>
-                    </tr> -->
                   
                 </table>
            </section>
-                   <div id="pagebar">${pagebar}</div>
+   		 <div id="pagebar-container">
+      		  <div id="pagebar">${pagebar}</div>
+   		 </div>
        </div>
   </main><!-- End #main -->
   

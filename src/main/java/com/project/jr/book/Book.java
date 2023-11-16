@@ -26,20 +26,25 @@ public class Book extends HttpServlet {
 		String price = req.getParameter("price");
 		String author = req.getParameter("author");
 	*/	
+		
+		HttpSession session = req.getSession();
+		session.setAttribute("seq", "RvXc3eY");
+		
 	
-	//검색
-	String word = req.getParameter("word");
-	String search = "n";  //검색중("y") 목록보기("n")
-	
-	if (( word == null) || (word.equals(""))) {
-		search="n";
-	} else {
-		search="y";
-	}
-	
-	HashMap<String, String> map = new HashMap<String, String>();
-	map.put("word", word);
-	map.put("search", search);
+		//검색
+		String word = req.getParameter("word");
+		String search = "n";  //검색중("y") 목록보기("n")
+		
+		if (( word == null) || (word.equals(""))) {
+			search="n";
+		} else {
+			search="y";
+		}
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("word", word);
+		map.put("search", search);
+
 		
 		
 	//페이징
@@ -67,7 +72,6 @@ public class Book extends HttpServlet {
 	map.put("begin", begin+ "");
 	map.put("end", end+"");
 	
-	HttpSession session = req.getSession();
 	
 	session.setAttribute("read", "n");
 	
