@@ -164,6 +164,9 @@ public class CrtDetail extends HttpServlet {
 		req.setAttribute("schlist", schlist);
 		req.setAttribute("passmap", passmap);
 		
+		String studyok = "y";
+		req.setAttribute("studyok", studyok);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/crt/crtdetail.jsp");
 		dispatcher.forward(req, resp);
 

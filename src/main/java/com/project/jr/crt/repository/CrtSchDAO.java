@@ -23,60 +23,43 @@ public class CrtSchDAO {
 	public ArrayList<CrtSchDTO> list(HashMap<String, String> map) {
 		
 		try {
-			
 			String where = "";
 			
-			String rcstart = map.get("testrcstartdate");
-			String rcend = map.get("testrcenddate");
-			String start = map.get("teststartdate");
-			String end = map.get("testenddate");
-			/*
 			if (map.get("search").equals("y")) {
 				
 				if ((map.get("word") != null) || !(map.get("word").equals(""))) {
 					where = String.format("where crtName like '%%%s%%'", map.get("word"));
 				}
-				
-				if ((rcstart != null) || !(rcstart.equals(""))) {
-					if (where.equals("")) {
-						where = String.format("where testrcstartdate >= '%%%s%%'", rcstart);
-					}else {
-						where += String.format(" and testrcstartdate >= '%%%s%%'", rcstart);
-					}
-				}
-				
-				if ((rcend != null) || !(rcend.equals(""))) {
-					if (where.equals("")) {
-						where = String.format("where testrcenddate <= '%%%s%%'", rcend);
-					}else {
-						where += String.format(" and testrcenddate <= '%%%s%%'", rcend);
-					}
-				}
-				
-				if ((start != null) || !(start.equals(""))) {
-					if (where.equals("")) {
-						where = String.format("where teststartdate >= '%%%s%%'", start);
-					}else {
-						where += String.format(" and teststartdate >= '%%%s%%'", start);
-					}
-				}
-				
-				if ((end != null) || !(end.equals(""))) {
-					if (where.equals("")) {
-						where = String.format("where testenddate <= '%%%s%%'", end);
-					}else {
-						where += String.format(" and testenddate <= '%%%s%%'", end);
-					}
-				}
-				
 			}
-			*/
+				
+
+			String rcstart = map.get("hiddenRcStartDate");
+			String rcend = map.get("hiddenRcEndDate");
+			String start = map.get("hiddenStartDate");
+			String end = map.get("hiddenEndDate");
+			
+			
+			if ((map.get("hiddenRcStartDate") != null) && !(map.get("hiddenRcStartDate").equals(""))) {
+				if (where.equals("")) {
+					String.format("where testrcstartdate between '%s' and '%s' and testrcenddate between '%s' and '%s'", rcstart, rcend, rcstart, rcend);
+				}else {
+					where += String.format(" and testrcstartdate between '%s' and '%s' and testrcenddate between '%s' and '%s'", rcstart, rcend, rcstart, rcend);
+				}
+			}
+			
+			if ((map.get("hiddenStartDate") != null) && !(map.get("hiddenStartDate").equals(""))) {
+				if (where.equals("")) {
+					String.format("where teststartdate between '%s' and '%s' and testenddate between '%s' and '%s'", start, end, start, end);
+				}else {
+					where += String.format(" and testrcstartdate between '%s' and '%s' and testrcenddate between '%s' and '%s'", start, end, start, end);
+				}
+			}
+			
 			String sql = String.format("select * from (select a.*, rownum as rnum from vwCrtSch a %s) where rnum between %s and %s"
 					, where
 					, map.get("begin")
 					, map.get("end"));
-			
-			System.out.println(sql);
+			System.out.println("sql: " + sql);
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -127,7 +110,43 @@ public class CrtSchDAO {
 		
 		try {
 
-			String sql = "select count(*) as cnt from vwCrtSch";
+			String sql = "";
+			String where = "";
+			
+			String rcstart = map.get("hiddenRcStartDate");
+			String rcend = map.get("hiddenRcEndDate");
+			String start = map.get("hiddenStartDate");
+			String end = map.get("hiddenEndDate");
+			if (map.get("search").equals("y")) {
+				
+				if ((map.get("word") != null) || !(map.get("word").equals(""))) {
+					where = String.format("where crtName like '%%%s%%'", map.get("word"));
+				}
+
+				
+			
+				if ((map.get("hiddenRcStartDate") != null) && !(map.get("hiddenRcStartDate").equals(""))) {
+					if (where.equals("")) {
+						String.format("where testrcstartdate between '%s' and '%s' and testrcenddate between '%s' and '%s'", rcstart, rcend, rcstart, rcend);
+					}else {
+						where += String.format(" and testrcstartdate between '%s' and '%s' and testrcenddate between '%s' and '%s'", rcstart, rcend, rcstart, rcend);
+					}
+				}
+				
+				if ((map.get("hiddenStartDate") != null) && !(map.get("hiddenStartDate").equals(""))) {
+					if (where.equals("")) {
+						String.format("where teststartdate between '%s' and '%s' and testenddate between '%s' and '%s'", start, end, start, end);
+					}else {
+						where += String.format(" and testrcstartdate between '%s' and '%s' and testrcenddate between '%s' and '%s'", start, end, start, end);
+					}
+				}
+			
+				sql = "select count(*) as cnt from vwCrtSch " + where;
+			}	else {
+				sql = "select count(*) as cnt from vwCrtSch";
+			}
+			
+			System.out.println("CrtSchDAO getTotalCount: " + sql);
 
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);

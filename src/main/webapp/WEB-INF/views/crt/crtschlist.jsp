@@ -45,6 +45,12 @@
   <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
   <script src="https://kit.fontawesome.com/1f653a59f2.js" crossorigin="anonymous"></script>
   
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/crtschlist.css" >
   
   <style>
@@ -102,23 +108,26 @@
 				<table id="searchTable">
 					<tr>
 						<td class="serach-width">시험 접수 시작일  ~  시험 접수 종료일</td>
-						<td>
-						<input type="date" class="search-input" name="testrcstartdate" placeholder="시험 접수 시작일">
-						<span class="search-margin"> ~ </span>
-	            		<input type="date" class="search-input" name="testrcenddate" placeholder="시험 접수 종료일">
+						<td class="serach-width">
+						<input type="text" name="daterange" id="daterange1" class="search-input" value="" autocomplete="off"  placeholder="날짜를 선택해주세요">
+						<input type="hidden" name="hiddenRcStartDate" id="hiddenRcStartDate" value="">
+						<input type="hidden" name="hiddenRcEndDate" id="hiddenRcEndDate" value="">
 						</td>
 					</tr>
 					<tr>
 						<td class="serach-width">시험 시작일  ~  시험 종료일</td>
-						<td>
-						<input type="date" class="search-input" name="teststartdate" placeholder="시험 시작일">
-						<span class="search-margin"> ~ </span>
-	            		<input type="date" class="search-input" name="testenddate" placeholder="시험 종료일">
+						<td class="serach-width">
+						<input type="text" name="daterange" id="daterange2" class="search-input" value="" autocomplete="off" placeholder="날짜를 선택해주세요">
+						<input type="hidden" name="hiddenStartDate" id="hiddenStartDate" value="">
+						<input type="hidden" name="hiddenEndDate" id="hiddenEndDate" value="">
 						</td>
 					</tr>
 				</table>
+				<div class="btn-bx">
+					<input type="submit" value="검색">
+					<button id="clear-btn"><i class="fa-solid fa-eraser"></i>초기화</button>
+				</div>
 			</div>
-			<input type="submit" value="검색">
 			</div>		
 		    </form>
 		    </div>
@@ -162,6 +171,10 @@
 								</dl>
 							</div>
 							</div>
+							<button type="button" class="agencytogo" onclick="window.open('${dto.agencyURL}');">
+							    <span><i class="fa-regular fa-hand-point-up"></i>시행기관 바로가기</span>
+							</button>
+
 						</div>
 						
 					</div>
@@ -169,9 +182,9 @@
 				</c:forEach>
 				
 				<!-- 페이지바 -->
-				<div id="pagebar">${pagebar}</div>
 				
 			</ul>
+			<div id="pagebar">${pagebar}</div>
 		</section>
 	</div>
 		<section id="get-a-quote" class="get-a-quote">
@@ -195,36 +208,69 @@
   <%@ include file="/WEB-INF/views/inc/side.jsp" %>
 
   <Script>
-  	
+   
+   $('input[name="daterange"]').click(function(event){
+	   event.preventDefault();
+	   $('input[name="daterange"]').data('daterangepicker').show();
+	});
   
-  	<c:if test="${map.search == 'y'}">
-  	$('input[name=word]').val('${map.word}');
-  	$('select[name=crtctg]').val('${map.crtctg}');
-  	$('select[name=agency]').val('${map.agency}');
-  	$('select[name=difficulty]').val('${map.difficulty}');
-  	</c:if>
   	
   	$('#selPage').val(${nowPage});
   	
-  	function validateDates() {
-  		
-  		let rcstart = $("input[name='testrcstartdate']").val();
-  		let rcend = $("input[name='testrcenddate']").val();
-  		let start = $("input[name='teststartdate']").val();
-  		let end = $("input[name='testenddate']").val();
-  		
-  		
-  		if ((rcstart !== null && rcend !== null) || (rcstart === "" && rcend === "")) {
-  			if (new Date(rcstart) > new Date(endDate)) {
-  				alert("시작날짜는 끝날짜보다 빠를수 없습니다.");
-  				return false;
-  			}
-  			
-  		}
-  		return true;
-  	}
-  	 
+  	$(document).ready(function () {
+         $('#daterange1').daterangepicker({
+             autoUpdateInput: false,
+             locale: {
+                 cancelLabel: 'Clear'
+             }
+         });
+
+         $('#daterange1').on('apply.daterangepicker', function (ev, picker) {
+             $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+             $('#hiddenRcStartDate').val(picker.startDate.format('YYYY-MM-DD'));
+             $('#hiddenRcEndDate').val(picker.endDate.format('YYYY-MM-DD'));
+         });
+
+         $('#daterange1').on('cancel.daterangepicker', function () {
+             $(this).val('');
+             $('#hiddenRcStartDate').val('');
+             $('#hiddenRcEndDate').val('');
+         });
+         $('#daterange2').daterangepicker({
+             autoUpdateInput: false,
+             locale: {
+                 cancelLabel: 'Clear'
+             }
+         });
+
+         $('#daterange2').on('apply.daterangepicker', function (ev, picker) {
+             $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+             $('#hiddenStartDate').val(picker.startDate.format('YYYY-MM-DD'));
+             $('#hiddenEndDate').val(picker.endDate.format('YYYY-MM-DD'));
+         });
+
+         $('#daterange2').on('cancel.daterangepicker', function () {
+             $(this).val('');
+             $('#hiddenStartDate').val('');
+             $('#hiddenEndDate').val('');
+         });
+         
+         $('#clear-btn').click(function() {        	 
+        	 $('#crtNameText').val('');
+        	 $('#daterange1').val('');
+             $('#daterange2').val('');
+        	 $('#hiddenStartDate').val('');
+             $('#hiddenEndDate').val('');
+        	 
+         });
+     });
   	
+
+  	<c:if test="${map.search == 'y'}">
+  	$('input[name=word]').val('${map.word}');
+  	$('select[name=hiddenStartDate]').val('${map.hiddenStartDate}');
+  	$('select[name=hiddenEndDate]').val('${map.hiddenEndDate}');
+  	</c:if>
   </Script>
 
 

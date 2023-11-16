@@ -24,10 +24,14 @@ public class CrtSchList extends HttpServlet {
 		//CrtSchList.java
 		
 		String word = req.getParameter("word");
-		String testrcstartdate = req.getParameter("testrcstartdate");
-		String testrcenddate = req.getParameter("testrcenddate");
-		String teststartdate = req.getParameter("teststartdate");
-		String testenddate = req.getParameter("testenddate");
+		String daterange = req.getParameter("daterange");
+		String hiddenRcStartDate = req.getParameter("hiddenRcStartDate");
+		String hiddenRcEndDate = req.getParameter("hiddenRcEndDate");
+		String hiddenStartDate = req.getParameter("hiddenStartDate");
+		String hiddenEndDate = req.getParameter("hiddenEndDate");
+		
+		System.out.println("CrtSchList: " + daterange + " hiddenEndDate:" + hiddenStartDate + " hiddenEndDate: " + hiddenEndDate);
+		
 		
 		String search = "n";	//검색중("y"), 목록보기("n")
 		/*
@@ -40,13 +44,22 @@ public class CrtSchList extends HttpServlet {
 		}
 		*/
 		
+		if ((word==null && hiddenRcStartDate==null && hiddenRcEndDate==null && hiddenStartDate==null && hiddenEndDate==null) 
+				|| word.equals("") && hiddenRcStartDate.equals("") && hiddenRcEndDate.equals("") && hiddenStartDate.equals("") && hiddenEndDate.equals("")) {
+			search = "n";
+			
+		} else {
+			search = "y";
+		}
+		System.out.println("CrtSchList: search " + search);
+		
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("word", word);
-		map.put("testrcstartdate", testrcstartdate);
-		map.put("testrcenddate", testrcenddate);
-		map.put("teststartdate", teststartdate);
-		map.put("testenddate", testenddate);
 		map.put("search", search);
+		map.put("hiddenRcStartDate", hiddenRcStartDate);
+		map.put("hiddenRcEndDate", hiddenRcEndDate);
+		map.put("hiddenStartDate", hiddenStartDate);
+		map.put("hiddenEndDate", hiddenEndDate);
 		
 		// 페이징
 		int nowPage = 0; // 현재 페이지 번호
@@ -80,7 +93,7 @@ public class CrtSchList extends HttpServlet {
 		CrtSchDAO dao = new CrtSchDAO();
 		
 		ArrayList<CrtSchDTO> list = dao.list(map);
-		
+		 
 		// 총 게시물 수
 		totalCount = dao.getTotalCount(map);
 		totalPage = (int) Math.ceil((double) totalCount / pageSize);
@@ -99,13 +112,13 @@ public class CrtSchList extends HttpServlet {
 			if (search.equals("n")) {
 				sb.append(String.format("<a href='/jr/crt/crtschlist.do?page=%d'>[이전페이지]</a>", n - 1));
 			} else {
-				/*
+				
 				sb.append(String.format(
-						"<a href='/jr/crt/crtschlist.do?&page=%d'>[이전페이지]</a>",
-						word, crtctg, agency, difficulty, n - 1));
-				*/
+						"<a href='/jr/crt/crtschlist.do?word=%s&hiddenRcStartDate=%s&hiddenRcEndDate=%s&hiddenStartDate=%s&hiddenEndDate=%s&page=%d'>[이전페이지]</a>",
+						word, hiddenRcStartDate, hiddenRcEndDate, hiddenStartDate, hiddenEndDate, n - 1));
+				
 			}
-
+//sb.append(String.format("<a href='/jr/crt/crtlist.do?word=%s&crtctg=%s&agency=%s&difficulty=%s&page=%d'>[이전페이지]</a>", word, crtctg, agency, difficulty, n-1));
 		}
 
 		while(!(loop>blockSize || n>totalPage)) {
@@ -115,6 +128,10 @@ public class CrtSchList extends HttpServlet {
 				if (search.equals("n")) {
 					sb.append(String.format("<a href='/jr/crt/crtschlist.do?page=%d'>%d</a>", n, n));
 				} else {
+					sb.append(String.format(
+							"<a href='/jr/crt/crtschlist.do?word=%s&hiddenRcStartDate=%s&hiddenRcEndDate=%s&hiddenStartDate=%s&hiddenEndDate=%s&page=%d'>%d</a>",
+							word, hiddenRcStartDate, hiddenRcEndDate, hiddenStartDate, hiddenEndDate, n, n));
+					
 					//sb.append(String.format("<a href='/jr/crt/crtlist.do?word=%s&crtctg=%s&agency=%s&difficulty=%s&page=%d'>%d</a>", word, crtctg, agency, difficulty, n, n));
 				}
 			}
@@ -129,10 +146,13 @@ public class CrtSchList extends HttpServlet {
 			if (search.equals("n")) {
 				sb.append(String.format("<a href='/jr/crt/crtschlist.do?page=%d'>[다음페이지]</a>", n));
 			} else {
+				sb.append(String.format(
+						"<a href='/jr/crt/crtschlist.do?word=%s&hiddenRcStartDate=%s&hiddenRcEndDate=%s&hiddenStartDate=%s&hiddenEndDate=%s&page=%d'>[다음페이지]</a>",
+						word, hiddenRcStartDate, hiddenRcEndDate, hiddenStartDate, hiddenEndDate, n));
+				
 				//sb.append(String.format("<a href='/jr/crt/crtlist.do?word=%s&crtctg=%s&agency=%s&difficulty=%s&page=%d'>[다음페이지]</a>", word, crtctg, agency, difficulty, n));
 			}
 		}
-		
 		
 		//데이터 가공
 		//날짜
@@ -153,7 +173,11 @@ public class CrtSchList extends HttpServlet {
 		
 		req.setAttribute("list", list);
 		req.setAttribute("map", map);
+		req.setAttribute("totalCount", totalCount);
+		req.setAttribute("totalPage", totalPage);
+		req.setAttribute("nowPage", nowPage);
 		
+		req.setAttribute("pagebar", sb.toString());
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/crt/crtschlist.jsp");
 		dispatcher.forward(req, resp);

@@ -154,13 +154,13 @@
 				private int iscrtBoardShow;
              -->
             	<c:forEach items="${list}" var="item" varStatus="status">
-            	<c:if test="${item.iscrtBoardShow == 1}">
+            	
             	<tr>         	
-            		<%-- <td>${fn:length(dto) -status.count}</td> --%>
-            		<td>${status.count}</td>
+            		<td>${fn:length(list) -status.index}</td>
+            		<%-- <td>${status.count}</td> --%>
             		<td>
             			<%-- <a href="/jr/crt/crtdetail.do?crtSeq=${item.crtSeq}">${item.crtBoardTitle}</a> --%>
-            			<a href="#">${item.crtBoardTitle}</a>
+            			<a href="/jr/crt/crtboarddetail.do?crtboardseq=${item.crtBoardSeq}&crtname=${crtName}&crtseq=${crtseq}">${item.crtBoardTitle}</a>
             			<!-- 댓글 수 --> 
 						<c:if test="${item.ccnt > 0}">
 						<span class="comment-count">${item.ccnt}</span>
@@ -177,7 +177,7 @@
             		<td>${item.crtboardHits}</td>
             		<td>${item.crtboardLike}</td>
             	</tr>
-            	</c:if>
+            	
             	</c:forEach>
             </tbody>
             </table>

@@ -1,6 +1,7 @@
 package com.project.jr.crt;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,7 +22,19 @@ public class CrtBoardList extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//CrtBoardList.java
+/*
+		HttpSession session = req.getSession();
 		
+		if (session.getAttribute("id") == null) {
+	         
+	         resp.setContentType("text/html; charset=UTF-8");
+	         
+	         PrintWriter writer = resp.getWriter();
+	         writer.print("<script>alert('로그인이 필요한 서비스입니다. 로그인 화면으로 이동합니다.');location.href='/jr/user/login.do';</script>");
+	         return;
+	    }
+		*/
+		HttpSession session = req.getSession();
 		String crtseq = req.getParameter("crtseq");
 		String crtName = req.getParameter("crtName");
 		String agency = req.getParameter("agency");
@@ -54,7 +67,6 @@ public class CrtBoardList extends HttpServlet {
 		map.put("begin", begin+"");
 		map.put("end",  end+"");
 		
-		HttpSession session = req.getSession();
 		
 		//조회수를 한번만 증가하기 위해 조회 여부를 담는 티켓
 		session.setAttribute("read", "n");

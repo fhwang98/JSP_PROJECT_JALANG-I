@@ -66,7 +66,8 @@ public class CrtBoardDAO {
 		
 		try {
 			
-			String sql = String.format("select * from (select a.*, rownum as rnum from vwcrtBoard a where crtseq = %s) where rnum between %s and %s"
+			String sql = String.format("select * from (select a.*, rownum as rnum from vwcrtBoard a where crtseq = %s) "
+					+ "where iscrtBoardShow =1 and rnum between %s and %s"
 					, map.get("crtseq")
 					, map.get("begin")
 					, map.get("end"));
@@ -122,6 +123,58 @@ public class CrtBoardDAO {
 		}
 		
 		return 0;
+	}
+	public void updateReadcount(String crtboardseq) {
+		
+		try {
+
+			String sql = "update tblcrtboard set crtboardHits = crtboardHits + 1 where crtboardseq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, crtboardseq);
+
+			pstat.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public CrtBoardDTO get(String crtboardseq) {
+
+		try {
+			
+			String sql = "select * from vwCrtBoard where crtboardseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, crtboardseq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				CrtBoardDTO dto = new CrtBoardDTO();
+				
+				dto.setCrtBoardTitle(rs.getString("crtBoardTitle"));
+				dto.setCrtBoardContent(rs.getString("crtBoardContent"));
+				dto.setId(rs.getString("id"));
+				dto.setCrtSeq(rs.getInt("crtSeq"));
+				dto.setCrtboardWriteDate(rs.getString("crtboardWriteDate"));
+				dto.setCrtboardLike(rs.getInt("crtboardLike"));
+				dto.setCrtboardReport(rs.getInt("crtboardReport"));
+				dto.setCrtboardHits(rs.getInt("crtboardHits"));
+				dto.setIscrtBoardShow(rs.getInt("iscrtBoardShow"));
+				dto.setIsnew(rs.getInt("isnew"));
+				dto.setCcnt(rs.getInt("ccnt"));
+				
+				return dto;
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 

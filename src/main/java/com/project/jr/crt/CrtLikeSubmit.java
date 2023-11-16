@@ -52,11 +52,14 @@ public class CrtLikeSubmit extends HttpServlet {
 		}
 		
 		int result = dao.isliked(dto);
+		int a = 0;
 		
 		if (result == 0) {
 			result = dao.addliked(dto);
+			a= dao.plusliked(dto);
 		} else {
 			result = dao.delliked(dto);
+			a= dao.minusliked(dto);
 		}
 		
 		

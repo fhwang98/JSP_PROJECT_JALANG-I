@@ -102,21 +102,27 @@ input:focus {
 }
 
 .serach-width{
-	width: 300px;
+	width: 280px;
 	text-align: left;
 }
 
 .search-input {
 	display: inline-block;
-	width: 280px;
+	width: 500px;
 	padding: 8px 10px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
+	text-align: center;
 	
 }
 
 .search-margin {
 	margin: 14px;
+}
+
+.btn-bx {
+	display: flex;
+	flex-direction: column;
 }
 
 input[type="submit"] {
@@ -127,11 +133,28 @@ input[type="submit"] {
 	border-radius: 4px;
 	padding: 10px 20px;
 	font-size: 16px;
-	margin-top: 20px;
+	width: 120px;
+    height: 42px;
+    margin-bottom: 5px;
 }
 
 input[type="submit"]:hover {
 	background-color: #0056b3;
+}
+
+#clear-btn{
+	background-color: tomato;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	border-radius: 4px;
+	padding: 10px 20px;
+	font-size: 16px;
+	width: 120px;
+}
+
+#clear-btn i {
+	font-size: 18px;
 }
 
 .total {
@@ -155,6 +178,9 @@ input[type="submit"]:hover {
 	flex-direction: column;
 	text-align: left;
 }
+
+
+
 
 
 
@@ -237,25 +263,7 @@ input[type="submit"]:hover {
 .crtType, .difficulty, .likeCnt, .totalCnt, .crtSch {
 	margin: 0;
 }
-.action_btn {
-	width: 50px;
-	background-color: #fff;
-	border: none;
-	border-radius: 4px;
-	font-size: 30px;
-	cursor: pointer;
-	text-align: right; 
-}
 
-
-.action_btn:hover {
-	color: red;
-}
-
-
-.fa-solid {
-	color: red;
-}
 
 
 #pagebar {
@@ -264,9 +272,19 @@ input[type="submit"]:hover {
 }
 	
 
+.agencytogo {
+	font-size: 18px;
+	color: black;
+	background-color: #fff;
+	border-radius: 10px;
+	height: 50px;
+	margin-top: 20px;
+}
 
-
-
+.agencytogo:hover {
+	border-color: red;
+	color: red;
+}
 
 
 
