@@ -16,6 +16,7 @@ import com.project.jr.crt.model.CrtLikeDTO;
 import com.project.jr.crt.model.CrtPassRateDTO;
 import com.project.jr.crt.model.CrtPayDTO;
 import com.project.jr.crt.model.CrtSchDdayDTO;
+import com.project.jr.crt.model.MyCrtDTO;
 import com.project.jr.main.DBUtil;
 
 
@@ -630,5 +631,175 @@ public class CrtDAO {
 		}
 		
 		return null;
+	}
+	
+	public ArrayList<String> search(String searchWord) {
+		
+		try {
+
+			String sql = "select crtName from tblCrt where regexp_like(crtName, ?, 'i')";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, searchWord);
+
+			rs = pstat.executeQuery();
+			ArrayList<String> result=new ArrayList<String>();
+			
+			
+			while (rs.next()) {
+				
+				String name=rs.getString("crtName");
+				result.add(name);
+				
+			}
+			return result;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
+	}
+
+	public int crtNameCh(String crtName) {
+
+		try {
+
+			String sql = "select crtSeq from tblCrt where crtName = ? ";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, crtName);
+
+			rs = pstat.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt("crtSeq");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int setMyCrt(String id, int crtSeq, String date) {
+
+		try {
+			
+			String sql = "insert into tblMyCrt (myCrtSeq, id, crtSeq, getDate, regdate)\r\n"
+					+ "		values (myCrtSeq.nextVal, ?, ?, ?, default)";
+			
+			pstat=conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			pstat.setInt(2, crtSeq);
+			pstat.setString(3, date);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return 0;
+	}
+
+	public ArrayList<MyCrtDTO> getMyCrt(String id) {
+
+		try {
+			
+			String sql = "select \r\n"
+					+ "    *\r\n"
+					+ "from tblMyCrt mc\r\n"
+					+ "    inner join tblCrt c\r\n"
+					+ "        on mc.crtSeq = c.crtSeq\r\n"
+					+ "            where mc.id=?";
+			
+			pstat=conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			
+			rs=pstat.executeQuery();
+			
+			ArrayList<MyCrtDTO> list=new ArrayList<MyCrtDTO>();
+			
+			while(rs.next()) {
+				MyCrtDTO dto=new MyCrtDTO();
+				
+				dto.setMyCrtSeq(rs.getInt("myCrtSeq"));
+				dto.setCrtSeq(rs.getInt("crtSeq"));
+				dto.setCrtName(rs.getString("crtName"));
+				dto.setGetDate(rs.getString("getDate"));
+				dto.setExpiration(rs.getString("expiration"));
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return null;
+	}
+
+	public int getCount(String id) {
+
+		try {
+
+			String sql = "select count(*) as count from tblMyCrt where id=?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+
+			rs = pstat.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt("count");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		return 0;
+	}
+
+	public int delMyCrt(int seq) {
+
+		try {
+			
+			String sql = "delete from tblMyCrt where myCrtSeq = ?";
+			
+			pstat=conn.prepareStatement(sql);
+			pstat.setInt(1, seq);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return 0;
 	}
 }
