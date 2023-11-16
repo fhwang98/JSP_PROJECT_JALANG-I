@@ -43,7 +43,7 @@ CREATE SEQUENCE studyJoinSeq;
 CREATE SEQUENCE studyMemberSeq;
 CREATE SEQUENCE studySeq;
 CREATE SEQUENCE myCrtSeq;
-
+CREATE SEQUENCE toDoListSeq;
 
 -- 테이블 생성
 
@@ -104,6 +104,8 @@ CREATE SEQUENCE crtFaqSeq;
 CREATE SEQUENCE crtPassRateSeq;
 CREATE SEQUENCE crtBoardSeq;
 CREATE SEQUENCE crtCommentSeq;
+CREATE SEQUENCE toDoListSeq;
+
 
 -- 테이블 생성
 
@@ -627,3 +629,14 @@ CREATE TABLE tblcrtComment (
 >>>>>>> sukyeong_crt
 );
 
+CREATE TABLE tblToDoList (
+	toDoListSeq NUMBER PRIMARY KEY, 
+	studySeq NUMBER, 
+	toDo varchar2(1000),
+	completeDate date default sysdate, 
+	id VARCHAR2(100),
+    ToDoComment VARCHAR2(2000),
+	
+    CONSTRAINT tblToDoList_study foreign key(studySeq) references tblStudy(studySeq),
+    CONSTRAINT tblToDoList_id foreign key(id) references tblUserInfo(id)
+);
