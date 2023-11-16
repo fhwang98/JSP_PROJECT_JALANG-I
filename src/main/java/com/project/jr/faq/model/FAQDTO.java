@@ -1,6 +1,6 @@
 package com.project.jr.faq.model;
 
-public class FaqDTO {
+public class FAQDTO {
 	
 
 	private String faqSeq;
