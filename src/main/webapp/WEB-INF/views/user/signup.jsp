@@ -238,165 +238,169 @@
 
 	<script>
 	
-	document.getElementById('btn1').onclick = function() {
-		if (checkAll()) {
-			document.getElementById('btn1').form.submit();
-		}
-	};
-	
-	function checkAll() {  
-   		if (!checkUserId(form.id.value)) {            
-			return false;        
-		} else if (!checkPassword(form.id.value, form.pw.value, form.pw2.value)) {            
-			return false;        
-		} else if (!checkMail(form.eMail.value)) {            
-			return false;        
-		} else if (!checkName(form.name.value)) {            
-			return false;        
-		}     
-		return true;
-	}
-	
-	function test(event) {
-		alert('test');
-		event.preventDefault();
-		return false;
-	}
-	
-	// 공백확인 함수    
-	function checkExistData(value, dataName) {        
-		if (value == "") {            
-			alert(dataName + " 입력해주세요!");            
-			return false;        
-		}        
-		return true;    
-	}
-	
-	
-	function checkUserId(id) {        
-		//Id가 입력되었는지 확인하기        
-		if (!checkExistData(id, "아이디를")){            
-			return false;  
-		}	
-		var idRegExp = /^([A-Z0-9a-z]){4,16}$/; //아이디 유효성 검사        
-		if (!idRegExp.test(id)) {            
-			alert("아이디는 영문 대소문자와 숫자 4~16자리로 입력해야합니다!");            
-			form.id.value = "";            
-			form.id.focus();            
-			return false;        
-		}        
-		return true; //확인이 완료되었을 때    
-	}     
+		//아이디 중복 체크
+		$('#btn').click(function(){
+			$.ajax({
+				type: 'POST',
+				url: '/jr/user/idcheck.do',
+				data: {
+					id: $('#id').val()
+				},
+				dataType: 'json',
+				success: function(result) {
+					//alert(result.message); //가능(0), 불가능(1)
+					
+					if (result.message == 0) {
+						$('#result').text('사용 가능한 아이디입니다.');
+						$('#regBtn').prop('disalbed', false);
+					}
+					else {
+						$('#result').text('이미 사용중인 아이디입니다.');
+						$('#regBtn').prop('disalbed', true);
+					}
+				},
+				errors: function(a,b,c) {
+					console.log(a,b,c);
+				}
+			});
+		});
 		
-	
-	function checkPassword(id, pw, pw2) {        
-			//비밀번호가 입력되었는지 확인하기        
-			if (!checkExistData(pw, "비밀번호를"))            
+		
+		//버튼 이벤트 : 유효성검사
+		document.getElementById('btn1').onclick = function() {
+			if (checkAll()) {
+				document.getElementById('btn1').form.submit();
+			}
+		};
+		
+		
+		//회원가입 유효성검사
+		function checkAll() {  
+	   		if (!checkUserId(form.id.value)) {            
 				return false;        
-			//비밀번호 확인이 입력되었는지 확인하기        
-			if (!checkExistData(pw2, "비밀번호 확인을"))            
-				return false;         
-			var password1RegExp = /^([A-Za-z0-9]){4,12}$/; //비밀번호 유효성 검사        
-			if (!password1RegExp.test(pw)) {            
-				alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");            
-				form.pw.value = "";            
-				form.pw.focus();            
+			} else if (!checkPassword(form.id.value, form.pw.value, form.pw2.value)) {            
+				return false;        
+			} else if (!checkMail(form.eMail.value)) {            
+				return false;        
+			} else if (!checkName(form.name.value)) {            
 				return false;        
 			}     
-			
-			//비밀번호와 비밀번호 확인이 맞지 않다면..        
-			if (pw != pw2) {            
-				alert("두 비밀번호가 맞지 않습니다.");            
-				form.pw.value = "";            
-				form.pw2.value = "";            
-				form.pw2.focus();            
-				return false;        
-			}         
-			
-			//아이디와 비밀번호가 같을 때..        
-			if (id == pw) {            
-				alert("아이디와 비밀번호는 같을 수 없습니다!");            
-				form.pw.value = "";            
-				form.pw2.value = "";            
-				form.pw2.focus();            
+			return true;
+		}
+		
+		// 공백확인 함수    
+		function checkExistData(value, dataName) {        
+			if (value == "") {            
+				alert(dataName + " 입력해주세요!");            
 				return false;        
 			}        
-		return true; //확인이 완료되었을 때    
-	}     
+			return true;    
+		}
 		
+		//아이디 유효성검사 : 영어 대소문자 + 숫자 4~16자 
+		function checkUserId(id) {        
+			//Id가 입력되었는지 확인하기        
+			if (!checkExistData(id, "아이디를")){            
+				return false;  
+			}	
+			var idRegExp = /^([A-Z0-9a-z]){4,16}$/; //아이디 유효성 검사        
+			if (!idRegExp.test(id)) {            
+				alert("아이디는 영문 대소문자와 숫자 4~16자리로 입력해야합니다!");            
+				form.id.value = "";            
+				form.id.focus();            
+				return false;        
+			}        
+			return true; //확인이 완료되었을 때    
+		}     
+			
 		
-	function checkMail(eMail) {        
-		//mail이 입력되었는지 확인하기        
-		if (!checkExistData(eMail, "이메일을"))            
-			return false;         
-		var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;        
-		if (!emailRegExp.test(eMail)) {            
-			alert("이메일 형식이 올바르지 않습니다!");            
-			form.eMail.value = "";            
-			form.eMail.focus();            
-			return false;        
-		}        
-		return true; //확인이 완료되었을 때    
-	}     
-	
-	
-	function checkName(name) {        
-		if (!checkExistData(name, "이름을"))            
-		return false;         
-		
-		var nameRegExp = /^[가-힣]{2,7}$/;        
-		if (!nameRegExp.test(name)) {            
-			alert("이름이 올바르지 않습니다.");            
-			return false;        
-		}        
-		return true; //확인이 완료되었을 때    
-	}
-	
-	$('#btn').click(function(){
-		$.ajax({
-			type: 'POST',
-			url: '/jr/user/idcheck.do',
-			data: {
-				id: $('#id').val()
-			},
-			dataType: 'json',
-			success: function(result) {
-				//alert(result.message); //가능(0), 불가능(1)
+		//비밀번호 유효성검사 : 영어 대소문자 + 숫자 4~12자
+		function checkPassword(id, pw, pw2) {        
+				//비밀번호가 입력되었는지 확인하기        
+				if (!checkExistData(pw, "비밀번호를"))            
+					return false;        
+				//비밀번호 확인이 입력되었는지 확인하기        
+				if (!checkExistData(pw2, "비밀번호 확인을"))            
+					return false;         
+				var password1RegExp = /^([A-Za-z0-9]){4,12}$/; //비밀번호 유효성 검사        
+				if (!password1RegExp.test(pw)) {            
+					alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");            
+					form.pw.value = "";            
+					form.pw.focus();            
+					return false;        
+				}     
 				
-				if (result.message == 0) {
-					$('#result').text('사용 가능한 아이디입니다.');
-					$('#regBtn').prop('disalbed', false);
-				}
-				else {
-					$('#result').text('이미 사용중인 아이디입니다.');
-					$('#regBtn').prop('disalbed', true);
-				}
-			},
-			errors: function(a,b,c) {
-				console.log(a,b,c);
-			}
-		});
-	});
+				//비밀번호와 비밀번호 확인이 맞지 않다면     
+				if (pw != pw2) {            
+					alert("두 비밀번호가 맞지 않습니다.");            
+					form.pw.value = "";            
+					form.pw2.value = "";            
+					form.pw2.focus();            
+					return false;        
+				}         
+				
+				//아이디와 비밀번호가 같을 때        
+				if (id == pw) {            
+					alert("아이디와 비밀번호는 같을 수 없습니다!");            
+					form.pw.value = "";            
+					form.pw2.value = "";            
+					form.pw2.focus();            
+					return false;        
+				}        
+			return true; //확인이 완료되었을 때    
+		}     
+			
+		
+		//이메일 유효성검사 : input type을 email로 설정해서 필요 없...을지도..
+		function checkMail(eMail) {        
+			//mail이 입력되었는지 확인하기        
+			if (!checkExistData(eMail, "이메일을"))            
+				return false;         
+			var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;        
+			if (!emailRegExp.test(eMail)) {            
+				alert("이메일 형식이 올바르지 않습니다!");            
+				form.eMail.value = "";            
+				form.eMail.focus();            
+				return false;        
+			}        
+			return true; //확인이 완료되었을 때    
+		}     
+		
+		
+		//이름 유효성검사
+		function checkName(name) {        
+			if (!checkExistData(name, "이름을"))            
+			return false;         
+			
+			var nameRegExp = /^[가-힣]{2,7}$/;        
+			if (!nameRegExp.test(name)) {            
+				alert("이름이 올바르지 않습니다.");            
+				return false;        
+			}        
+			return true; //확인이 완료되었을 때    
+		}
+		
+		
+		
+		
+		// 필수약관 동의 버튼을 누를 때 실행되는 함수
+	    function agreeTerms() {
+	        // 체크박스의 상태를 변경 (체크됨)
+	        document.getElementById('agreeform1').checked = true;
 	
-	// 필수약관 동의 버튼을 누를 때 실행되는 함수
-    function agreeTerms() {
-        // 체크박스의 상태를 변경 (체크됨)
-        document.getElementById('agreeform1').checked = true;
-
-        // 모달을 닫음
-        $('#essentialTermsofUse').modal('hide');
-        //$('#OptionalTermsofUse').modal('hide');
-    }
+	        // 모달을 닫음
+	        $('#essentialTermsofUse').modal('hide');
+	    }
+		
+		
+	 	// 선택약관 동의 버튼을 누를 때 실행되는 함수
+	    function checkAgree() {
+	        // 체크박스의 상태를 변경 (체크됨)
+	        document.getElementById('agreeform2').checked = true;
 	
-	
- 	// 선택약관 동의 버튼을 누를 때 실행되는 함수
-    function checkAgree() {
-        // 체크박스의 상태를 변경 (체크됨)
-        document.getElementById('agreeform2').checked = true;
-
-        // 모달을 닫음
-        $('#OptionalTermsofUse').modal('hide');
-    }
+	        // 모달을 닫음
+	        $('#OptionalTermsofUse').modal('hide');
+	    }
 	</script>
 
 

@@ -64,7 +64,7 @@
 				<div class="container position-relative">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 text-center">
-							<h2>비밀번호찾기</h2>
+							<h2>비밀번호찾기</h2>	
 						</div>
 					</div>
 				</div>
@@ -90,16 +90,15 @@
 		                    	<span class="text-dark h4">비밀번호 찾기</span>                 
 		                	</a>
 	            		</div>
-						<form action="/jr/user/finduserid.do" method="POST">		<!-- class="was-validated" -->
+						<form action="/jr/user/finduserpasswordresult.do" method="POST">		<!-- class="was-validated" -->
 			                <div class="form-group">
 			               		<label for="name" class="form-label mt-4">이름</label>
 			                    <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="이름">
-			               		<button type="button" class="btn btn-outline-primary" onclick="/jr/user/finduserid.do">중복검사</button><!-- onclick="checkDuplicateBtn" -->
 			                </div>
 			                
 		                	<div class="form-group">
 			               		<label for="id" class="form-label mt-4">아이디</label>
-			                    <input type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="4~16글자 영어와 숫자로만 입력해주세요">
+			                    <input type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="아이디">
 			                </div>
 										
  						    <div class="form-group">
@@ -111,24 +110,18 @@
 				                    <span> - </span>
 				                    <input type="tel" name="phoneNum3" class="form-control" id="phoneNum3" aria-describedby="emailHelp" placeholder="마지막 자리">
 			               		</div>
-			                    <div class="invalid-tooltip">
-							      휴대폰 번호를 입력하세요.
-							    </div>
+			                </div>
 			                
 			                <div class="form-group">
 			               		<label for="eMail" class="form-label mt-4">이메일</label>
 			                    <input type="email" name="eMail" class="form-control" id="eMail" aria-describedby="emailHelp" placeholder="이메일">
 			                </div>
 			                
-						    </div>
-						    
-						   	<br>
-		
 			                
 			                <br>
 			                
 							<div class="d-grid gap-2">
-			                    <button type="submit" class="btn btn-primary btn-lg" >가입하기</button>
+			                    <button type="submit" class="btn btn-primary btn-lg" >비밀번호 재설정</button>
 			                </div>
 						</form>
 					</div>

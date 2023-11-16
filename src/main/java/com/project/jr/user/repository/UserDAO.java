@@ -20,41 +20,6 @@ public class UserDAO {
 		this.conn = DBUtil.open();
 	}
 
-	//로그인 
-	public UserDTO login(UserDTO dto) {
-
-		try {
-			
-			String sql = "select * from tblUserInfo where id = ? and pw = ?";
-			
-			pstat=conn.prepareStatement(sql);
-			pstat.setString(1, dto.getId());
-			pstat.setString(2, dto.getPw());
-			
-			rs=pstat.executeQuery();
-			
-			if(rs.next()) {
-				
-				UserDTO result=new UserDTO();
-				result.setId(rs.getString("id"));
-				result.setPw(rs.getString("pw"));
-				result.setName(rs.getString("name"));
-				result.setBirthDate(rs.getString("birthDate"));
-				result.setSex(rs.getString("sex"));
-				result.setEMail(rs.getString("eMail"));
-				result.setPhoneNum(rs.getString("phoneNum"));
-				result.setJoinDate(rs.getString("joinDate"));
-				result.setUserStatus(rs.getInt("userStatus"));
-				
-				return result;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-		
-		return null;
-	}
 
 
 	public HashMap<String, Integer> count() {
@@ -119,26 +84,44 @@ public class UserDAO {
 	}
 
 	
-	
-	public int finduserid(UserDTO uDto) {
-		//queryParamNoReturn
-		//매개변수(O),반환값(X)
-
+	//로그인 
+	public UserDTO login(UserDTO dto) {
+		
 		try {
-			String sql = "select id from tblUserInfo where name = ? and phoneNum = ?";
 			
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, uDto.getName());
-			pstat.setString(2, uDto.getPhoneNum());
+			String sql = "select * from tblUserInfo where id = ? and pw = ?";
 			
-			return pstat.executeUpdate();
+			pstat=conn.prepareStatement(sql);
+			pstat.setString(1, dto.getId());
+			pstat.setString(2, dto.getPw());
+			
+			rs=pstat.executeQuery();
+			
+			if(rs.next()) {
+				
+				UserDTO result=new UserDTO();
+				result.setId(rs.getString("id"));
+				result.setPw(rs.getString("pw"));
+				result.setName(rs.getString("name"));
+				result.setBirthDate(rs.getString("birthDate"));
+				result.setSex(rs.getString("sex"));
+				result.setEMail(rs.getString("eMail"));
+				result.setPhoneNum(rs.getString("phoneNum"));
+				result.setJoinDate(rs.getString("joinDate"));
+				result.setUserStatus(rs.getInt("userStatus"));
+				
+				return result;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}		
 		
-		return 0;
+		return null;
 	}
-
+	
+	
+	//회원탈퇴
 	public int unregister(String id) {
 		try {
 
@@ -156,6 +139,29 @@ public class UserDAO {
 		return 0;
 	}
 
+
+	//아이디찾기 
+	public int finduserid(UserDTO uDto) {
+		//queryParamNoReturn
+		//매개변수(O),반환값(X)
+		
+		try {
+			String sql = "select id from tblUserInfo where name = ? and phoneNum = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, uDto.getName());
+			pstat.setString(2, uDto.getPhoneNum());
+			
+			return pstat.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	
+	//아이디 중복체크
 	public int check(String id) {
 		
 	    try {
@@ -180,6 +186,7 @@ public class UserDAO {
 	}
 
 	
+	//아이디 찾기
 	public UserDTO findId(UserDTO uDto) {
 		try {
 
@@ -194,10 +201,8 @@ public class UserDAO {
 
             if (rs.next()) {
                 UserDTO result = new UserDTO();
-                System.out.println(uDto.getName());
-                System.out.println(uDto.getPhoneNum());
 
-                //result.setId(rs.getString("id"));
+                result.setId(rs.getString("id"));
                 result.setName(rs.getString("name"));
                 result.setPhoneNum(rs.getString("phoneNum"));
 
@@ -210,7 +215,95 @@ public class UserDAO {
         return null;
 
 	}
+	
+	
+	//비밀번호 찾기
+	public UserDTO findPassword(UserDTO uDto) {
+		System.out.println(uDto.getName());
+		System.out.println(uDto.getId());
+		System.out.println(uDto.getPhoneNum());
+		System.out.println(uDto.getEMail());
+		
+		
+		try {
 
+            String sql = "select * from tblUserInfo where name = ? and id = ? and phoneNum = ? and eMail = ?";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, uDto.getName());
+            pstat.setString(2, uDto.getId());
+            pstat.setString(3, uDto.getPhoneNum());
+            pstat.setString(4, uDto.getEMail());
+
+            rs = pstat.executeQuery();
+
+            if (rs.next()) {
+                UserDTO result = new UserDTO();
+
+                result.setName(rs.getString("name"));
+                result.setId(rs.getString("id"));
+                result.setPhoneNum(rs.getString("phoneNum"));
+                result.setEMail(rs.getString("eMail"));
+                result.setPw(rs.getString("pw"));
+
+                return result;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+	}
+
+	
+	//비밀번호 변경
+	public UserDTO changePw(UserDTO uDto) {
+        try {
+
+            String sql = "update tblUserInfo set pw = ? where id = ?";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, uDto.getPw());
+            pstat.setString(2, uDto.getId());
+
+            int result = pstat.executeUpdate();
+
+            if (result == 1) {
+                return uDto;
+            }
+            //실패할 경우 처리 추가
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+
+	public int changePw(String id, String pw) {
+
+		//queryParamNoReturn
+		//매개변수(O),반환값(X)
+		
+		try {
+			String sql = "update tblUserInfo set pw = ? where id = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, pw);
+			pstat.setString(2, id);
+			
+			return pstat.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+
+	
 
 	
 }
