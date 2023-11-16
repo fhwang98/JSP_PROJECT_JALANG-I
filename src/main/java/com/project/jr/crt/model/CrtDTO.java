@@ -30,5 +30,12 @@ public class CrtDTO {
 	private String totalCntS;
 	
 	private int crtlike;
+	
+	private String crtType; //자격증 분류
+	private String agencyName; //시행기관
+	private String examPay; //응시료
+	private String crtTestName; //시험이름
+	private String expiryDate; //시험이름
+	private String passLine; //시험이름
 
 }
