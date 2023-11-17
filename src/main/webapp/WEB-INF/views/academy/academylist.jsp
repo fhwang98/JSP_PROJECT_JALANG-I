@@ -7,12 +7,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Logis Bootstrap Template - Index</title>
+  <title>자랑이</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<%=request.getContextPath() %>/resources/img/favicon.png" rel="icon">
+  <link href="<%=request.getContextPath() %>/resources/img/favicon.ico" rel="icon">
   <link href="<%=request.getContextPath() %>/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -32,7 +32,7 @@
   <link href="<%=request.getContextPath() %>/resources/css/main.css" rel="stylesheet">
 
   <!-- Custom Styles -->
-<style>
+<style >
 /*
     body {
       font-family: 'Open Sans', sans-serif;
@@ -224,16 +224,15 @@
   <!-- main -->
 
     
-  <main id="main">
+  <main id="main" >
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/page-header.jpg');">
+    <div class="breadcrumbs" style="position: relative; top: -35px;">
+      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/backgroundImg2.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>학원 조회</h2>
-              <p>학원을 검색해보세요</p>
             </div>
           </div>
         </div>
@@ -241,7 +240,7 @@
       <nav>
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/jr/index.do" style="color: #333333;">Home</a></li>
             <li>학원 조회</li>
           </ol>
           			<div class="search">

@@ -109,7 +109,7 @@
 		    <c:forEach items="${list}" var="dto">
 		    <div class="col-4">
 		    	<div class="pricing-item">
-	              <h3><a href="#">${dto.crtName }</a></h3>
+	              <h3><a href="/jr/crt/crtdetail.do?seq=${dto.crtSeq }&search=n&word=">${dto.crtName }</a></h3>
 	              <ul>
 	                <li><i class="bi bi-check"></i> 취득일: ${dto.getDate }</li>
 	                <li><i class="bi bi-check"></i> 유효기간: ${dto.expiration }</li>

@@ -8,12 +8,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Logis Bootstrap Template - Index</title>
+  <title>자랑이</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<%=request.getContextPath() %>/resources/img/favicon.png" rel="icon">
+  <link href="<%=request.getContextPath() %>/resources/img/favicon.ico" rel="icon">
   <link href="<%=request.getContextPath() %>/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -252,11 +252,11 @@ section.notice {
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" id=middlebar>
-      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/page-header.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/backgroundImg2.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>자유게시판</h2>
+              <h2>my 문의</h2>
               <p></p>
             </div>
           </div>
@@ -302,7 +302,7 @@ section.notice {
                 <thead>
                 
                 <tr>
-                    <th scope="col" class="th-content">번호</th>        
+                    <th scope="col" class="th-num">번호</th>        
                     <th scope="col" class="th-subject">제목</th>                                                                
                 </tr>
                 </thead>

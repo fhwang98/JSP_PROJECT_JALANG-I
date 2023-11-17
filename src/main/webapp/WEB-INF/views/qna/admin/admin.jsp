@@ -8,12 +8,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Logis Bootstrap Template - Index</title>
+  <title>자랑이</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<%=request.getContextPath() %>/resources/img/favicon.png" rel="icon">
+  <link href="<%=request.getContextPath() %>/resources/img/favicon.ico" rel="icon">
   <link href="<%=request.getContextPath() %>/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -122,7 +122,7 @@ section.notice {
 }
 
 .board-table .th-subject {
-  width: 139px;
+  width: 50Z0px;
 }
 
 .board-table .th-id {
@@ -244,7 +244,7 @@ section.notice {
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" id=middlebar>
-      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/page-header.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/backgroundImg2.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
@@ -257,8 +257,8 @@ section.notice {
       <nav>
         <div class="container">
           <ol>
-            <li><a href="index.html">관리 메뉴</a></li>
-            <li>회원 관리</li>
+          <!--   <li><a href="index.html">관리 메뉴</a></li>
+            <li>회원 관리</li> -->
           </ol>
           <div class="search-window">
                 <form action="">
@@ -298,6 +298,8 @@ section.notice {
                     <th scope="col" class="th-subject">제목</th>     
                     <th scope="col" class="th-startdate">작성일</th>          
                     <th scope="col" class="th-username">작성자</th>   
+                    
+                    
                     <!-- <th scope="col" class="th-ox">답변여부</th> -->
                                                                      
                 </tr>
@@ -318,9 +320,15 @@ section.notice {
             		<td>${dto1.qnaTitle} </td>
             		<td>${dto1.qnaWriteDate}</td>
             		<td>${dto1.id}</td>
+            		
+            		
+            		
             		<%-- <td>${dto1.}</td> --%>
+            		
             	</tr>
             	</c:forEach>
+            	
+            	
                   <%-- <c:forEach items="${list}" var="dto" varStatus="status">
                     <tr>
                        <td>${status.count}</td> <!-- 순번을 표시하는 부분 -->      

@@ -108,22 +108,27 @@ public class CrtBoardDAO {
 	}
 
 	public int getTotalCount(String crtseq) {
-		
-		try {
-			
-			String sql = "select count(*) as cnt from vwcrtboard where crtseq =?";
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, crtseq);
-			
-			return pstat.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return 0;
-	}
+	      
+	      try {
+	         
+	         String sql = "select count(*) as cnt from vwcrtboard where crtseq =?";
+	         
+	         pstat = conn.prepareStatement(sql);
+	         pstat.setString(1, crtseq);
+	         
+	         rs = pstat.executeQuery();   
+	         
+	         while (rs.next()) {
+	            return rs.getInt("cnt");
+	         }   
+	         
+	         
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      return 0;
+	   }
 	public void updateReadcount(String crtboardseq) {
 		
 		try {

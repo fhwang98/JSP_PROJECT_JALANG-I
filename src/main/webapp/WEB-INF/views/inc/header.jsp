@@ -36,7 +36,6 @@
 					</a>
 					<ul>
 						<li><a href="/jr/crt/crtrec.do">직업군 별 자격증 추천</a></li>
-						<li><a href="/jr/crt/crtrecforme">나만의 자격증 추천</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -86,6 +85,9 @@
 					</a>
 					<ul>
 						<li><a href="/jr/user/changemyinfo.do">개인정보 변경</a></li>
+						<li><a href="/jr/study/mypage/list.do">나의 학습</a></li>
+						<li><a href="/jr/crt/mypage/list.do">나의 자격증</a></li>
+						<li><a href="/jr/qna/myqnalist.do">나의 문의</a></li>
 						<li><a href="/jr/user/deleteuser.do">회원탈퇴</a></li>
 					</ul>
 				</li>
@@ -104,6 +106,7 @@
 						<li><a href="/jr/crt/admin/crtschadminlist.do">자격증 시험 일정 관리</a></li>
 						<li><a href="/jr/crt/admin/crttestadminlist.do">자격증 시험 관리</a></li>
 						<li><a href="/jr/faq/admin/faqadminlist.do">FAQ</a></li>
+						<li><a href="/jr/qna.do">회원 문의 관리</a></li>
 						<li><a href="/jr/forbidden/admin/forbiddenadminlist.do">금지어 관리</a></li>
 						<li><a href="/jr/academy/admin/list.do">학원 관리</a></li>
 

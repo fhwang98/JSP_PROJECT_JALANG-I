@@ -1,6 +1,5 @@
 package com.project.jr.qna.admin;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.jr.qna.model.QnaDTO;
 import com.project.jr.qna.repository.QnaDAO;
-
-
 
 @WebServlet("/qna.do")
 public class Qna extends HttpServlet {
@@ -31,9 +28,9 @@ public class Qna extends HttpServlet {
 		
 		list=dao.getList();
 		
-		req.setAttribute("dto", list);
+		req.setAttribute("list", list);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/qna/admin.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/qna/admin/admin.jsp");
 		dispatcher.forward(req, resp);
 		
 

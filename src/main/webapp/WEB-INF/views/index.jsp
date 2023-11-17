@@ -97,6 +97,13 @@
  	 } */
   
   
+  	#banner > img {
+  		cursor: pointer;
+  		object-fit: cover;
+  		width: 45%;
+  		height: 100%;
+  	}
+  
   </style>
   
   <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
@@ -113,8 +120,11 @@
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h2 data-aos="fade-up">자격증, 자랑이와!</h2>
 
-          <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" class="form-control" placeholder="자격증을 검색해보세요">
+          <form action="/jr/crt/crtlist.do" method="get" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+            <input type="text" name="word" class="form-control" placeholder="자격증을 검색해보세요">
+            <input type="hidden" name="crtctg" class="form-control" placeholder="자격증을 검색해보세요">
+            <input type="hidden" name="agency" class="form-control" placeholder="자격증을 검색해보세요">
+            <input type="hidden" name="difficulty" class="form-control" placeholder="자격증을 검색해보세요">
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
 
@@ -123,8 +133,10 @@
 
         <div id="banner" style="text-align: center;" class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
         
-        <img alt="" src="<%=request.getContextPath() %>/resources/img/bookbanner.png" style="width: 245px; height:320px;">
-        <img alt="" src="<%=request.getContextPath() %>/resources/img/crtbanner.png" style="width: 245px; height:320px;">
+        
+        <img alt="" src="<%=request.getContextPath() %>/resources/img/bookbanner.png" onclick="location.href='/jr/book/booklist.do'">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <img alt="" src="<%=request.getContextPath() %>/resources/img/crtbanner.png" onclick="location.href='/jr/crt/crtrec.do'">
         
           <%-- <img src="<%=request.getContextPath() %>/resources/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt=""> --%>
         </div>
@@ -162,8 +174,8 @@
 		  <div class="col-lg-3 col-md-4">
 		  <div class="card service-item d-flex" data-aos="fade-up" data-aos-delay="200" style="padding:20px;">
 		      
-		      <c:if test="${dto.ddDay > 0 }">
-              <div class="d-day">d-${ dto.ddDay }</div>
+		      <c:if test="${dto.ddDay >= 0 }">
+              <div class="d-day">D-${ dto.ddDay }</div>
               </c:if>
               <h4 class="title" style="font-size: 1.1rem; padding-top:20px;">${ dto.crtName }</h4>
               <div class="description">
@@ -194,7 +206,7 @@
 						</tr>
 					</tbody>
 				</table>
-              <a href="#" class="readmore stretched-link"><span>자격증 상세보기</span><i class="bi bi-arrow-right"></i></a>
+              <a href="/jr/crt/crtdetail.do?seq=${ dto.crtSeq }" class="readmore stretched-link"><span>자격증 상세보기</span><i class="bi bi-arrow-right"></i></a>
               </div>
               </div>
           </div>

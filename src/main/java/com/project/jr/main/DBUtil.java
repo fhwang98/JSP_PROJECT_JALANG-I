@@ -9,9 +9,11 @@ public class DBUtil {
 	
 	public static Connection open() {
 		
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@192.168.10.59:1521:xe";
 		String id = "jr";
 		String pw = "java1234";
+		
+		System.out.println(url);
 		
 		try {
 			

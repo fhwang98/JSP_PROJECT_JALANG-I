@@ -10,12 +10,12 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Logis Bootstrap Template - Index</title>
+<title>자격증</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="<%=request.getContextPath()%>/resources/img/favicon.png"
+<link href="<%=request.getContextPath()%>/resources/img/favicon.ico"
 	rel="icon">
 <link
 	href="<%=request.getContextPath()%>/resources/img/apple-touch-icon.png"
@@ -73,6 +73,24 @@
 
 	<%@ include file="/WEB-INF/views/inc/header.jsp"%>
 
+<div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/backgroundImg2.png');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>게시판</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="index.html">게시판 상세</a></li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
 	<!-- main -->
 
 

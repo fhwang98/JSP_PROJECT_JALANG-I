@@ -65,7 +65,7 @@ public class UserDAO {
 		//매개변수(O),반환값(X)
 		
 		try {
-			String sql = "Insert into tblUserInfo(id,pw,name,birthDate,sex,eMail,phoneNum,joinDate,userStatus) values (?,?,?,?,?,?,?,to_date(sysdate, 'RR/MM/DD'),2)";
+			String sql = "Insert into tblUserInfo(id,pw,name,birthDate,sex,eMail,phoneNum,joinDate,userStatus) values (?,?,?,?,?,?,?,to_date(sysdate, 'RR/MM/DD'),1)";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, uDto.getId());
 			pstat.setString(2, uDto.getPw());

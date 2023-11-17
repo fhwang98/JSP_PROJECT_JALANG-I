@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Logis Bootstrap Template - Index</title>
+  <title>자랑이</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -128,7 +128,7 @@
 			<div>	
 			<table id="searchTable">
 				<tr>
-					<th>시행기관</th>
+					<th>직업군</th>
 					<th>검색</th>
 					<th></th>
 				</tr>

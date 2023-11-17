@@ -133,6 +133,8 @@ public class CrtBoardList extends HttpServlet {
 		}
 		
 		
+		req.setAttribute("pagebar", sb.toString());
+
 		
 		
 

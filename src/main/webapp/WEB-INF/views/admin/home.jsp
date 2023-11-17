@@ -13,7 +13,7 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="<%=request.getContextPath() %>/resources/img/favicon.png"
+<link href="<%=request.getContextPath() %>/resources/img/favicon.ico"
 	rel="icon">
 <link
 	href="<%=request.getContextPath() %>/resources/img/apple-touch-icon.png"
@@ -100,14 +100,14 @@
 
 
 
-	<main id="main" class="main" style="margin-top: 120px;">
+	<main id="main" class="main" style="margin-top: 100px;">
 
 		<div class="pagetitle">
-			<h1>Dashboard</h1>
+			<h1>Admin</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="/jr/index.do">Home</a></li>
-					<li class="breadcrumb-item active">Dashboard</li>
+					<li class="breadcrumb-item active">Admin</li>
 				</ol>
 			</nav>
 		</div>
@@ -144,10 +144,10 @@
 
 						<!-- 자격증 -->
 						<div class="col-xl-6">
-							<div class="card top-selling overflow-auto"">
+							<div class="card top-selling overflow-auto">
 
 								<div class="filter">
-									<a class="icon" href="/jr/crt/admin/list.do"><i
+									<a class="icon" href="/jr/crt/admin/crtadminlist.do"><i
 										class="bi bi-three-dots"></i></a>
 								</div>
 
@@ -244,7 +244,7 @@ Extra extra large (xxl) -->
 							<div class="card info-card sales-card">
 
 								<div class="filter">
-									<a class="icon" href="/jr/user/admin/list.do"><i
+									<a class="icon" href="/jr/user/admin/useradminlist.do"><i
 										class="bi bi-three-dots"></i></a>
 								</div>
 
@@ -312,7 +312,7 @@ options: {
 					<div class="card recent-sales overflow-auto">
 
 						<div class="filter">
-							<a class="icon" href="/jr/qna/admin/list.do"><i
+							<a class="icon" href="/jr/qna.do"><i
 								class="bi bi-three-dots"></i></a>
 						</div>
 
@@ -500,8 +500,7 @@ options: {
 
 	<div id="preloader"></div>
 
-	<%@ include file="/WEB-INF/views/inc/ad.jsp"%>
-	<%@ include file="/WEB-INF/views/inc/side.jsp"%>
+
 
 	<Script>
   

@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <style>
   	
   	#side {
   		transform: translate;
   		position: fixed;
   		width: 200px;
-	    top: 290px; 
+	    top: 297px; 
 	    left: 0; 
-	    background-color: lightblue;
 	    padding: 2px;
-	    border: 2px solid gray;
   	}
   	
   	.icon {
@@ -82,9 +81,6 @@
 	      <div class="accordion-body">
 	        <strong>1.</strong> 
 	        <code>교재조회</code>
-	        <br>
-	        <strong>2.</strong> 
-	        <code>교재추천</code>
 	      </div>
 	    </div>
 	  </div>
@@ -117,10 +113,7 @@
 	    <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 	      <div class="accordion-body">
 	      	<strong>1.</strong> 
-	        <code>직업정보</code>
-	        <br>
-	        <strong>2.</strong> 
-	        <code>직업적성검사</code>
+	        <code>직업정보조회</code>
 	      </div>
 	    </div>
 	  </div>
@@ -136,6 +129,10 @@
 	      <div class="accordion-body">
 	      	<strong>1.</strong> 
 	        <code>자유게시판</code>
+	        	        <br>
+	        <strong>2.</strong> 
+	        <code>FAQ</code>
+	        
 	      </div>
 	    </div>
 	  </div>
@@ -175,7 +172,7 @@
 	    function expend() {
 	    	var currentUrl = window.location.href;
 	    	
-	    	if(currentUrl.startsWith("http://localhost:8090/jr/certificate/")){
+	    	/* if(currentUrl.startsWith("http://localhost:8090/jr/certificate/")){
 	    		
 	    		if(currentUrl.startsWith("http://localhost:8090/jr/certificate/rec/")){
 	    			$('#btn2').click();
@@ -184,7 +181,15 @@
 	    		}
 
 	    	  	
-	    	} 
+	    	}  */
+	    	if(currentUrl.startsWith("http://localhost:8090/jr/crt/crtlist.do")){
+	    		$('#btn1').click();
+	    	}
+	    	
+	    	if(currentUrl.startsWith("http://localhost:8090/jr/crt/crtrec.do")){
+	    		$('#btn2').click();
+	    	}
+	    	
 	    	if(currentUrl.startsWith("http://localhost:8090/jr/book")){
 	    		$('#btn3').click();
 	    	}

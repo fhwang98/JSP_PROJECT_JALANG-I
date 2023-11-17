@@ -249,14 +249,11 @@ color: #555;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  display: inline-block;
   font-family: Circular,Helvetica,sans-serif;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -.01em;
   line-height: 1.3;
-  /* padding: 1rem 1.25rem; */
-  position: relative;
   text-align: center;
   text-decoration: none;
   transform: translateZ(0) scale(1);
@@ -266,12 +263,9 @@ color: #555;
   touch-action: manipulation;
   width: 80px;
   height: 30px;
-  margin-left: 785px;
-  margin-top: 10px;
-  margin: 0 3px;
   
  }
-  #board-list > div:nth-child(1) {
+  #btnadd {
   	display: inline-block;
   	float: right;
   	margin: 10px 50px;
@@ -297,7 +291,7 @@ color: #555;
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" id=middlebar>
-      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/page-header.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/backgroundImg2.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
@@ -337,8 +331,8 @@ color: #555;
    
   <!-- board list area -->
     <div id="board-list">
-   <div style="margin-right:200px;"><input id="btnadd" type="button" value="추가" onclick="location.href='/jr/academy/admin/add.do'"></div>
         <div class="container">
+   <input id="btnadd" type="button" value="추가" onclick="location.href='/jr/academy/admin/add.do'">
             <table class="board-table">
                 <thead>
                 <tr>

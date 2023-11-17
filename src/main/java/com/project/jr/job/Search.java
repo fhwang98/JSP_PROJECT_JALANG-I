@@ -21,8 +21,8 @@ public class Search extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-		//String searchWord = req.getParameter("jobName");
-		String searchWord = "관리";
+		String searchWord = req.getParameter("jobName");
+		//String searchWord = "관리";
 		String jobgroupName = req.getParameter("jobgroupName");
 		
 		int jobGroupSeq=0;

@@ -8,12 +8,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Logis Bootstrap Template - Index</title>
+  <title>자랑이</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<%=request.getContextPath() %>/resources/img/favicon.png" rel="icon">
+  <link href="<%=request.getContextPath() %>/resources/img/favicon.ico" rel="icon">
   <link href="<%=request.getContextPath() %>/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -74,7 +74,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/page-header.jpg');">
+      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/backgroundImg2.png');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
@@ -165,7 +165,7 @@
             <a href="/jr/study/mypage/study/detail.do">
             <div class="pricing-item featured">
               <h3>진행중</h3>
-              <h4>${jCount }</h4>
+              <h4>1</h4>
             </div>
             </a>
           </div><!-- End Pricing Item -->
@@ -173,14 +173,14 @@
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="pricing-item featured">
               <h3>대기중</h3>
-              <h4>${dCount }</h4>
+              <h4>0</h4>
             </div>
           </div><!-- End Pricing Item -->
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="pricing-item featured">
               <h3>완료</h3>
-              <h4>${wCount }</h4>
+              <h4>3</h4>
             </div>
           </div><!-- End Pricing Item -->
 
