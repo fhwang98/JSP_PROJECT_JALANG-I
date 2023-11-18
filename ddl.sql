@@ -44,8 +44,8 @@ CREATE SEQUENCE studyMemberSeq;
 CREATE SEQUENCE studySeq;
 CREATE SEQUENCE myCrtSeq;
 CREATE SEQUENCE toDoListSeq;
-
-
+CREATE SEQUENCE crtPassRateSeq;
+CREATE SEQUENCE crtcommentSeq;
 
 
 -- 테이블 생성
