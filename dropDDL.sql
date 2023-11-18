@@ -43,6 +43,9 @@ DROP SEQUENCE crtFaqSeq;
 DROP SEQUENCE crtPassRateSeq;
 DROP SEQUENCE crtboardSeq;
 DROP SEQUENCE crtcommentSeq;
+DROP SEQUENCE toDoListSeq;
+DROP SEQUENCE pointHistorySeq;
+
 
 -- 테이블 삭제
 Drop table tblCrtComment;
@@ -63,7 +66,7 @@ Drop table tblReportCtg ;
 Drop table tblComment ;
 Drop table tblBoard ;
 Drop table tblStudyMember ;
-Drop table tblStudy ;
+Drop table tblStudy;
 Drop table tblStudyJoin ;
 Drop table tblAnswer ;
 Drop table tblQna ;
@@ -93,5 +96,5 @@ Drop table tblCrt ;
 Drop table tblAgency ;
 Drop table tblCrtType;
 Drop table tblUserInfo ;
-
+Drop table tblToDoList;
 

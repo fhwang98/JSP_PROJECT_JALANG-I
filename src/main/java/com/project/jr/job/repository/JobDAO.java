@@ -21,6 +21,10 @@ public class JobDAO {
 		this.conn = DBUtil.open();
 	}
 
+	/**
+	 * 직업군 목록 출력 JDBC
+	 * @return
+	 */
 	public ArrayList<GroupDTO> getGroup() {
 
 		try {
@@ -54,6 +58,12 @@ public class JobDAO {
 		return null;
 	}
 
+	/**
+	 * 직업 autocomplet JDBC
+	 * @param searchWord 직업 검색어
+	 * @param jobGroupSeq 직업군 seq
+	 * @return
+	 */
 	public ArrayList<String> search(String searchWord, int jobGroupSeq) {
 
 		try {
@@ -87,6 +97,16 @@ public class JobDAO {
 		return null;
 	}
 
+	/**
+	 * 직업 목록 출력 JDBC
+	 * @param begin 시작페이지
+	 * @param end 끝페이지
+	 * @param seq 직업군 seq
+	 * @param jobName 직업 검색 이름
+	 * @param searchN 직업 검색 유무
+	 * @param searchG 직업군 검색 유무
+	 * @return
+	 */
 	public ArrayList<JobDTO> getJobList(int begin, int end, int seq, String jobName, String searchN, String searchG) {
 
 		try {
@@ -146,6 +166,14 @@ public class JobDAO {
 		return null;
 	}
 
+	/**
+	 * 직업검색 카운트 JDBC
+	 * @param seq 직업군 seq
+	 * @param jobName 검색 직업 이름
+	 * @param searchN 직업 검색 유무
+	 * @param searchG 직업군 검색 유무
+	 * @return
+	 */
 	public int getTotalCount(int seq, String jobName, String searchN, String searchG) {
 
 		try {
@@ -184,6 +212,11 @@ public class JobDAO {
 		return 0;
 	}
 
+	/**
+	 * 직업상세 출력 JDBC
+	 * @param seq 선택한 직업 seq
+	 * @return
+	 */
 	public JobDTO job(int seq) {
 
 		try {

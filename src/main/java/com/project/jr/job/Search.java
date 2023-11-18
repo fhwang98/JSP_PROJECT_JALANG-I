@@ -14,9 +14,16 @@ import org.json.simple.JSONArray;
 
 import com.project.jr.job.repository.JobDAO;
 
+/**
+ * 직업 검색 autocomlet 클래스
+ *
+ */
 @WebServlet("/job/search.do")
 public class Search extends HttpServlet {
-
+	
+	/**
+	 * 직업 검색 autocomlete JSON 출력 doGet 
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

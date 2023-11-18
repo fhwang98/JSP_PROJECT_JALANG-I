@@ -12,9 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.jr.crt.repository.CrtDAO;
 
+/**
+ * 나의자격증 추가 클래스
+ *
+ */
 @WebServlet("/crt/mypage/add.do")
 public class Add extends HttpServlet {
 
+	/**
+	 * 나의자격증 추가 jsp 실행 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -32,6 +39,9 @@ public class Add extends HttpServlet {
 
 	}
 
+	/**
+	 * 나의자격증 추가 dB처리 결과 doPost
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

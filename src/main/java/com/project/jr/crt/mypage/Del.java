@@ -11,9 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.jr.crt.repository.CrtDAO;
 
+/**
+ * 나의자격증 삭제 클래스
+ *
+ */
 @WebServlet("/crt/mypage/del.do")
 public class Del extends HttpServlet {
 
+	/**
+	 * 나의자격증 삭제 처리 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

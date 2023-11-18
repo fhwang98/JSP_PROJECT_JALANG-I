@@ -12,9 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.study.model.ToDoDTO;
 import com.project.jr.study.repository.StudyDAO;
 
+/**
+ * 스터디 할일 클래스
+ * @author sujin
+ *
+ */
 @WebServlet("/study/mypage/todoadd.do")
 public class ToDoAdd extends HttpServlet {
 
+	/**
+	 * 스터디 할일 목록 출력 doPost
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

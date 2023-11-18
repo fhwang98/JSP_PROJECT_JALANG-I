@@ -2,6 +2,11 @@ package com.project.jr.study.model;
 
 import lombok.Data;
 
+/**
+ * 스터디신청 DTO
+ * @author sujin
+ *
+ */
 @Data
 public class StudyJoinDTO {
 	private int studyJoinSeq;

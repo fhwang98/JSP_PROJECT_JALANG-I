@@ -14,9 +14,17 @@ import com.project.jr.job.model.GroupDTO;
 import com.project.jr.job.model.JobDTO;
 import com.project.jr.job.repository.JobDAO;
 
+/**
+ * 직업 리스트 출력 클래스
+ * @author sujin
+ *
+ */
 @WebServlet("/job/list.do")
 public class List extends HttpServlet {
 
+	/**
+	 * 직업 리스트 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

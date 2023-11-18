@@ -19,6 +19,10 @@ import com.project.jr.crt.model.CrtSchDdayDTO;
 import com.project.jr.crt.model.MyCrtDTO;
 import com.project.jr.main.DBUtil;
 
+/**
+ * 자격증 DAO
+ *
+ */
 public class CrtDAO {
 
 	private Connection conn;
@@ -623,6 +627,11 @@ public class CrtDAO {
 		return null;
 	}
 	
+	/**
+	 * 나의자격증 검색 autocomplet JDBC
+	 * @param searchWord
+	 * @return
+	 */
 	public ArrayList<String> search(String searchWord) {
 		
 		try {
@@ -659,6 +668,11 @@ public class CrtDAO {
 		return null;
 	}
 
+	/**
+	 * 자격증 시퀀스 출력 JDBC
+	 * @param crtName 자격증이름
+	 * @return
+	 */
 	public int crtNameCh(String crtName) {
 
 		try {
@@ -681,6 +695,13 @@ public class CrtDAO {
 		return 0;
 	}
 
+	/**
+	 * 나의자격증 insert JDBC
+	 * @param id 
+	 * @param crtSeq
+	 * @param date
+	 * @return
+	 */
 	public int setMyCrt(String id, int crtSeq, String date) {
 
 		try {
@@ -704,6 +725,11 @@ public class CrtDAO {
 		return 0;
 	}
 
+	/**
+	 * 나의자격증 모든리스트 출력 JDBC
+	 * @param id
+	 * @return
+	 */
 	public ArrayList<MyCrtDTO> getMyCrt(String id) {
 
 		try {
@@ -773,6 +799,11 @@ public class CrtDAO {
 		return 0;
 	}
 
+	/**
+	 * 나의자격증 삭제 JDBC
+	 * @param seq 나의자격증 seq
+	 * @return
+	 */
 	public int delMyCrt(int seq) {
 
 		try {

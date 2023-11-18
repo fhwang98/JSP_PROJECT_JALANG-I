@@ -46,6 +46,12 @@ public class StudyDAO {
 		return 0;
 	}
 	
+	
+	/**
+	 * 스터디 교재 정보 출력 JDBC
+	 * @param id 로그인 id
+	 * @return
+	 */
 	public ArrayList<StudyBookDTO> getInfo(String id) {
 
 		try {
@@ -89,6 +95,11 @@ public class StudyDAO {
 		return null;
 	}
 
+	/**
+	 * 스터디 교재 전체 목차 개수 출력 JDBC
+	 * @param seq 교재 seq
+	 * @return
+	 */
 	public int totalCh(int seq) {
 
 		try {
@@ -113,7 +124,14 @@ public class StudyDAO {
 		
 		return 0;
 	}
-
+	
+	
+	/**
+	 * 스터디 교재 진행된 목차 개수 JDBC
+	 * @param id 로그인 id
+	 * @param seq 교재 seq
+	 * @return
+	 */
 	public int progCh(String id, int seq) {
 
 		try {
@@ -146,6 +164,12 @@ public class StudyDAO {
 		return 0;
 	}
 
+	/**
+	 * 스터디 교재 출력 JDBC
+	 * @param id 로그인 id
+	 * @param seq 선택 교재 seq
+	 * @return
+	 */
 	public ArrayList<StudyBookDTO> indexCh(String id, int seq) {
 
 		try {
@@ -189,6 +213,14 @@ public class StudyDAO {
 		
 		return null;
 	}
+	
+	/**
+	 * 스터디 교재 진척률 업데이트 JDBC
+	 * @param list 교재 목차 이름
+	 * @param status 목차 진행 상태
+	 * @param id 로그인 id
+	 * @return
+	 */
 
 	public int statusUp(String list, int status, String id) {
 
@@ -215,6 +247,12 @@ public class StudyDAO {
 		return 0;
 	}
 
+	/**
+	 * 스터디 교재 삭제 JDBC
+	 * @param id 로그인 id
+	 * @param seq 스터디 교재 seq
+	 * @return
+	 */
 	public int delBook(String id, int seq) {
 
 		try {
@@ -235,6 +273,11 @@ public class StudyDAO {
 		return 0;
 	}
 
+	/**
+	 * 나의 스터디 출력 JDBC
+	 * @param id 로그인 id
+	 * @return
+	 */
 	public StudyDTO getStudy(String id) {
 
 		try {
@@ -274,6 +317,11 @@ public class StudyDAO {
 		return null;
 	}
 
+	/**
+	 * 스터디 자격증 이름 출력 JDBC
+	 * @param id 로그인 id
+	 * @return
+	 */
 	public String getCrtName(String id) {
 
 		try {
@@ -305,7 +353,12 @@ public class StudyDAO {
 		
 		return null;
 	}
-
+	
+	/**
+	 * 스터디원 출력 JDBC
+	 * @param studySeq 스터디 seq
+	 * @return
+	 */
 	public ArrayList<String> getNameList(int studySeq) {
 
 		try {
@@ -344,6 +397,15 @@ public class StudyDAO {
 		return null;
 	}
 
+	/**
+	 * 스터디 할일 추가 JDBC
+	 * @param studySeq 스터디 seq
+	 * @param toDo 할일
+	 * @param completeDate 요철일
+	 * @param id 로그인 id
+	 * @param toDoComment 할일 메모
+	 * @return
+	 */
 	public int setToDo(int studySeq, String toDo, String completeDate, String id, String toDoComment) {
 
 		try {
@@ -367,6 +429,11 @@ public class StudyDAO {
 		return 0;
 	}
 
+	/**
+	 * 스터디 할일 출력 JDBC
+	 * @param studySeq 스터디 seq
+	 * @return
+	 */
 	public ArrayList<ToDoDTO> getList(int studySeq) {
 
 		try {

@@ -45,66 +45,7 @@ CREATE SEQUENCE studySeq;
 CREATE SEQUENCE myCrtSeq;
 CREATE SEQUENCE toDoListSeq;
 
--- 테이블 생성
 
-<<<<<<< HEAD
-/* 자격증 분류 */
-CREATE TABLE tblCrtType (
-	crtTypeSeq NUMBER PRIMARY KEY, /* 자격증 분류 번호 */
-	crtCtg VARCHAR2(50) /* 자격증 분류 이름 */
-);
-
-=======
-
----------------------------------------------------
-
--- 시퀀스 생성
-CREATE SEQUENCE academyEduSeq;
-CREATE SEQUENCE academySeq;
-CREATE SEQUENCE adlistSeq;
-CREATE SEQUENCE adminInfoId;
-CREATE SEQUENCE agencySeq;
-CREATE SEQUENCE answerSeq;
-CREATE SEQUENCE blockUserSeq;
-CREATE SEQUENCE boardLikeSeq;
-CREATE SEQUENCE boardSeq;
-CREATE SEQUENCE bookLikeSeq;
-CREATE SEQUENCE bookprcByUserSeq;
-CREATE SEQUENCE bookSeq;
-CREATE SEQUENCE commentSeq;
-CREATE SEQUENCE crtByBookSeq;
-CREATE SEQUENCE crtByJobSeq;
-CREATE SEQUENCE crtLikeSeq;
-CREATE SEQUENCE crtSchSeq;
-CREATE SEQUENCE crtSeq;
-CREATE SEQUENCE crtTestSeq;
-CREATE SEQUENCE crtTestTypeSeq;
-CREATE SEQUENCE crtTypeSeq;
-CREATE SEQUENCE departByJobSeq;
-CREATE SEQUENCE departSeq;
-CREATE SEQUENCE domainSeq;
-CREATE SEQUENCE faqSeq;
-CREATE SEQUENCE forbiddenSeq;
-CREATE SEQUENCE indexSeq;
-CREATE SEQUENCE jobgroupSeq;
-CREATE SEQUENCE jobSeq;
-CREATE SEQUENCE noticeBoardSeq;
-CREATE SEQUENCE pointSeq;
-CREATE SEQUENCE pointHistorySeq;
-CREATE SEQUENCE profileSeq;
-CREATE SEQUENCE qnaSeq;
-CREATE SEQUENCE reportBoardSeq;
-CREATE SEQUENCE reportCommentSeq;
-CREATE SEQUENCE reportCtgSeq;
-CREATE SEQUENCE studyJoinSeq;
-CREATE SEQUENCE studyMemberSeq;
-CREATE SEQUENCE studySeq;
-CREATE SEQUENCE myCrtSeq;
-CREATE SEQUENCE crtFaqSeq;
-CREATE SEQUENCE crtPassRateSeq;
-CREATE SEQUENCE crtBoardSeq;
-CREATE SEQUENCE crtCommentSeq;
-CREATE SEQUENCE toDoListSeq;
 
 
 -- 테이블 생성
@@ -114,8 +55,6 @@ CREATE TABLE tblCrtType (
 	crtTypeSeq NUMBER PRIMARY KEY, /* 자격증 분류 번호 */
 	crtCtg VARCHAR2(50) /* 자격증 분류 이름 */
 );
-
->>>>>>> sukyeong_crt
 
 /* 시행기관 */
 CREATE TABLE tblAgency (
@@ -564,8 +503,8 @@ CREATE TABLE tblMyCrt (
     regDate date, /*등록날짜*/
     CONSTRAINT tblMyCrt_fk_id foreign key(id) references tblUserInfo(id),
     CONSTRAINT tblMyCrt_fk_cs foreign key(crtSeq) references tblCrt(crtSeq)
-<<<<<<< HEAD
-=======
+
+
 );
 
 
@@ -595,8 +534,7 @@ CREATE TABLE tblCrtPassRate (
     passIn22 NUMBER,
     CONSTRAINT tblCrtPassRate_fk foreign key(crtSeq) references tblCrt(crtSeq)
 );
-/*(crtboardSeq,crtboardTitle,crtboardContent,id,crtSeq,crtboardWriteDate,crtboardLike,crtboardReport,crtboardHits,iscrtBoardShow*/
-/* 자격증 후기 게시판*/
+
 CREATE TABLE tblCrtBoard (
 	crtBoardSeq NUMBER PRIMARY KEY, /* 게시물 번호 */
 	crtBoardTitle VARCHAR2(500), /* 게시물 제목 */
@@ -626,7 +564,7 @@ CREATE TABLE tblcrtComment (
     iscrtCommentShow NUMBER, /*댓글 공개여부*/
     CONSTRAINT tblcrtComment_fk_id foreign key(id) references tblUserInfo(id),
     CONSTRAINT tblcrtComment_fk_cbs foreign key(crtBoardSeq) references tblCrtBoard(crtBoardSeq)
->>>>>>> sukyeong_crt
+
 );
 
 CREATE TABLE tblToDoList (

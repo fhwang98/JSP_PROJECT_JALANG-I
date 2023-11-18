@@ -13,9 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.crt.model.MyCrtDTO;
 import com.project.jr.crt.repository.CrtDAO;
 
+/**
+ * 나의자격증 리스트 출력 클래스
+ *
+ */
 @WebServlet("/crt/mypage/list.do")
 public class List extends HttpServlet {
 
+	/**
+	 * 나의자격증 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

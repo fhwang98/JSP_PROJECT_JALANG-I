@@ -12,9 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.job.model.JobDTO;
 import com.project.jr.job.repository.JobDAO;
 
+/**
+ * 직업상세 클래스
+ *
+ */
 @WebServlet("/job/detail.do")
 public class Detail extends HttpServlet {
 
+	/**
+	 * 직업상세 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

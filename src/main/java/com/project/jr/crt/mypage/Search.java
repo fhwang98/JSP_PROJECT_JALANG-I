@@ -14,9 +14,16 @@ import org.json.simple.JSONArray;
 
 import com.project.jr.crt.repository.CrtDAO;
 
+/**
+ * 나의자격증 검색 autocomlet 클래스
+ *
+ */
 @WebServlet("/crt/mypage/search.do")
 public class Search extends HttpServlet {
 
+	/**
+	 * 나의자격증 검색 autocomlete JSON 출력 doGet 
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

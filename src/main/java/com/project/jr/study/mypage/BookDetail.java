@@ -20,9 +20,17 @@ import org.json.simple.JSONObject;
 import com.project.jr.study.model.StudyBookDTO;
 import com.project.jr.study.repository.StudyDAO;
 
+/**
+ * 스터디 교재 상세 클래스
+ * @author sujin
+ *
+ */
 @WebServlet("/study/mypage/book/detail.do")
 public class BookDetail extends HttpServlet {
 
+	/**
+	 * 스터디 교재 상세 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -56,6 +64,9 @@ public class BookDetail extends HttpServlet {
 
 	}
 	
+	/**
+	 * 스터디 교재 진척률 JSON출력 doPost
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

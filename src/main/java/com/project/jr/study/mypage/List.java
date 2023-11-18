@@ -16,9 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.study.model.StudyBookDTO;
 import com.project.jr.study.repository.StudyDAO;
 
+/**
+ * 전체 스터디 리스트 출력 클래스
+ * @author sujin
+ *
+ */
 @WebServlet("/study/mypage/list.do")
 public class List extends HttpServlet {
 
+	/**
+	 * 스터디, 교재 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

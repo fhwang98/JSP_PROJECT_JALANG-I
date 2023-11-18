@@ -14,9 +14,17 @@ import com.project.jr.study.model.StudyDTO;
 import com.project.jr.study.model.ToDoDTO;
 import com.project.jr.study.repository.StudyDAO;
 
+/**
+ * 스터디 상세 클래스
+ * @author sujin
+ *
+ */
 @WebServlet("/study/mypage/study/detail.do")
 public class StudyDetail extends HttpServlet {
 
+	/**
+	 * 스터디 상세 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
