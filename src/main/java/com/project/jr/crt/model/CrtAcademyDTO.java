@@ -1,7 +1,9 @@
 package com.project.jr.crt.model;
 
 import lombok.Data;
-
+/**
+ * 자격증 관련 학원 DTO
+ */
 @Data
 public class CrtAcademyDTO {
 	private int crtseq;

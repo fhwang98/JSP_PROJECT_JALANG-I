@@ -12,10 +12,15 @@ import javax.servlet.http.HttpSession;
 
 import com.project.jr.crt.model.CrtBoardDTO;
 import com.project.jr.crt.repository.CrtBoardDAO;
-
+/**
+ * 자격증 후기게시판 상세보기 클래스
+ *
+ */
 @WebServlet("/crt/crtboarddetail.do")
 public class CrtBoardDetail extends HttpServlet {
-
+	/**
+	 * 자격증 후기게시판 상세보기 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

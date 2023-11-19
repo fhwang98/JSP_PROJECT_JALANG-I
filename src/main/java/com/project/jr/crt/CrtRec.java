@@ -13,9 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.jr.crt.model.CrtRecDTO;
 import com.project.jr.crt.repository.CrtRecDAO;
-
+/**
+ * 직업군별 추천 자격증 조회 클래스
+ */
 @WebServlet("/crt/crtrec.do")
 public class CrtRec extends HttpServlet {
+	/**
+	 * 직업군별 추천 자격증 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -15,9 +15,14 @@ import javax.servlet.http.HttpSession;
 
 import com.project.jr.crt.model.CrtBoardDTO;
 import com.project.jr.crt.repository.CrtBoardDAO;
-
+/**
+ * 자격증 후기게시판 클래스
+ */
 @WebServlet("/crt/crtboardlist.do")
 public class CrtBoardList extends HttpServlet {
+	/**
+	 * 자격증 후기게시판 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

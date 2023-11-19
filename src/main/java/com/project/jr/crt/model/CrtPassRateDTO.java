@@ -1,7 +1,9 @@
 package com.project.jr.crt.model;
 
 import lombok.Data;
-
+/**
+ * 자격증 합격률 DTO
+ */
 @Data
 public class CrtPassRateDTO {
 	private int crtseq;

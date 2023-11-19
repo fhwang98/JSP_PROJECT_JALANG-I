@@ -16,9 +16,14 @@ import com.project.jr.crt.model.AgencyDTO;
 import com.project.jr.crt.model.CrtDTO;
 import com.project.jr.crt.model.CrtSchDdayDTO;
 import com.project.jr.crt.repository.CrtDAO;
-
+/**
+ * 자격증 조회 클래스
+ */
 @WebServlet("/crt/crtlist.do")
 public class CrtList extends HttpServlet {
+	/**
+	 * 자격증 조회 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

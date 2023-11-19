@@ -19,49 +19,12 @@ public class CrtBoardDAO {
 	public CrtBoardDAO() {
 		this.conn = DBUtil.open();
 	}
-/*
-	public ArrayList<CrtBoardDTO> list(String crtseq) {
-		
-		try {
-			
-			String sql = "select * from vwCrtBoard where crtseq = ?";
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, crtseq);
-			
-			rs = pstat.executeQuery();	
-			
-			ArrayList<CrtBoardDTO> list = new ArrayList<CrtBoardDTO>();
-			
-			while (rs.next()) {
-				
-				CrtBoardDTO dto = new CrtBoardDTO();
-				
-				dto.setCrtBoardSeq(rs.getInt("crtboardseq"));
-				dto.setCrtSeq(rs.getInt("crtseq"));
-				dto.setCrtBoardTitle(rs.getString("crtboardtitle"));
-				dto.setCrtBoardContent(rs.getString("crtboardcontent"));
-				dto.setId(rs.getString("id"));
-				dto.setCrtboardHits(rs.getInt("crtboardHits"));
-				dto.setCrtboardLike(rs.getInt("crtboardlike"));
-				dto.setCrtboardReport(rs.getInt("crtboardreport"));
-				dto.setCrtboardWriteDate(rs.getString("crtboardWriteDate"));
-				dto.setIscrtBoardShow(rs.getInt("iscrtBoardShow"));
-				dto.setCcnt(rs.getInt("ccnt"));
-				dto.setIsnew(rs.getInt("isnew"));
-				
-				list.add(dto);
-			}	
-			
-			return list;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-	}
-*/
+	
+	/**
+	 * 자격증 후기게시판 출력 JDBC
+	 * @param map
+	 * @return
+	 */
 	public ArrayList<CrtBoardDTO> list(HashMap<String, String> map) {
 		
 		try {
@@ -106,7 +69,12 @@ public class CrtBoardDAO {
 		
 		return null;
 	}
-
+	
+	/**
+	 * 총 게시물 수 출력 JDBC
+	 * @param crtseq
+	 * @return
+	 */
 	public int getTotalCount(String crtseq) {
 	      
 	      try {
@@ -129,6 +97,11 @@ public class CrtBoardDAO {
 	      
 	      return 0;
 	   }
+	
+	/**
+	 * 조회수 증가 JDBC
+	 * @param crtboardseq
+	 */
 	public void updateReadcount(String crtboardseq) {
 		
 		try {
@@ -145,7 +118,11 @@ public class CrtBoardDAO {
 		}
 	}
 	
-	
+	/**
+	 * 자격증 후기게시판 상세 출력 JDBC
+	 * @param crtboardseq
+	 * @return
+	 */
 	public CrtBoardDTO get(String crtboardseq) {
 
 		try {

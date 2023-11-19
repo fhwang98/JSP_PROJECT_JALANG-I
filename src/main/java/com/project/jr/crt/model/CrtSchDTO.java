@@ -1,7 +1,9 @@
 package com.project.jr.crt.model;
 
 import lombok.Data;
-
+/**
+ *	자격증 시험 일정 DTO
+ */
 @Data
 public class CrtSchDTO {
 	

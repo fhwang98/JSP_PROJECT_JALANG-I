@@ -15,9 +15,14 @@ import javax.servlet.http.HttpSession;
 import com.project.jr.crt.model.CrtAcademyDTO;
 import com.project.jr.crt.model.CrtSchDTO;
 import com.project.jr.crt.repository.CrtSchDAO;
-
+/**
+ * 자격증 시험 일정 조회 클래스
+ */
 @WebServlet("/crt/crtschlist.do")
 public class CrtSchList extends HttpServlet {
+	/**
+	 * 자격증 시험 일정 조회 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

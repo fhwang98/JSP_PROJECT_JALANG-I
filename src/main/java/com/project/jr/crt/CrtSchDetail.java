@@ -12,9 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.jr.crt.model.CrtSchDTO;
 import com.project.jr.crt.repository.CrtSchDAO;
-
+/**
+ * 자격증 시험 일정 조회 상세페이지 클래스
+ */
 @WebServlet("/crt/crtschdetail.do")
 public class CrtSchDetail extends HttpServlet {
+	/**
+	 * 자격증 시험 일정 조회 상세페이지 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

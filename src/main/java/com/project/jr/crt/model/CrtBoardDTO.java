@@ -1,7 +1,9 @@
 package com.project.jr.crt.model;
 
 import lombok.Data;
-
+/**
+ * 자격증 후기 게시판 DTO
+ */
 @Data
 public class CrtBoardDTO {
 	private int crtBoardSeq;

@@ -19,7 +19,12 @@ public class CrtRecDAO {
 	public CrtRecDAO() {
 		this.conn = DBUtil.open();
 	}
-
+	
+	
+	/**
+	 * 직업군 선별 JDBC
+	 * @return
+	 */
 	public ArrayList<CrtRecDTO> jobgruoplist() {
 		
 		try {
@@ -50,6 +55,11 @@ public class CrtRecDAO {
 		return null;
 	}
 
+	/**
+	 * 직업군 별 자격증 합격률 조회 JDBC
+	 * @param dto1
+	 * @return
+	 */
 	public ArrayList<CrtRecDTO> passRateList(CrtRecDTO dto1) {
 		
 		try {
@@ -90,7 +100,12 @@ public class CrtRecDAO {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * 직업군 별 자격증 4개 조회 JDBC
+	 * @param jobgroupseq
+	 * @return
+	 */
 	public ArrayList<CrtRecDTO> jobgruopSublist(int jobgroupseq) {
 		
 		try {

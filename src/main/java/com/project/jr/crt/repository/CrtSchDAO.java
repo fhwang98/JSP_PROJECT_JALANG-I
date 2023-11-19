@@ -19,7 +19,12 @@ public class CrtSchDAO {
 	public CrtSchDAO() {
 		this.conn = DBUtil.open();
 	}
-
+	
+	/**
+	 * 자격증 일정 조회 JDBC
+	 * @param map
+	 * @return
+	 */
 	public ArrayList<CrtSchDTO> list(HashMap<String, String> map) {
 		
 		try {
@@ -105,7 +110,12 @@ public class CrtSchDAO {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * 자격증 시험 일정 조회 게시물 수 JDBC
+	 * @param map
+	 * @return
+	 */
 	public int getTotalCount(HashMap<String, String> map) {
 		
 		try {
@@ -162,6 +172,11 @@ public class CrtSchDAO {
 		return 0;
 	}
 
+	/**
+	 * 자격증 시험 일정 상세페이지 JDBC
+	 * @param crtseq
+	 * @return
+	 */
 	public ArrayList<CrtSchDTO> list(String crtseq) {
 		
 		try {

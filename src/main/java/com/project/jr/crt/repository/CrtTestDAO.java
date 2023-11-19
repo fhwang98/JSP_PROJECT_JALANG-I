@@ -20,7 +20,12 @@ public class CrtTestDAO {
 	public CrtTestDAO() {
 		this.conn = DBUtil.open();
 	}
-
+	
+	/**
+	 * 자격증 조회 - 시험 정보 조회 JDBC
+	 * @param crtSeq
+	 * @return
+	 */
 	public CrtTestDTO detail(String crtSeq) {
 		
 		try {
@@ -59,7 +64,7 @@ public class CrtTestDAO {
 		
 		return null;
 	}
-
+	
 	public int edit(CrtTestDTO dto) {
 		
 		try {

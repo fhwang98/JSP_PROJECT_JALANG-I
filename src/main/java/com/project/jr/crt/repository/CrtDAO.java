@@ -33,7 +33,12 @@ public class CrtDAO {
 	public CrtDAO() {
 		this.conn = DBUtil.open();
 	}
-
+	
+	/**
+	 * 자격증 조회페이지 출력 JDBC
+	 * @param map
+	 * @return
+	 */
 	public ArrayList<CrtDTO> list(HashMap<String,String> map) {
 		
 		try {
@@ -132,7 +137,12 @@ public class CrtDAO {
 		
 		return null;
 	}
-
+	
+	/**
+	 * 자격증 조회 총 게시물 수 JDBC
+	 * @param map
+	 * @return
+	 */
 	public int getTotalCount(HashMap<String,String> map) {
 
 		try {
@@ -194,7 +204,10 @@ public class CrtDAO {
 		return 0;
 	}
 	
-	
+	/**
+	 * 자격증 시행기관 조회 JDBC
+	 * @return
+	 */
 	//agency 목록 가져오기
 	public ArrayList<AgencyDTO> agencylist() {
 		
@@ -258,7 +271,12 @@ public class CrtDAO {
 		return null;
 	}
 
-
+	/**
+	 * 자격증 상세조회 JDBC
+	 * @param crtseq
+	 * @param id
+	 * @return
+	 */
 	public CrtDTO list(String crtseq, String id) {
 		
 		try {
@@ -309,7 +327,11 @@ public class CrtDAO {
 		return null;
 	}
 	
-
+	/**
+	 * 자격증 조회 상세페이지 - 최신 일정 조회용 JDBC
+	 * @param crtseq
+	 * @return
+	 */
 	public ArrayList<CrtSchDdayDTO> schddaylist(String crtseq) {
 		
 		try {
@@ -348,7 +370,12 @@ public class CrtDAO {
 		
 		return null;
 	}
-
+	
+	/**
+	 * 자격증 조회 상세페이지 - 자주 묻는 질문 조회 JDBC
+	 * @param crtseq
+	 * @return
+	 */
 	public ArrayList<CrtFaqDTO> faqlist(String crtseq) {
 		
 		try {
@@ -381,7 +408,12 @@ public class CrtDAO {
 		
 		return null;
 	}
-
+	
+	/**
+	 * 자격증 조회 상세페이지 - 관련 교재 좋아요순 조회 JDBC
+	 * @param crtseq
+	 * @return
+	 */
 	public ArrayList<CrtBookLikeDescDTO> booklist(String crtseq) {
 		
 		try {
@@ -416,7 +448,12 @@ public class CrtDAO {
 		
 		return null;
 	}
-
+	
+	/**
+	 * 자격증 조회 상세페이지 - 응시료 조회 JDBC
+	 * @param crtseq
+	 * @return
+	 */
 	public ArrayList<CrtPayDTO> paylist(String crtseq) {
 		
 		try {
@@ -452,7 +489,12 @@ public class CrtDAO {
 		
 		return null;
 	}
-
+	
+	/**
+	 * 자격증 조회 상세페이지 - 합격률 조회 JDBC
+	 * @param crtseq
+	 * @return
+	 */
 	public CrtPassRateDTO passrate(String crtseq) {
 		
 		try {
@@ -491,7 +533,12 @@ public class CrtDAO {
 		
 		return null;
 	}
-
+	
+	/**
+	 * 자격증 조회 상세페이지 - 관련 학원 조회 JDBC
+	 * @param crtseq
+	 * @return
+	 */
 	public ArrayList<CrtAcademyDTO> acamedylist(String crtseq) {
 		
 		try {
@@ -533,6 +580,11 @@ public class CrtDAO {
 		return null;
 	}
 
+	/**
+	 * 자격증 조회 상세페이지 - 좋아요 추가 JDBC
+	 * @param dto
+	 * @return
+	 */
 	public int addliked(CrtLikeDTO dto) {
 		
 		try {
@@ -552,6 +604,11 @@ public class CrtDAO {
 		return 0;
 	}
 
+	/**
+	 * 자격증 조회 상세페이지 - 좋아요 확인 JDBC
+	 * @param dto
+	 * @return
+	 */
 	public int isliked(CrtLikeDTO dto) {
 		
 		try {
@@ -570,7 +627,12 @@ public class CrtDAO {
 		
 		return 0;
 	}
-
+	
+	/**
+	 * 자격증 조회 상세페이지 - 좋아요 삭제 JDBC
+	 * @param dto
+	 * @return
+	 */
 	public int delliked(CrtLikeDTO dto) {
 
 		try {
@@ -826,7 +888,11 @@ public class CrtDAO {
 	
 	
 	
-	
+	/**
+	 * 자격증 조회/상세페이지 - 자격증 좋아요 추가 JDBC
+	 * @param dto
+	 * @return
+	 */
 	public int plusliked(CrtLikeDTO dto) {
 		
 		try {
@@ -843,6 +909,11 @@ public class CrtDAO {
 		return 0;
 	}
 	
+	/**
+	 * 자격증 조회/상세페이지 - 자격증 좋아요 삭제 JDBC
+	 * @param dto
+	 * @return
+	 */
 	public int minusliked(CrtLikeDTO dto) {
 		
 		try {

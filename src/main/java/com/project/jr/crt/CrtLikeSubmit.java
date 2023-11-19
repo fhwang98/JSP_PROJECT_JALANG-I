@@ -14,9 +14,14 @@ import org.json.simple.JSONObject;
 
 import com.project.jr.crt.model.CrtLikeDTO;
 import com.project.jr.crt.repository.CrtDAO;
-
+/**
+ * 자격증 좋아요 추가/삭제 처리 클래스
+ */
 @WebServlet("/crt/crtlikesubmit.do")
 public class CrtLikeSubmit extends HttpServlet {
+	/**
+	 * 자격증 좋아요 추가/삭제 처리 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

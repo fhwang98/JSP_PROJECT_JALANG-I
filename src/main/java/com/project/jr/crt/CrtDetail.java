@@ -22,9 +22,14 @@ import com.project.jr.crt.model.CrtSchDTO;
 import com.project.jr.crt.model.CrtSchDdayDTO;
 import com.project.jr.crt.repository.CrtDAO;
 import com.project.jr.crt.repository.CrtSchDAO;
-
+/**
+ * 자격증조회 상세페이지 클래스
+ */
 @WebServlet("/crt/crtdetail.do")
 public class CrtDetail extends HttpServlet {
+	/**
+	 * 자격증조회 상세페이지 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
