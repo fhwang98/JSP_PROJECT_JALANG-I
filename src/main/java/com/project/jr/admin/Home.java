@@ -20,9 +20,17 @@ import com.project.jr.qna.model.QnaDTO;
 import com.project.jr.qna.repository.QnaDAO;
 import com.project.jr.user.repository.UserDAO;
 
+/**
+ * 관리자 메인 페이지 서블릿
+ * @author eugene
+ *
+ */
 @WebServlet("/admin/home.do")
 public class Home extends HttpServlet {
 
+	/**
+	 * 관리자 메인 페이지를 출력하는 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -9,6 +9,11 @@ import java.util.HashMap;
 import com.project.jr.main.DBUtil;
 import com.project.jr.user.model.UserDTO;
 
+/**
+ * 회원 DAO
+ * @author eugene
+ *
+ */
 public class UserDAO {
 
 	private Connection conn;
@@ -16,12 +21,18 @@ public class UserDAO {
 	private PreparedStatement pstat;
 	private ResultSet rs;
 	
+	/**
+	 * 회원 DAO 생성자
+	 */
 	public UserDAO() {
 		this.conn = DBUtil.open();
 	}
 
 
-
+	/**
+	 * 관리자 메인 페이지 - 회원수 조회 메소드
+	 * @return
+	 */
 	public HashMap<String, Integer> count() {
 		
 		try {

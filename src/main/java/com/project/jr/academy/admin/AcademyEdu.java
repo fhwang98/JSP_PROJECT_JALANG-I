@@ -16,9 +16,17 @@ import org.json.simple.JSONObject;
 import com.project.jr.academy.model.AcademyEduDTO;
 import com.project.jr.academy.repository.AcademyDAO;
 
+/**
+ * 학원 정보 내의 교육 정보 요청 서블릿 
+ * @author eugene
+ *
+ */
 @WebServlet("/academy/admin/academyedu.do")
 public class AcademyEdu extends HttpServlet {
 
+	/**
+	 * 학원 내의 교육 정보를 ajax에 반환하는 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -14,9 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.academy.model.AcademyDTO;
 import com.project.jr.academy.repository.AcademyDAO;
 
+/**
+ * 학원 목록 페이지 서블릿
+ * @author eugene
+ *
+ */
 @WebServlet("/academy/admin/list.do")
 public class List extends HttpServlet {
 
+	/**
+	 * 학원 목록을 출력하는 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

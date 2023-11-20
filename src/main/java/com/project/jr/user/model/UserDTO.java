@@ -3,6 +3,11 @@ package com.project.jr.user.model;
 import lombok.Data;
 import lombok.ToString;
 
+/**
+ * 회원 정보 DTO
+ * @author eugene
+ *
+ */
 @ToString
 @Data
 public class UserDTO {

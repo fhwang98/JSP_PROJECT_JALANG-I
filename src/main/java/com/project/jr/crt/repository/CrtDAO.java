@@ -239,7 +239,10 @@ public class CrtDAO {
 		return null;
 	}
 	
-	
+	/**
+	 * 관리자 메인 페이지 - 좋아요 순으로 자격증 3개를 조회하는 메소드
+	 * @return
+	 */
 	public ArrayList<HashMap<String, String>> getLikeTop() {
 		
 		try {
@@ -652,6 +655,10 @@ public class CrtDAO {
 		return 0;
 	}
 
+	/**
+	 * 메인 페이지 - 응시자수 순으로 자격증 100개를 조회하는 메소드
+	 * @return
+	 */
 	public ArrayList<CrtDTO> getTop100() {
 		
 		try {

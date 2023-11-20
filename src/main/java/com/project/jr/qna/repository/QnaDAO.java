@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import com.project.jr.main.DBUtil;
 import com.project.jr.qna.model.QnaDTO;
 
+/**
+ * 문의 DAO
+ * @author eugene
+ *
+ */
 public class QnaDAO {
 
 	
@@ -18,6 +23,9 @@ public class QnaDAO {
 		private PreparedStatement pstat;
 		private ResultSet rs;
 		
+		/**
+		 * 문의 DAO 생성자
+		 */
 		public QnaDAO() {
 			this.conn = DBUtil.open();
 			
@@ -66,7 +74,10 @@ public class QnaDAO {
 		}
 
 
-
+/**
+ * 관리자 메인 페이지 - 최신 문의글을 조회하는 메소드
+ * @return
+ */
 public ArrayList<QnaDTO> getRecentQna() {
 		
 		try {

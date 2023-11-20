@@ -13,9 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.crt.model.CrtDTO;
 import com.project.jr.crt.repository.CrtDAO;
 
+/**
+ * 메인 화면 클래스
+ * @author eugene
+ *
+ */
 @WebServlet("/index.do")
 public class Index extends HttpServlet {
 
+	/**
+	 * 메인 페이지 jsp 출력 doGet
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

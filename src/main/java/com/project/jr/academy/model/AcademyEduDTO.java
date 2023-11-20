@@ -2,6 +2,11 @@ package com.project.jr.academy.model;
 
 import lombok.Data;
 
+/**
+ * 학원 정보 내의 교육 정보 DTO
+ * @author eugene
+ *
+ */
 @Data
 public class AcademyEduDTO {
 

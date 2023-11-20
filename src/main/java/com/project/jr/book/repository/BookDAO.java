@@ -10,6 +10,11 @@ import java.util.HashMap;
 import com.project.jr.book.model.BookDTO;
 import com.project.jr.main.DBUtil;
 
+/**
+ * 교재 정보 DAO
+ * @author eugene
+ *
+ */
 public class BookDAO {
 
 	private Connection conn;
@@ -17,6 +22,9 @@ public class BookDAO {
 	private PreparedStatement pstat;
 	private ResultSet rs;
 
+	/**
+	 * 교재 DAO 생성자
+	 */
 	public BookDAO() {
 		this.conn = DBUtil.open();
 	}
@@ -213,6 +221,10 @@ public class BookDAO {
 		return null;
 	}
 	
+	/**
+	 * 관리자 메인 페이지 - 좋아요순 교재 조회하는 메소드
+	 * @return
+	 */
 public ArrayList<HashMap<String, String>> getLikeTop() {
 		
 		try {

@@ -11,6 +11,11 @@ import com.project.jr.academy.model.AcademyDTO;
 import com.project.jr.academy.model.AcademyEduDTO;
 import com.project.jr.main.DBUtil;
 
+/**
+ * 학원 데이터를 불러오는 DAO 클래스
+ * @author eugene
+ *
+ */
 public class AcademyDAO {
 
    private Connection conn;
@@ -18,6 +23,9 @@ public class AcademyDAO {
    private PreparedStatement pstat;
    private ResultSet rs;
 
+   /**
+    * 학원 정보 DAO를 생성하는 생성자
+    */
    public AcademyDAO() {
       this.conn = DBUtil.open();
    }
@@ -97,6 +105,11 @@ public class AcademyDAO {
    
    //-----------------------------------------------
    
+   /**
+    * 관리자 학원 관리 페이지 - seq를 인자로 받아 해당 번호의 학원 정보를 조회하는 메소드
+    * @param seq
+    * @return
+    */
    public AcademyDTO get(String seq) {
 		try {
 			
@@ -127,6 +140,11 @@ public class AcademyDAO {
 		return null;
 	}
 
+   /**
+    * 관리자 학원 관리 페이지 - 학원 seq를 인자로 받아 해당 학원의 교육 정보를 조회하는 메소드
+    * @param seq
+    * @return
+    */
 	public ArrayList<AcademyEduDTO> getEduList(String seq) {
 		
 		try {
@@ -170,7 +188,11 @@ public class AcademyDAO {
 
 	
 	
-	
+	/**
+	 * 관리자 학원 관리 페이지 - 검색 여부 map을 인자로 받아 전체 학원 수를 반환하는 메소드 
+	 * @param map
+	 * @return
+	 */
 	public int getTotalCount(HashMap<String,String> map) {
 		try {
 			String sql ="";
@@ -199,7 +221,11 @@ public class AcademyDAO {
 		return 0;
 	}
 	
-	
+	/**
+	 * 관리자 학원 관리 페이지 - 검색 여부 map을 인자로 받아 학원 목록을 조회하는 메소드
+	 * @param map
+	 * @return
+	 */
 	public ArrayList<AcademyDTO> getAdminList(HashMap<String, String> map) {
 
 		try {

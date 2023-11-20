@@ -12,6 +12,11 @@ import com.project.jr.board.model.CommentDTO;
 import com.project.jr.board.model.NoticeBoardDTO;
 import com.project.jr.main.DBUtil;
 
+/**
+ * 게시판 DAO
+ * @author eugene
+ *
+ */
 public class BoardDAO {
 	
 	
@@ -21,6 +26,9 @@ public class BoardDAO {
 	private PreparedStatement pstat;
 	private ResultSet rs;
 	
+	/**
+	 * 게시판 DAO 생성자
+	 */
 	public BoardDAO() {
 		this.conn = DBUtil.open();
 	}
@@ -387,6 +395,10 @@ try {
 		return null;
 	}
 	
+	/**
+	 * 관리자 메인 페이지 - 최신 공지사항 목록을 조회하는 메소드
+	 * @return
+	 */
 public ArrayList<NoticeBoardDTO> getRecentNoticeList() {
 		
 		try {
@@ -419,6 +431,10 @@ public ArrayList<NoticeBoardDTO> getRecentNoticeList() {
 		return null;
 	}
 
+	/**
+	 * 관리자 메인 페이지 - 최신 신고글을 조회하는 메소드
+	 * @return
+	 */
 	public ArrayList<BoardDTO> getRecentReportList() {
 		
 		try {
