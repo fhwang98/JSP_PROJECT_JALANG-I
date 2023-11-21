@@ -12,6 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.board.model.BoardDTO;
 import com.project.jr.board.repository.BoardDAO;
 
+
+/**
+ * 
+ * @author oseunghyeon
+  * MyQnaDetail 클래스는 마이페이지에서 내가 작성한 Q&A 글의 상세 내용을 조회하는 기능을 담당하는 서블릿
+ * 내가 작성한 Q&A 글 목록을 보여주고, 선택한 글의 상세 내용을 확인할 수 있
+ * 
+ * doGet 메서드:
+ * - 사용자의 Q&A 글 목록을 조회하고 화면에 출력
+ * - BoardDAO를 사용하여 데이터베이스에서 Q&A 글 목록을 가져온
+ */
 @WebServlet("")
 public class MyQnaDetail extends HttpServlet {
 

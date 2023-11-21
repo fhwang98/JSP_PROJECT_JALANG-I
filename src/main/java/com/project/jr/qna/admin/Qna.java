@@ -1,6 +1,7 @@
 package com.project.jr.qna.admin;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.jr.qna.model.QnaDTO;
 import com.project.jr.qna.repository.QnaDAO;
+
+/**
+ * 
+ * @author oseunghyeon
+ * FAQ 목록을 조회하는 메서드입니다.
+ *
+ */
 
 @WebServlet("/qna.do")
 public class Qna extends HttpServlet {

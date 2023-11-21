@@ -14,10 +14,23 @@ import javax.servlet.http.HttpSession;
 import com.project.jr.board.model.BoardDTO;
 import com.project.jr.board.repository.BoardDAO;
 
+
+
+/**
+ * 
+ * @author oseunghyeon
+ * 게시글 추가를 처리하는 서블릿 클래스
+ */
+
 @WebServlet("/board/add.do")
 
 public class Add extends HttpServlet{
 
+	
+    /**
+     * HTTP GET 요청을 처리하여 게시글 추가 폼으로 이동합니다.
+     */
+	
 @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -26,6 +39,10 @@ public class Add extends HttpServlet{
 	dispatcher.forward(req, resp);
 
 	}	
+
+/**
+ * HTTP POST 요청을 처리하여 게시글을 추가합니다.
+ */
 	
 @Override
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

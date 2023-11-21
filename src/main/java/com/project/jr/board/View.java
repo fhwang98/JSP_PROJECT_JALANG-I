@@ -15,8 +15,17 @@ import com.project.jr.board.repository.BoardDAO;
 
 @WebServlet("/board/view.do")
 
+/**
+ * 
+ * @author oseunghyeon
+ *
+ */
 public class View extends HttpServlet{
+	
 
+    /**
+     * HTTP GET 요청을 처리하여 게시글 상세 정보를 보여줍니다.
+     */
 @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -2,6 +2,15 @@ package com.project.jr.board.model;
 
 import lombok.Data;
 
+
+/**
+ * 
+ * @author oseunghyeon
+ 
+ * 게시글 정보를 담는 데이터 전송 객체 (DTO) 클래스
+ * Board 테이블의 각 컬럼에 대응되는 멤버 변수들을 가지고 있
+ */
+
 @Data
 public class BoardDTO {
 

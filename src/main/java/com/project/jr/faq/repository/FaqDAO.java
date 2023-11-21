@@ -10,6 +10,13 @@ import java.util.ArrayList;
 import com.project.jr.faq.model.FAQDTO;
 import com.project.jr.main.DBUtil;
 
+/**
+ * 
+ * @author oseunghyeon
+ *
+ * FAQ 데이터베이스 액세스 객체(DAO) 클래스입니다.
+ */
+
 public class FaqDAO {
 	
 	
@@ -20,13 +27,20 @@ public class FaqDAO {
 	private PreparedStatement pstat;
 	private ResultSet rs;
 	
+	 /**
+     * FaqDAO의 생성자입니다. 데이터베이스 연결을 수행
+     */
 	public FaqDAO() {
 		this.conn = DBUtil.open();
 	}
 	
 
 	
-
+	  /**
+     * FAQ 목록을 조회하는 메서드
+     * 
+     * @return FAQ 목록
+     */
 	public ArrayList<FAQDTO> getList() {
 		
 		

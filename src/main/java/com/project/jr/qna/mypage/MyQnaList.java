@@ -17,6 +17,18 @@ import com.project.jr.qna.repository.QnaDAO;
 
 @WebServlet("/qna/myqnalist.do")
 
+
+/**
+ * 
+ * @author oseunghyeon
+ * MyQnaList 클래스는 마이페이지에서 내가 작성한 Q&A 목록을 조회하는 기능을 담당하는 서블릿
+ * 내가 작성한 Q&A 글 목록을 화면에 출력
+ * 
+ * doGet 메서드:
+ * - 사용자의 ID를 통해 내가 작성한 Q&A 글 목록을 조회
+ * - QnaDAO를 사용하여 데이터베이스에서 내가 작성한 Q&A 글 목록을 가져온다.
+ * - 조회된 목록을 req에 저장하고, 화면으로 포워딩
+ */
 public class MyQnaList extends HttpServlet {
 
 	@Override

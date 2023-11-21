@@ -15,9 +15,20 @@ import javax.servlet.http.HttpSession;
 import com.project.jr.board.model.BoardDTO;
 import com.project.jr.board.repository.BoardDAO;
 
+
+/**
+ * @author oseunghyeon
+ /**
+ * 게시글 목록을 조회하고 페이징 처리를 위한 서블릿 클래스
+ */
 @WebServlet("/board/boardlist.do")
 public class BoardList extends HttpServlet {
 
+	
+	
+	/**
+     * HTTP GET 요청을 처리하여 게시글 목록을 조회하고 페이징 처리를 수행
+     */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

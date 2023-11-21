@@ -22,9 +22,14 @@ import com.project.jr.board.repository.BoardDAO;
 @WebServlet("/board/comment.do")
 public class Comment extends HttpServlet {
 
+	
+    /**
+     * HTTP GET 요청을 처리하여 댓글 목록을 조회하고 JSON 형식으로 반환
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    	
         //Comment.java
 
         //1. 데이터 가져오기(bseq)
@@ -70,7 +75,9 @@ public class Comment extends HttpServlet {
         writer.write(arr.toString());//댓글 목록
         writer.close();
     }
-
+    /**
+     * HTTP POST 요청을 처리하여 댓글을 작성
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

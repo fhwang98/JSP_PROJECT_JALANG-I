@@ -14,10 +14,18 @@ import com.project.jr.board.model.BoardDTO;
 import com.project.jr.board.repository.BoardDAO;
 
 	
+/**
+ * @author oseunghyeon
+ * 게시글 상세 정보를 조회하는 서블릿 클래
+ */
 	@WebServlet("/board/boarddetail.do")
 	
 	public class BoardDetail extends HttpServlet {
 
+		
+		  /**
+	     * HTTP GET 요청을 처리하여 게시글의 상세 정보를 조회합니다.
+	     */
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

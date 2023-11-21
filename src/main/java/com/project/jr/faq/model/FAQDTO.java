@@ -2,6 +2,15 @@ package com.project.jr.faq.model;
 
 import lombok.Data;
 
+
+/**
+ * 
+ * @author oseunghyeon
+ /**
+ * 자주 묻는 질문(FAQ) 정보를 담는 데이터 객체 클래스입니다.
+ * 
+ */
+
 @Data
 public class FAQDTO {
 	

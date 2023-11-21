@@ -13,7 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.faq.model.FAQDTO;
 import com.project.jr.faq.repository.FaqDAO;
 
-
+/**
+ * 
+ * @author oseunghyeon
+ * 자주 묻는 질문(FAQ) 목록을 조회하는 서블릿 클래스
+ * 이 서블릿은 "/faq.do" 경로로 매핑되어 있습니다.
+ * FAQ 목록을 조회하여 request 속성에 저장한 후 "/WEB-INF/views/faq/faq.jsp" 페이지로 포워딩합니다.
+ * 
+ 
+ */
 
 @WebServlet("/faq.do")
 public class Faq extends HttpServlet {

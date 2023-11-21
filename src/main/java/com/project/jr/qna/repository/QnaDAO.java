@@ -14,6 +14,17 @@ import com.project.jr.qna.model.QnaDTO;
  * @author eugene
  *
  */
+
+/**
+ * 
+ * @author oseunghyeon
+ * QnaDAO 클래스는 Q&A 데이터베이스와의 상호작용을 담당하는 DAO 클래스
+ * Q&A 글 목록 조회, 최신 문의글 조회, 내가 작성한 Q&A 목록 조회 등의 기능이 구현되어 있다.
+ * 
+ */
+
+
+
 public class QnaDAO {
 
 	
@@ -32,7 +43,11 @@ public class QnaDAO {
 		
 	}
 
-
+		   /**
+	     * Q&A 글 목록을 조회하는 메서드
+	     * 
+	     * @return Q&A 글 목록
+	     */
 
 		public ArrayList<QnaDTO> getList() {
 			
@@ -111,7 +126,10 @@ public ArrayList<QnaDTO> getRecentQna() {
 		
 		return null;
 	}
-
+/**
+ * 내가 작성한 Q&A 목록을 조회하는 메서드
+ * @return 내가 작성한 Q&A 목록
+ */
 		public ArrayList<QnaDTO> getMyQnaList(String id) {
 			try {
 

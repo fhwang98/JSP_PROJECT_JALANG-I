@@ -2,6 +2,15 @@ package com.project.jr.qna.model;
 
 import lombok.Data;
 
+
+
+/**
+ * 
+ * @author oseunghyeon
+ * QnaDTO 클래스는 Q&A 게시판의 데이터를 담는 모델 클래스
+ * 각 변수는 데이터베이스의 컬럼과 매칭되어 해당 게시글의 정보를 저장
+ * 
+ */
 @Data
 public class QnaDTO {
 	

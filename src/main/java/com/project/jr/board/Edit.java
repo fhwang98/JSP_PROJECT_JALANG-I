@@ -16,10 +16,18 @@ import com.project.jr.board.repository.BoardDAO;
 
 
 
-	
+	/**
+	 * 
+	 * @author oseunghyeon
+	 *
+	 */
 	@WebServlet("/board/edit.do")
 	public class Edit extends HttpServlet {
 
+		/**
+	     * HTTP GET 요청을 처리하여 수정 폼을 보여준다.
+	     */
+		
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -50,7 +58,9 @@ import com.project.jr.board.repository.BoardDAO;
 			dispatcher.forward(req, resp);
 		}
 		
-		
+		   /**
+	     * HTTP POST 요청을 처리하여 게시글을 수정
+	     */
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			

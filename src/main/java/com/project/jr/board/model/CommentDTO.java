@@ -1,5 +1,10 @@
 package com.project.jr.board.model;
 
+/**
+ * 
+ * @author oseunghyeon
+ * 댓글 정보를 담는 데이터 전송 객체 (DTO) 클래스입니다.
+ */
 public class CommentDTO {
 	
 	private int commentSeq;

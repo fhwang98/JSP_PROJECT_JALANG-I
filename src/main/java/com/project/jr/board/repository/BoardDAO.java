@@ -17,6 +17,12 @@ import com.project.jr.main.DBUtil;
  * @author eugene
  *
  */
+
+/**
+ * 
+ * @author oseunghyeon
+ *
+ */
 public class BoardDAO {
 	
 	
@@ -33,8 +39,11 @@ public class BoardDAO {
 		this.conn = DBUtil.open();
 	}
 	
-	
-
+	/**
+     * 게시판 목록을 조회하는 메서드입니다.
+     *
+     * @return 게시판 목록
+     */
 	public BoardDTO getBoard() {
 
 		try {
@@ -75,7 +84,11 @@ public class BoardDAO {
 		return null;
 	}
 
-
+	/**
+     * 게시판 목록을 조회하는 메서드입니다.
+     *
+     * @return 게시판 목록
+     */
 
 	public ArrayList<BoardDTO> getList() {
 
@@ -116,7 +129,10 @@ public class BoardDAO {
 		return null;
 	}
 
-
+	 /**
+     * 게시글 상세 정보를 조회하는 메서드입니다.
+     * @return 조회된 게시글의 상세 정보
+     */
 
 	public BoardDTO getDetail(String boardSeq) {
 
@@ -153,7 +169,10 @@ public class BoardDAO {
 	}
 
 
-
+	/**
+	 * 게시글을 추가하는 메서드입니다.
+	 * @return 데이터베이스에 추가된 행의 수
+	 */
 	public int add(BoardDTO dto) {
 		
 		//queryParamNoReturn
@@ -179,7 +198,10 @@ public class BoardDAO {
 		return 0;
 	}
 
-
+	/**
+	 * 게시글 수정을 위한 메서드입니다.
+	 * @return 데이터베이스에 수정된 행의 수
+	 */
 
 	public BoardDTO getEdit(String id) {
 		
@@ -220,7 +242,12 @@ public class BoardDAO {
 	}
 
 
-
+	/**
+	 * 게시글 수정을 위한 메서드입니다.
+	 *
+	 * @param dto 수정할 게시글의 정보가 담긴 BoardDTO 객체
+	 * @return 데이터베이스에 수정된 행의 수
+	 */
 	public int editResult(BoardDTO dto) {
 		
 
@@ -246,7 +273,10 @@ public class BoardDAO {
 	}
 
 
-
+	/**
+	 * 전체 게시글 수를 조회하는 메서드.
+	 * @return 전체 게시글 수
+	 */
 	public void updateReadcount(String boardSeq) {
 
 		
@@ -265,6 +295,11 @@ public class BoardDAO {
 	}
 
 
+/**
+ *게시판 조회 하는 메서드
+ * @param boardSeq
+ * @return
+ */
 
 	public BoardDTO get(String boardSeq) {
 	
@@ -293,6 +328,12 @@ public class BoardDAO {
 	}
 	
 	
+	/**
+	 * 전체 게시글 수를 조회하는 메서드.
+	 *
+	 * @return 전체 게시글 수
+	 */
+	
 	public int getTotalCount() {
 	      
 	      try {
@@ -317,7 +358,12 @@ public class BoardDAO {
 	   }
 
 
-
+	/**
+	 * 페이징 처리를 위한 메서드.
+	 *
+	 * @param map 페이지 정보가 담긴 HashMap 객체
+	 * @return 페이징 처리된 게시글 목록
+	 */
 	public ArrayList<BoardDTO> getList(HashMap<String, String> map) {
 		
 try {
@@ -355,7 +401,12 @@ try {
 		return null;
 	}
 
-
+	/**
+	 * 댓글 목록을 조회하는 메서드.
+	 *
+	 * @param boardSeq 조회할 게시글의 일련번호
+	 * @return 댓글 목록
+	 */
 
 	public ArrayList<CommentDTO> listComment(int boardSeq) {
 	
