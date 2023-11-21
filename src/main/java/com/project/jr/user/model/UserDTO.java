@@ -6,7 +6,8 @@ import lombok.ToString;
 /**
  * 회원 정보 DTO
  * @author eugene
- *
+ * @author hyunbin
+ * 
  */
 @ToString
 @Data

@@ -12,7 +12,8 @@ import com.project.jr.user.model.UserDTO;
 /**
  * 회원 DAO
  * @author eugene
- *
+ * @author hyunbin
+ * 
  */
 public class UserDAO {
 
@@ -69,12 +70,14 @@ public class UserDAO {
 		return null;
 	}
 	
-	
-	//회원가입
+	/**
+	 * 회원가입 메소드
+	 * Method to sign up a new user.
+	 * 
+	 * @param uDto UserDTO object containing user information.
+	 * @return Result of the database operation (1 if successful, 0 if not).
+	 */
 	public int signup(UserDTO uDto) {
-		//queryParamNoReturn
-		//매개변수(O),반환값(X)
-		
 		try {
 			String sql = "Insert into tblUserInfo(id,pw,name,birthDate,sex,eMail,phoneNum,joinDate,userStatus) values (?,?,?,?,?,?,?,to_date(sysdate, 'RR/MM/DD'),1)";
 			pstat = conn.prepareStatement(sql);
@@ -94,8 +97,13 @@ public class UserDAO {
 		return 0;
 	}
 
-	
-	//로그인 
+	/**
+	 * 로그인 메소드
+	 * Method to handle user login.
+	 * 
+	 * @param dto UserDTO object containing login credentials.
+	 * @return UserDTO object with user information if login is successful, null otherwise.
+	 */
 	public UserDTO login(UserDTO dto) {
 		
 		try {
@@ -131,8 +139,13 @@ public class UserDAO {
 		return null;
 	}
 	
-	
-	//회원탈퇴
+	/**
+	 * 회원탈퇴 메소드
+	 * Method to unregister a user.
+	 * 
+	 * @param id User ID to be unregistered.
+	 * @return Result of the database operation (1 if successful, 0 if not).
+	 */
 	public int unregister(String id) {
 		try {
 
@@ -150,12 +163,14 @@ public class UserDAO {
 		return 0;
 	}
 
-
-	//아이디찾기 
+	/**
+	 * 아이디찾기 메소드
+	 * Method to find user ID.
+	 * 
+	 * @param uDto UserDTO object containing information for finding the ID.
+	 * @return Result of the database operation (1 if successful, 0 if not).
+	 */
 	public int finduserid(UserDTO uDto) {
-		//queryParamNoReturn
-		//매개변수(O),반환값(X)
-		
 		try {
 			String sql = "select id from tblUserInfo where name = ? and phoneNum = ?";
 			
@@ -171,8 +186,13 @@ public class UserDAO {
 		return 0;
 	}
 	
-	
-	//아이디 중복체크
+	/**
+	 * 아이디 중복체크 메소드
+	 * Method to check if a user ID is already in use.
+	 * 
+	 * @param id User ID to be checked.
+	 * @return Result of the database operation (1 if ID is already in use, 0 if not).
+	 */
 	public int check(String id) {
 		
 	    try {
@@ -196,8 +216,13 @@ public class UserDAO {
 	    return 0;
 	}
 
-	
-	//아이디 찾기
+	/**
+	 * 아이디 찾기 메소드
+	 * Method to find user ID.
+	 * 
+	 * @param uDto UserDTO object containing information for finding the ID.
+	 * @return UserDTO object with user information if found, null otherwise.
+	 */
 	public UserDTO findId(UserDTO uDto) {
 		try {
 
@@ -208,7 +233,6 @@ public class UserDAO {
             pstat.setString(2, uDto.getPhoneNum());
 
             rs = pstat.executeQuery();
-
 
             if (rs.next()) {
                 UserDTO result = new UserDTO();
@@ -226,16 +250,15 @@ public class UserDAO {
         return null;
 
 	}
-	
-	
-	//비밀번호 찾기
+
+	/**
+	 * 비밀번호 찾기 메소드
+	 * Method to find user password.
+	 * 
+	 * @param uDto UserDTO object containing information for finding the password.
+	 * @return UserDTO object with user information if found, null otherwise.
+	 */
 	public UserDTO findPassword(UserDTO uDto) {
-		System.out.println(uDto.getName());
-		System.out.println(uDto.getId());
-		System.out.println(uDto.getPhoneNum());
-		System.out.println(uDto.getEMail());
-		
-		
 		try {
 
             String sql = "select * from tblUserInfo where name = ? and id = ? and phoneNum = ? and eMail = ?";
@@ -267,8 +290,13 @@ public class UserDAO {
 
 	}
 
-	
-	//비밀번호 변경
+	/**
+	 * 비밀번호 변경 메소드
+	 * Method to change user password.
+	 * 
+	 * @param uDto UserDTO object containing information for changing the password.
+	 * @return UserDTO object with updated user information if successful, null otherwise.
+	 */
 	public UserDTO changePw(UserDTO uDto) {
         try {
 
@@ -283,7 +311,7 @@ public class UserDAO {
             if (result == 1) {
                 return uDto;
             }
-            //실패할 경우 처리 추가
+            // 실패할 경우 처리 추가
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -292,12 +320,16 @@ public class UserDAO {
 
     }
 
-
+	/**
+	 * 비밀번호 변경 메소드
+	 * Method to change user password.
+	 * 
+	 * @param id User ID for whom the password needs to be changed.
+	 * @param pw New password.
+	 * @return Result of the database operation (1 if successful, 0 if not).
+	 */
 	public int changePw(String id, String pw) {
 
-		//queryParamNoReturn
-		//매개변수(O),반환값(X)
-		
 		try {
 			String sql = "update tblUserInfo set pw = ? where id = ?";
 			
@@ -314,7 +346,4 @@ public class UserDAO {
 		
 	}
 
-	
-
-	
 }

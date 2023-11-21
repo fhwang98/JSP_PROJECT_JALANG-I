@@ -12,6 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.user.model.UserDTO;
 import com.project.jr.user.repository.UserDAO;
 
+/**
+ * 비밀번호 변경을 처리하는 서블릿입니다.
+ * 
+ * Servlet implementation class ChangePassword
+ * This servlet handles password changes.
+ * 
+ * @author hyunbin
+ */
 @WebServlet("/user/changepassword.do")
 public class ChangePassword extends HttpServlet {
 
@@ -86,4 +94,3 @@ public class ChangePassword extends HttpServlet {
 	}
 
 }
-
