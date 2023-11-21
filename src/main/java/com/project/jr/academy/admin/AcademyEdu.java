@@ -19,44 +19,48 @@ import com.project.jr.academy.repository.AcademyDAO;
 @WebServlet("/academy/admin/academyedu.do")
 public class AcademyEdu extends HttpServlet {
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    /**
+     * HTTP GET 요청에 대한 처리를 담당하는 메서드입니다.
+     * @param req HttpServletRequest 객체
+     * @param resp HttpServletResponse 객체
+     * @throws ServletException 서블릿 예외
+     * @throws IOException IO 예외
+     * @author 이슬아
+     */
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//AcademyEdu.java
-		String seq = req.getParameter("seq");
-		AcademyDAO dao = new AcademyDAO();
-		ArrayList<AcademyEduDTO> edulist = dao.getEduList(seq);
-		
-		JSONArray arr = new JSONArray();
-		
-		for (AcademyEduDTO edu : edulist) {
-			edu.setEduRcStartDate(edu.getEduRcStartDate().substring(0, 10));
-			edu.setEduRcEndDate(edu.getEduRcEndDate().substring(0, 10));
-			edu.setEduStartDate(edu.getEduStartDate().substring(0, 10));
-			edu.setEduEndDate(edu.getEduEndDate().substring(0, 10));
-			
-			
-			JSONObject obj = new JSONObject();
-			
-			obj.put("eduName", edu.getEduName());
-			obj.put("crtName", edu.getCrtName());
-			obj.put("eduLink", edu.getEduLink());
-			obj.put("eduRcStartDate", edu.getEduRcStartDate());
-			obj.put("eduRcEndDate", edu.getEduRcEndDate());
-			obj.put("eduStartDate", edu.getEduStartDate());
-			obj.put("eduEndDate", edu.getEduEndDate());
-			
-			arr.add(obj);
-			
-		}
-		
-		
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		
-		PrintWriter writer = resp.getWriter();
-		writer.write(arr.toString());
-		writer.close();
+        // AcademyEdu.java
+        String seq = req.getParameter("seq");
+        AcademyDAO dao = new AcademyDAO();
+        ArrayList<AcademyEduDTO> edulist = dao.getEduList(seq);
 
-	}
+        JSONArray arr = new JSONArray();
+
+        for (AcademyEduDTO edu : edulist) {
+            edu.setEduRcStartDate(edu.getEduRcStartDate().substring(0, 10));
+            edu.setEduRcEndDate(edu.getEduRcEndDate().substring(0, 10));
+            edu.setEduStartDate(edu.getEduStartDate().substring(0, 10));
+            edu.setEduEndDate(edu.getEduEndDate().substring(0, 10));
+
+            JSONObject obj = new JSONObject();
+
+            obj.put("eduName", edu.getEduName());
+            obj.put("crtName", edu.getCrtName());
+            obj.put("eduLink", edu.getEduLink());
+            obj.put("eduRcStartDate", edu.getEduRcStartDate());
+            obj.put("eduRcEndDate", edu.getEduRcEndDate());
+            obj.put("eduStartDate", edu.getEduStartDate());
+            obj.put("eduEndDate", edu.getEduEndDate());
+
+            arr.add(obj);
+        }
+
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+
+        PrintWriter writer = resp.getWriter();
+        writer.write(arr.toString());
+        writer.close();
+    }
 }
