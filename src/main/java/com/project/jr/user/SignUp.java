@@ -13,9 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.jr.user.model.UserDTO;
 import com.project.jr.user.repository.UserDAO;
 
+/**
+ * 사용자 회원가입을 처리하는 서블릿입니다.
+ * 
+ * Servlet implementation class SignUp
+ * This servlet handles user signup.
+ * 
+ * @author hyunbin
+ */
 @WebServlet("/user/signup.do")
 public class SignUp extends HttpServlet {
 
+	/**
+	 * 사용자 회원가입 페이지로의 GET 요청을 처리합니다.
+	 * 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -24,9 +37,14 @@ public class SignUp extends HttpServlet {
 
 	}
 	
+	/**
+	 * 사용자 회원가입을 POST 요청으로 처리합니다.
+	 * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//id pw name birthDate sex eMail phoneNum joinDate userStatus 
+		// id pw name birthDate sex eMail phoneNum joinDate userStatus 
 		try {
 			String id = req.getParameter("id");
 			String pw = req.getParameter("pw");
@@ -41,8 +59,8 @@ public class SignUp extends HttpServlet {
 			String joinDate = req.getParameter("joinDate");
 			String userStatus = req.getParameter("userStatus");
 			
-			UserDAO uDao=new UserDAO();
-			UserDTO uDto=new UserDTO();
+			UserDAO uDao = new UserDAO();
+			UserDTO uDto = new UserDTO();
 			uDto.setId(id);
 			uDto.setPw(pw);
 			uDto.setName(name);
@@ -53,19 +71,19 @@ public class SignUp extends HttpServlet {
 			uDto.setJoinDate(joinDate);
 			uDto.setUserStatus(2);
 			
-			//UserDTO userResult = uDao.signup(uDto);
+			// UserDTO userResult = uDao.signup(uDto);
 			
 			int result = uDao.signup(uDto);
 			
-			if(result == 1) {
+			if (result == 1) {
 				resp.sendRedirect("/jr/index.do");
 			}
 			
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		//0또는 에러 
+		// 0또는 에러 
 		PrintWriter writer = resp.getWriter();
 		writer.print("<script>alert('failed');history.back();</script>");
 		writer.close();
