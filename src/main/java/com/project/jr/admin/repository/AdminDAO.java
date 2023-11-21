@@ -8,6 +8,11 @@ import java.sql.Statement;
 import com.project.jr.admin.model.AdminDTO;
 import com.project.jr.main.DBUtil;
 
+/**
+ * 관리자 DAO
+ * @author eugene
+ *
+ */
 public class AdminDAO {
 
 	private Connection conn;
@@ -15,10 +20,18 @@ public class AdminDAO {
 	private PreparedStatement pstat;
 	private ResultSet rs;
 	
+	/**
+	 * 관리자 DAO 생성자
+	 */
 	public AdminDAO() {
 		this.conn = DBUtil.open();
 	}
 
+	/**
+	 * 아이디와 비밀번호를 인자로 받아 해당되는 관리자 정보를 반환하는 메소드
+	 * @param dto
+	 * @return
+	 */
 	public AdminDTO login(AdminDTO dto) {
 		try {
 			

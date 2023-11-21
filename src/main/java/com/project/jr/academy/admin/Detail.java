@@ -19,6 +19,9 @@ import com.project.jr.academy.repository.AcademyDAO;
 @WebServlet("/academy/admin/detail.do")
 public class Detail extends HttpServlet {
 
+	/**
+	 * 관리자 학원 상세 정보 페이지 doGet
+	 */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

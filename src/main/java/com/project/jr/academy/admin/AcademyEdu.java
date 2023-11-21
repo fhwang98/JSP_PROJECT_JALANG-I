@@ -16,6 +16,11 @@ import org.json.simple.JSONObject;
 import com.project.jr.academy.model.AcademyEduDTO;
 import com.project.jr.academy.repository.AcademyDAO;
 
+/**
+ * 관리자 학원 상세 페이지 - 학원 교육 목록 조회 요청을 받는 서블릿
+ * @author eugene
+ *
+ */
 @WebServlet("/academy/admin/academyedu.do")
 public class AcademyEdu extends HttpServlet {
 

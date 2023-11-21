@@ -82,11 +82,11 @@ public class AcademyDAO {
         return null;
     }
 
-    /**
-     * 전체 학원 수를 가져오는 메서드입니다.
-     *
-     * @return 전체 학원 수
-     */
+	/**
+	 * 관리자 학원 관리 페이지 - 검색 여부 map을 인자로 받아 전체 학원 수를 반환하는 메소드 
+	 * @param map
+	 * @return
+	 */
     public int getTotalCount() {
 
         try {
@@ -109,10 +109,9 @@ public class AcademyDAO {
     }
 
     /**
-     * 학원 상세 정보를 가져오는 메서드입니다.
-     *
-     * @param seq 학원 일련번호
-     * @return 학원 상세 정보를 담은 AcademyDTO 객체
+     * 관리자 학원 관리 페이지 - seq를 인자로 받아 해당 번호의 학원 정보를 반환하는 메소드
+     * @param seq
+     * @return
      */
     public AcademyDTO get(String seq) {
         try {
@@ -226,7 +225,11 @@ public class AcademyDAO {
         return 0;
     }
 	
-	
+	/**
+	 * 관리자 학원 관리 페이지 - 검색 여부 map을 인자로 받아 학원 목록을 반환하는 메소드
+	 * @param map
+	 * @return
+	 */
 	public ArrayList<AcademyDTO> getAdminList(HashMap<String, String> map) {
 
 		try {

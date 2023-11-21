@@ -16,6 +16,11 @@ import javax.servlet.http.HttpSession;
 import com.project.jr.academy.model.AcademyDTO;
 import com.project.jr.academy.repository.AcademyDAO;
 
+/**
+ * 학원 목록 조회 페이지 서블릿 
+ * @author eugene
+ *
+ */
 @WebServlet("/academy/academylist.do")
 public class Academy extends HttpServlet {
 

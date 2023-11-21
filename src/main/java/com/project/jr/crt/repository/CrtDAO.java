@@ -30,6 +30,9 @@ public class CrtDAO {
 	private PreparedStatement pstat;
 	private ResultSet rs;
 	
+	/**
+	 * 자격증 DAO 생성자
+	 */
 	public CrtDAO() {
 		this.conn = DBUtil.open();
 	}
@@ -842,6 +845,11 @@ public class CrtDAO {
 		return null;
 	}
 
+	/**
+	 * 사용자의 id를 인자로 받아 나의 자격증 개수를 반환하는 메소드
+	 * @param id
+	 * @return
+	 */
 	public int getCount(String id) {
 
 		try {
