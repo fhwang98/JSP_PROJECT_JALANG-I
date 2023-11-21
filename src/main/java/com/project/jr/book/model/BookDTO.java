@@ -2,35 +2,32 @@ package com.project.jr.book.model;
 
 import lombok.Data;
 
+/**
+ * 도서 정보를 담는 DTO 클래스
+ *  * @author 이슬아
+ */
+
 @Data
 public class BookDTO {
 
-	private int bookseq;
-	private String bookname;
-	private String publisher;
-	private int price;
-	private String pbDate;
-	private String author;
-	private int bookLike;
-	private int lv;
-	private String bookImg;
-	
-	private int indexSeq;
-	private int listNum;
-	private String list;
-	private int titleStep;
-	
-	private int crtSeq;
-	private String crtName;
-	
-	
-	
-	private String lvS;
-	
-	/*
-	 * CREATE TABLE tblBook ( bookSeq NUMBER PRIMARY KEY, 교재 번호 bookName
-	 * VARCHAR2(200), 교재명 publisher VARCHAR2(100), 출판사 price NUMBER, 가격 pbDate
-	 * VARCHAR2(40), 출판일 author VARCHAR2(50), 저자 bookLike NUMBER, 좋아요수 lv NUMBER,
-	 * 난이도 bookImg VARCHAR2(500) 교재이미지 );
-	 */
+    private int bookseq;
+    private String bookname;
+    private String publisher;
+    private int price;
+    private String pbDate;
+    private String author;
+    private int bookLike;
+    private int lv;
+    private String bookImg;
+
+    private int indexSeq;
+    private int listNum;
+    private String list;
+    private int titleStep;
+
+    private int crtSeq;
+    private String crtName;
+
+    private String lvS;
+
 }
