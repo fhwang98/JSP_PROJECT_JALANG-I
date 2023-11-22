@@ -1,5 +1,9 @@
 package com.project.jr.crt.model;
 
+/**
+ * 자격증 정보를 담는 데이터 전송 객체(DTO) 클래스입니다.
+ * @author 이도훈
+ */
 public class CrtAdminDTO {
 
 			private String crtSeq; /* 자격증 번호 */

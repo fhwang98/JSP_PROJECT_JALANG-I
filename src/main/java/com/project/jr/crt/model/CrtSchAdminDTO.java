@@ -2,6 +2,10 @@ package com.project.jr.crt.model;
 
 import lombok.Data;
 
+/**
+ * 자격증 일정를 담는 데이터 전송 객체(DTO) 클래스입니다.
+ * @author 이도훈
+ */
 @Data
 public class CrtSchAdminDTO {
 
