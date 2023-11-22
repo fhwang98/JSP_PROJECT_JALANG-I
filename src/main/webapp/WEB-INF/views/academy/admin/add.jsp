@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +40,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-<style>
+  <style>
 
   table {
   border-collapse: collapse;
@@ -47,6 +48,7 @@
 }
 section.notice {
   padding: 0;
+  margin-bottom: 80px;
 }
 
 .page-title {
@@ -59,37 +61,31 @@ section.notice {
   text-align: center;
 }
 
-#middlebar .search-window {
+#board-search .search-window {
   padding: 15px 0;
-  background-color: #F3F6FC;
+  background-color: #f9f7f9;
   border-top: 1px solid #101D34;
 }
-#middlebar .search-window .search-wrap {
+#board-search .search-window .search-wrap {
   position: relative;
 /*   padding-right: 124px; */
   margin: 0 auto;
   width: 80%;
   max-width: 564px;
 }
-#middlebar .search-window .search-wrap select {
+#board-search .search-window .search-wrap input {
   height: 40px;
+  width: 100%;
   font-size: 14px;
   padding: 7px 14px;
   border: 1px solid #101D34;
 }
-#middlebar .search-window .search-wrap input {
-  height: 40px;
-  width: 80%;
-  font-size: 14px;
-  padding: 7px 14px;
-  border: 1px solid #101D34;
-}
-#middlebar .search-window .search-wrap input:focus {
+#board-search .search-window .search-wrap input:focus {
   border-color: #333;
   outline: 0;
   border-width: 1px;
 }
-#middlebar .search-window .search-wrap .btn {
+#board-search .search-window .search-wrap .btn {
   position: absolute;
   right: 0;
   top: 0;
@@ -103,7 +99,6 @@ section.notice {
   font-size: 13px;
   width: 100%;
   border-top: 1px solid #101D34;
-  border-bottom: 1px solid #101D34;
 }
 
 .board-table a {
@@ -118,6 +113,14 @@ section.notice {
 }
 .board-table th {
   text-align: center;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.board-table td {
+  text-align: center;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 .board-table .th-num {
@@ -133,7 +136,7 @@ section.notice {
   width: 139px;
 }
 
-.board-table .th-decacccount {
+.board-table .th-reports {
   width: 139px;
 }
 
@@ -151,14 +154,25 @@ section.notice {
 } 
 
 .board-table tbody th {
-  padding-left: 28px;
-  padding-right: 14px;
+  /* padding-left: 28px;
+  padding-right: 14px; */
   border-top: 1px solid #e7e7e7;
   text-align: left;
 }
 
 .board-table tbody th p{
   display: none;
+}
+
+.board-table tbody th {
+   text-align: left;
+   background-color: #F3F6FC;
+   padding: 10;
+   width: 200px;
+}
+
+body > div.breadcrumbs > div > div > div > div > h2 {
+   width: 100%;
 }
 
 .btn {
@@ -217,6 +231,7 @@ section.notice {
 .container {
   width: 1100px;
   margin: 0 auto;
+  width: 900px;
 }
 .blind {
   position: absolute;
@@ -227,21 +242,29 @@ section.notice {
   height: 1px;
 }
 
+#board-list > div > table > tbody > tr > th {
+   text-align: center;
+}
 
-  
-  
-  
-  	#pagebar {
-		text-align: center;
-		margin: 20px 0;
-		
-	}
-  	#pagebar > a {
-color: #555;		
-	}
-	
-	
-	#btnadd {
+#board-list > div > table > tbody > tr:nth-child(8) > td {
+   text-align: center;
+}
+
+#board-list > div > table > tbody > tr:nth-child(9) > td {
+   text-align: center;
+}
+
+#board-list > div > table > tbody > tr:nth-child(10) > td {
+   text-align: center;
+}
+
+#board-list > div > table > tbody > tr:nth-child(12) > td {
+   text-align: left;
+}
+
+
+
+.button-79 {
   backface-visibility: hidden;
   background: #0D42FF;
   border: 0;
@@ -249,11 +272,14 @@ color: #555;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
+  display: inline-block;
   font-family: Circular,Helvetica,sans-serif;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -.01em;
   line-height: 1.3;
+  /* padding: 1rem 1.25rem; */
+  position: relative;
   text-align: center;
   text-decoration: none;
   transform: translateZ(0) scale(1);
@@ -263,31 +289,81 @@ color: #555;
   touch-action: manipulation;
   width: 80px;
   height: 30px;
+  margin-left: 785px;
+  margin-top: 10px;
+  margin: 0 3px;
   
  }
-  #btnadd {
-  	display: inline-block;
-  	float: right;
-  	margin: 10px 50px;
-  
-  }
+
+
+.button-79:disabled {
+  color: #787878;
+  cursor: auto;
+}
+
+.button-79:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-79:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(.125rem);
+}
+
+.button-79:focus {
+  outline: 0 solid transparent;
+}
+
+.button-79:focus:before {
+  border-width: .125rem;
+  content: "";
+  left: calc(-1*.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1*.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-79:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-79:not(:disabled):active {
+  transform: translateY(.125rem);
+}
+
+.button-group {
+    margin-top: 10px; /* 버튼 그룹과 표 간의 간격 조정 */
+    text-align: right;
+}
+
+
+.edu {
+	border-left: 1px solid #e7e7e7;
+	border-right: 1px solid #e7e7e7;
+	width:95%;
+	margin-bottom:20px;
+	margin-left:10px;
+}
+.edu >tbody > tr > th {
+	text-align: center;
+	width: 150px;
+}
+
+
   
   </style>
   
   <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
-</head>
+  </head>
 
-<body>
+  <body>
 
   <%@ include file="/WEB-INF/views/inc/header.jsp" %>
 
-
-  
   <!-- main -->
 
- 
-
-  <main id="main">
+  <main id="main"></main>
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" id=middlebar>
@@ -305,71 +381,63 @@ color: #555;
         <div class="container">
           <ol>
             <li><a href="index.html">관리 메뉴</a></li>
-            <li>학원 관리</li>
+            <li><a href="/jr/academy/admin/list.do">학원 관리</a></li>
+            <li>상세페이지</li>
           </ol>
-          <div class="search-window">
-                <form method="GET' action="/jr/academy/admin/list.do">
-                    <div class="search-wrap">
-							<select name="column">
-								<option value="academyName">이름</option>
-								<option value="academyLocation">위치</option>
-								<option value="academyTel">전화번호</option>
-							</select>
-							<input id="search" type="text" name="word" placeholder="검색어를 입력해주세요." required>
-                        <button type="submit" class="btn btn-dark">검색</button>
-                    </div>
-                </form>
-            </div>
         </div>
       </nav>
     </div><!-- End Breadcrumbs -->
 
    
 <section class="notice">
-
-   
-   
-  <!-- board list area -->
-    <div id="board-list">
+  <div class="page-title">
         <div class="container">
-   		<input id="btnadd" type="button" value="추가" onclick="location.href='/jr/academy/admin/add.do'">
-            <table class="board-table">
-                <thead>
-                <tr>
-                    <th scope="col" class="th-num">번호</th>
-                    <th scope="col" class="th-username">이름</th>
-                    <th scope="col" class="th-id">위치</th>
-                    <th scope="col" class="th-startdate">전화번호</th>                                     
-                    <th scope="col" class="th-decacccount">별점</th>                                     
-                </tr>
-                </thead>
-            <tbody>
-                  <c:forEach items="${list}" var="dto" varStatus="status">
-                    <tr>
-                       <td>${status.count}</td>
-                        <td><a href="/jr/academy/admin/detail.do?seq=${dto.academySeq}">${dto.academyName}</td> <!-- 회원명 -->
-                        <td>${dto.academyLocation}</td> 
-                        <td>${dto.academyTel}</td> 
-                        <td>${dto.academyStar}</td> 
-                    </tr>
-                </c:forEach>
-                
-                <c:if test="${totalCount == 0 }">
-                	<tr><td colspan="5">검색 결과가 없습니다.</td></tr>
-                </c:if>
-                
-            </tbody>
-            </table>
         </div>
     </div>
-    
 
+    <!-- board seach area -->
+    <div id="board-search">
+        <div class="container">
+                <form action="">
+                </form>
+        </div>
+    </div>
+  <!-- board list area -->
+  	<form method="POST" action="/jr/academy/admin/add.do">
+  
+    <div id="board-list">
+        <div class="container">
+        	
+            <table class="board-table">
+            <tbody>        
+             <tr>
+                  <th>기관명 </th>
+                  <td><input type="text" name="academyName" required></td>
+               </tr>
+             <tr>
+                  <th>위치</th>
+                  <td><input type="text" name="academyLocation" required></td>
+               </tr>
+               <tr>
+                  <th>전화번호</th>
+                  <td><input type="text" name="academyTel" required></td>
+               </tr>
+            </tbody>
+            </table>
+                        
+	         <div class="button-group">
+	         <button class="button-79" type="submit">추가</button>
+	         </div>
+         
+         </div>
+        </div>
+        
+        </form>
+        
+    </div>
 </section>
 
-
-<div id="pagebar">${ pageBar }</div>  
   
-
   <!-- /main -->
 
   <!-- ======= Footer ======= -->
@@ -380,11 +448,10 @@ color: #555;
 
   <div id="preloader"></div>
   
-  <%@ include file="/WEB-INF/views/inc/ad.jsp" %>
-  <%@ include file="/WEB-INF/views/inc/side.jsp" %>
 
   <Script>
-  
+
+
   
   </Script>
 
