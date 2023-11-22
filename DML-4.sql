@@ -3243,7 +3243,6 @@ INSERT INTO tblcomment(commentSeq,boardSeq,id,commentContent, commentWDate, comm
 
 
 /* 게시물 좋아요 */
-boardlike3.sql
 INSERT INTO TBLBOARDLIKE (BOARDLIKESEQ, BOARDSEQ, ID) 
 VALUES (1, 75, 'yNzHcJwX');
 INSERT INTO TBLBOARDLIKE (BOARDLIKESEQ, BOARDSEQ, ID) 
@@ -4889,7 +4888,7 @@ Insert into TBLREPORTCTG (REPORTCTGSEQ,REPORTTYPE) values (reportctgSeq.nextVal,
 Insert into TBLREPORTCTG (REPORTCTGSEQ,REPORTTYPE) values (reportctgSeq.nextVal,'성희롱');
 Insert into TBLREPORTCTG (REPORTCTGSEQ,REPORTTYPE) values (reportctgSeq.nextVal,'스팸');
 
-select * from tblboard;
+
 /* 신고게시판 */
 Insert into TBLREPORTBOARD (REPORTBOARDSEQ,BOARDSEQ,ID,REPORTCTGSEQ) values (reportboardSeq.nextVal,3,'sNzPdJwQ',1);
 Insert into TBLREPORTBOARD (REPORTBOARDSEQ,BOARDSEQ,ID,REPORTCTGSEQ) values (reportboardSeq.nextVal,8,'oUzKvRc',4);
