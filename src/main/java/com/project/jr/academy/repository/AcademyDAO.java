@@ -272,6 +272,116 @@ public class AcademyDAO {
 
 		return null;
 	}
+
+	/**
+	 * 관리자 학원 관리 페이지 - 학원을 DB에 추가하는 메소드
+	 * @param dto 
+	 * @return
+	 */
+	public int addAcademy(AcademyDTO dto) {
+		
+		try {
+			String sql = "INSERT INTO tblacademy (academyseq, academyname, academylocation, academytel, academystar) VALUES ((SELECT max(academyseq) FROM tblacademy) + 1 , ?, ?, ?, ?)";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getAcademyName());
+			pstat.setString(2, dto.getAcademyLocation());
+			pstat.setString(3, dto.getAcademyTel());
+			pstat.setInt(4, dto.getAcademyStar());
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("AcademyDAO.addAcademy()");
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+
+	/**
+	 * 관리자 학원 관리 페이지 - 마지막 학원 seq를 반환하는 메소드
+	 * @return
+	 */
+	public String getLastSeq() {
+		
+		try {
+
+			String sql = "SELECT max(academyseq) AS seq FROM tblacademy";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			if (rs.next()) {
+				return rs.getString("seq");
+			}
+
+		} catch (Exception e) {
+			System.out.println("AcademyDAO.getLastSeq()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	/**
+	 * 관리자 학원 페이지 - 학원 정보를 삭제하는 메소드
+	 * @param seq
+	 * @return
+	 */
+	public int delAcademy(String seq) {
+		
+		try {
+			//academySeq가 seq인 academyEdu들을 먼저 삭제
+			String sql = "DELETE FROM tblAcademyEdu WHERE academySeq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			pstat.executeUpdate();
+
+			//삭제 후 academy 삭제
+			sql = "DELETE FROM tblAcademy WHERE academySeq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("AcademyDAO.delAcademy()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	/**
+	 * 관리자 학원 관리 페이지 - 학원 정보를 수정하는 메소드
+	 * @param dto
+	 * @return
+	 */
+	public int editAcademy(AcademyDTO dto) {
+		
+		try {
+			String sql = "UPDATE tblAcademy SET academyName = ? , academyLocation = ?, academyTel = ?, academyStar = ? WHERE academySeq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getAcademyName());
+			pstat.setString(2, dto.getAcademyLocation());
+			pstat.setString(3, dto.getAcademyTel());
+			pstat.setInt(4, dto.getAcademyStar());
+			pstat.setInt(5, dto.getAcademySeq());
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("AcademyDAO.editAcademy()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
 
    

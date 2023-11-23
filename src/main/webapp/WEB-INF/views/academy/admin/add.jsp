@@ -412,15 +412,21 @@ body > div.breadcrumbs > div > div > div > div > h2 {
             <tbody>        
              <tr>
                   <th>기관명 </th>
-                  <td><input type="text" name="academyName" required></td>
-               </tr>
-             <tr>
+                  <td><input type="text" name="academyName" required maxlength="100"></td>
                   <th>위치</th>
-                  <td><input type="text" name="academyLocation" required></td>
+                  <td><input type="text" name="academyLocation" required maxlength="200"></td>
                </tr>
                <tr>
                   <th>전화번호</th>
-                  <td><input type="text" name="academyTel" required></td>
+                  <td>
+                  	<div>전화번호를 입력해 주세요.<br>예시) 02-123-5678</div>
+                  	<input type="text" name="academyTel" required maxlength="13">
+                  	</td>
+                  <th>별점</th>
+                  <td>
+	                  <div>0부터 5 사이의 숫자를 입력해 주세요.</div>
+	                  <input type="number" name="academyStar" required min="0" max="5">
+                  </td>
                </tr>
             </tbody>
             </table>
