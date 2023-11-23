@@ -241,7 +241,7 @@ color: #555;
 	}
 	
 	
-	#btnadd {
+	#btnadd, #btnlist {
   backface-visibility: hidden;
   background: #0D42FF;
   border: 0;
@@ -268,7 +268,14 @@ color: #555;
   #btnadd {
   	display: inline-block;
   	float: right;
-  	margin: 10px 50px;
+  	margin: 10px 5px;
+  
+  }
+  
+  #btnlist {
+  	display: inline-block;
+  	float: right;
+  	margin: 10px 5px;
   
   }
   
@@ -304,8 +311,8 @@ color: #555;
       <nav>
         <div class="container">
           <ol>
-            <li><a href="index.html">관리 메뉴</a></li>
-            <li>학원 관리</li>
+            <li><a href="../../admin/home.do">관리 메뉴</a></li>
+            <li><a href="../admin/list.do">학원 관리</a></li>
           </ol>
           <div class="search-window">
                 <form method="GET' action="/jr/academy/admin/list.do">
@@ -332,7 +339,8 @@ color: #555;
   <!-- board list area -->
     <div id="board-list">
         <div class="container">
-   <input id="btnadd" type="button" value="추가" onclick="location.href='/jr/academy/admin/add.do'">
+   		<input id="btnadd" type="button" value="추가" onclick="location.href='/jr/academy/admin/add.do'">
+   		<input id="btnlist" type="button" value="목록" onclick="location.href='/jr/academy/admin/list.do'">
             <table class="board-table">
                 <thead>
                 <tr>

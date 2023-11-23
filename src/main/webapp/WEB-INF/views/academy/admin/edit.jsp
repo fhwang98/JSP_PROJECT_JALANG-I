@@ -351,9 +351,6 @@ body > div.breadcrumbs > div > div > div > div > h2 {
 }
 
 
-
-
-
   
   </style>
   
@@ -406,47 +403,45 @@ body > div.breadcrumbs > div > div > div > div > h2 {
         </div>
     </div>
   <!-- board list area -->
+  	<form method="POST" action="/jr/academy/admin/edit.do">
+  
     <div id="board-list">
         <div class="container">
+        	
             <table class="board-table">
             <tbody>        
              <tr>
                   <th>기관명 </th>
-                  <td>${dto.academyName}</td>
+                  <td><input type="text" name="academyName" required maxlength="100" value="${ dto.academyName }"></td>
                   <th>위치</th>
-                  <td>${dto.academyLocation}</td>
+                  <td><input type="text" name="academyLocation" required maxlength="200" value="${ dto.academyLocation }"></td>
                </tr>
                <tr>
                   <th>전화번호</th>
-                  <td>${dto.academyTel}</td>
+                  <td>
+                  	<div>전화번호를 입력해 주세요.<br>예시) 02-123-5678</div>
+                  	<input type="text" name="academyTel" required maxlength="13" value="${ dto.academyTel }">
+                  	</td>
                   <th>별점</th>
-                  <td>${dto.academyStar}</td>
-               </tr>
-               <tr>
-                  <th>교육과정</th>
-                  <td colspan="3">
-                  <div id="edu-list"></div>
+                  <td>
+	                  <div>0부터 5 사이의 숫자를 입력해 주세요.</div>
+	                  <input type="number" name="academyStar" required min="0" max="5"  value="${ dto.academyStar }">
                   </td>
                </tr>
+               
             </tbody>
             </table>
-            
-                        
-            <div class="button-group">
-         <button class="button-79" role="button" onclick="location.href='/jr/academy/admin/list.do';">목록</button>
-         <button id="add-edu" class="button-79" role="button">추가</button>
-         <button class="button-79" role="button" onclick="location.href='/jr/academy/admin/edit.do?seq=${dto.academySeq}';">수정</button>
-         <button id="del-academy" class="button-79" role="button">삭제</button>
-         <script>
-         	$('#del-academy').click(function() {
-         		if (confirm('삭제 후 되돌릴 수 없습니다. 삭제하시겠습니까?')) {
-         			location.href='/jr/academy/admin/del.do?seq=${dto.academySeq}';
-         		}
-         	});
-         </script>
-         </div>
+             <input type="hidden" name="academySeq" value="${ dto.academySeq }">
+	         <div class="button-group">
+	         <button id="btn-edit" class="button-79" type="submit" onclick="if(!confirm('수정하시겠습니까?')){return false;}">수정</button>
+	         <button class="button-79" type="submit" onclick="location.href='/jr/academy/admin/detail.do?seq=' + ${dto.academySeq};">취소</button>
+	         </div>
+         
          </div>
         </div>
+        
+        </form>
+        
     </div>
 </section>
 
@@ -462,149 +457,12 @@ body > div.breadcrumbs > div > div > div > div > h2 {
   <div id="preloader"></div>
   
 
-  <Script>
-  
-  load();
-	function load() {
-		
-		$.ajax({
-			type:'GET',
-			url: '/jr/academy/admin/academyedu.do',
-			data: 'seq=${dto.academySeq}',
-			dataType: 'json',
-			success: function(result) {
-				
-				//기존 목록 삭제
-				$('#edu-list').html('');
-				
-				$(result).each((index, item) => {
-					//console.log(item);
-					
-					let temp = `
-						<table class="edu">
-                  		<tbody>
-                  			<tr>
-	                  			<th>교육명</th>
-	                  			<td colspan="3">\${ item.eduName }</td>
-                  			</tr>
-                  			<tr>
-	                  			<th>관련 자격증</th>
-	                  			<td colspan="3">\${ item.crtName }</td>
-                  			</tr>
-                  			<tr>
-	                  			<th>링크</th>
-	                  			<td colspan="3"><a href="\${ item.eduLink }">\${ item.eduLink }</a></td>
-                  			</tr>
-                  			<tr>
-	                  			<th>모집시작날짜</th>
-	                  			<td>\${ item.eduRcStartDate }</td>
-	                  			<th>모집종료날짜</th>
-	                  			<td>\${ item.eduRcEndDate }</td>
-                  			</tr>
-                  			<tr>
-	                  			<th>교육시작날짜</th>
-	                  			<td>\${ item.eduStartDate }</td>
-	                  			<th>교육종료날짜</th>
-	                  			<td>\${ item.eduEndDate }</td>
-                  			</tr>
-                  		</tbody>
-                  	</table>
-                  	
-        	    	<div id="del"><i class="fa-solid fa-x"></i></div>
-        	    	<div id="edit"><i class="fa-solid fa-pen"></i></div>
-							`;
-					
-					
-					$('#edu-list').append(temp);
-					
-				});
-				
-			},
-			error: function(a, b, c) {
-				console.log(a, b, c);
-			}
-		});
-	}
-  
-  
-  $('#add-edu').click(function() {
-	 
-	  if ($('#edu-new').length != 0) {
-		  $('#edu-new').remove();
-	  } else {
-	  
-		 $('#edu-list').append(
-			`
-			<div id="edu-new">
-			<table class="edu">
-	        	<tbody>
-	    			<tr>
-	        			<th>교육명</th>
-	        			<td colspan="3"><input type="text" id="edu-name" required></td>
-	    			</tr>
-	    			<tr>
-	        			<th>관련 자격증</th>
-	        			<td colspan="3"><input type="text" id="crt-name" required readonly onclick="window.open('/jr/crt/admin/search.do', '_blank', 'width=500,height=400')"></td>
-	    			</tr>
-	    			<tr>
-	        			<th>링크</th>
-	        			<td colspan="3"><input type="text"></td>
-	    			</tr>
-	    			<tr>
-	        			<th>모집시작날짜</th>
-	        			<td><input type="date" id="edu-rc-start-date"></td>
-	        			<th>모집종료날짜</th>
-	        			<td><input type="date" id="edu-rc-end-date"></td>
-	    			</tr>
-	    			<tr>
-	        			<th>교육시작날짜</th>
-	        			<td><input type="date" id="edu-start-date"></td>
-	        			<th>교육종료날짜</th>
-	        			<td><input type="date" id="edu-end-date"></td>
-	    			</tr>
+  <script>
 
-	    		</tbody>
-	    		
-	    	</table>
-	    	
-	    	<button id="add-edu-btn" class="button-79" role="button">등록</button>
-	    	<button class="button-79" role="button" onclick="$('#edu-new').remove();">취소</button>
-	  		</div>
-	    	`
-		 );
-	  }
-	 
-  });
-  /*
-  function addEdu() {
-	  
-	  $.ajax({
-		  type: 'POST',
-			url: '/jr/academy/admin/academyedu.do',
-			data: {
-				content: ,
-				bseq: 
-			},
-			dataType: 'json',
-			success: function(result) {
-				
-				if(result.result) { 
-					load(); // 목록 새로고침
-				}
-				
-				$('#add-edu').remove();					
-			},
-			error: function(a, b, c) {
-				console.log(a, b, c)
-			}
-	  });
-	  
-  }
-   */
+
+
   
-   
-  
-  </Script>
+  </script>
 
 
 </body>
