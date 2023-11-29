@@ -58,33 +58,40 @@
   <body>
 
   <%@ include file="/WEB-INF/views/inc/header.jsp" %>
-
+	<div class="breadcrumbs" id=middlebar>
+		<div class="page-header d-flex align-items-center"
+			style="background-image: url('<%=request.getContextPath()%>/resources/img/backgroundImg2.png');">
+			<div class="container position-relative">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-6 text-center">
+						<h2>자유게시판</h2>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
   <!-- main -->
 
 
         <div class="container">
-		<%-- <c:forEach items="${list}" var="dto1"> --%>
-            <h1>Board View.</h1>
+            <h1>게시글 수정</h1>
             
+            <form method="POST" action="/jr/board/edit.do">
             <div class="mb-3">
-                <label class="form-label">Title.</label>
-                <input type="text" class="form-control" name="boardTitle" value="${dto.boardTitle}">
+                <label class="form-label">제목</label>
+                <input type="text" class="form-control" name="boardTitle" required maxlength="500" value="${dto.boardTitle}">
             </div>
             
             <div class="mb-3">
-                <label class="form-label">Content</label>
-                <textarea class="form-control" rows="5" name="boardContent" >${dto.boardContent}</textarea>
+                <label class="form-label">내용</label>
+                <textarea class="form-control" rows="5" name="boardContent" required maxlength="3000">${dto.boardContent}</textarea>
             </div>
+            <input type="hidden" name="boardSeq" value="${dto.boardSeq }">
             
-            <div class="mb-3">
-                <label class="form-label">Writer.</label>
-                <input type="text" class="form-control" name="id" value="${dto.id}">
-            </div>
-            
-            <button type="button" class="btn btn-success" onclick="javascript:location.href='/jr/board/boardlist.do'">Previous</button>
-            <button type="button" class="btn btn-success" onclick="javascript:location.href='/jr/board/boarddetail.do'">수정하기</button>
-        
-       <%--  </c:forEach> --%>
+            <button type="button" class="btn btn-success" onclick="location.href='/jr/board/boarddetail.do?boardSeq=${dto.boardSeq}';">돌아가기</button>
+            <button class="btn btn-success">수정</button>
+        	</form>
         </div>
       
         <!--부트스트랩 js, jquery 추가-->

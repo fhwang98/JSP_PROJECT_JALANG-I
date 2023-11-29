@@ -28,9 +28,12 @@ public class Logout extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// 인증 티켓 제거
-		req.getSession().removeAttribute("id");
-		req.getSession().removeAttribute("name");
-		req.getSession().removeAttribute("lv");
+//		req.getSession().removeAttribute("id");
+//		req.getSession().removeAttribute("name");
+//		req.getSession().removeAttribute("lv");
+
+		req.getSession().invalidate();
+		
 		
 		resp.sendRedirect("/jr/index.do");
 		

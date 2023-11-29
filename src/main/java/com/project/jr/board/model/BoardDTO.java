@@ -27,6 +27,7 @@ public class BoardDTO {
 	private String boardIsBoardShow;
 	private String isBoardShow;
     private String ccnt;
+    private String isnew;
 	
 	
 	
