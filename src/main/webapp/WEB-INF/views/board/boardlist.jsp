@@ -1,382 +1,409 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, ixssitial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<meta content="width=device-width, ixssitial-scale=1.0" name="viewport">
 
-  <title>자격증</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+<title>자격증</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="<%=request.getContextPath() %>/resources/img/favicon.ico" rel="icon">
-  <link href="<%=request.getContextPath() %>/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
+<!-- Favicons -->
+<link href="<%=request.getContextPath()%>/resources/img/favicon.ico"
+	rel="icon">
+<link
+	href="<%=request.getContextPath()%>/resources/img/apple-touch-icon.png"
+	rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+	rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="<%=request.getContextPath() %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<%=request.getContextPath() %>/resources/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<%=request.getContextPath() %>/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="<%=request.getContextPath() %>/resources/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="<%=request.getContextPath() %>/resources/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="<%=request.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link
+	href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/resources/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/resources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/resources/vendor/glightbox/css/glightbox.min.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/resources/vendor/swiper/swiper-bundle.min.css"
+	rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/vendor/aos/aos.css"
+	rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="<%=request.getContextPath() %>/resources/css/main.css" rel="stylesheet">
+<!-- Template Main CSS File -->
+<link href="<%=request.getContextPath()%>/resources/css/main.css"
+	rel="stylesheet">
 
 
-  <!-- ====================================================================================
+<!-- ====================================================================================
   * Template Name: Logis
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
   * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ========================================================================================= -->
-  
-  <style>
 
-  table {
-  border-collapse: collapse;
-  border-spacing: 0;
+<style>
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
+
 section.notice {
-  padding: 0;
+	padding: 0;
 }
 
 .page-title {
-  margin-bottom: 60px;
+	margin-bottom: 60px;
 }
+
 .page-title h3 {
-  font-size: 28px;
-  color: #333333;
-  font-weight: 400;
-  text-align: center;
+	font-size: 28px;
+	color: #333333;
+	font-weight: 400;
+	text-align: center;
 }
 
 #middlebar .search-window {
-  padding: 15px 0;
-  background-color: #F3F6FC;
-  border-top: 1px solid #101D34;
+	padding: 15px 0;
+	background-color: #F3F6FC;
+	border-top: 1px solid #101D34;
 }
+
 #middlebar .search-window .search-wrap {
-  position: relative;
-/*   padding-right: 124px; */
-  margin: 0 auto;
-  width: 80%;
-  max-width: 564px;
+	position: relative;
+	/*   padding-right: 124px; */
+	margin: 0 auto;
+	width: 80%;
+	max-width: 564px;
 }
+
+#middlebar .search-window .search-wrap select {
+	height: 40px;
+	font-size: 14px;
+	padding: 7px 14px;
+	border: 1px solid #101D34;
+}
+
 #middlebar .search-window .search-wrap input {
-  height: 40px;
-  width: 100%;
-  font-size: 14px;
-  padding: 7px 14px;
-  border: 1px solid #101D34;
+	height: 40px;
+	width: 80%;
+	font-size: 14px;
+	padding: 7px 14px;
+	border: 1px solid #101D34;
 }
+
 #middlebar .search-window .search-wrap input:focus {
-  border-color: #333;
-  outline: 0;
-  border-width: 1px;
+	border-color: #333;
+	outline: 0;
+	border-width: 1px;
 }
+
 #middlebar .search-window .search-wrap .btn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 108px;
-  padding: 0;
-  font-size: 16px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 108px;
+	padding: 0;
+	font-size: 16px;
 }
 
 .board-table {
-  font-size: 13px;
-  width: 100%;
-  border-top: 1px solid #101D34;
-  border-bottom: 1px solid #101D34;
+	font-size: 13px;
+	width: 100%;
+	border-top: 1px solid #101D34;
+	border-bottom: 1px solid #101D34;
 }
 
 .board-table a {
-  color: #333;
-  display: inline-block;
-  line-height: 1.4;
-  word-break: break-all;
-  vertical-align: middle;
+	color: #333;
+	display: inline-block;
+	line-height: 1.4;
+	word-break: break-all;
+	vertical-align: middle;
 }
+
 .board-table a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
+
 .board-table th {
-  text-align: center;
+	text-align: center;
 }
 
 .board-table .th-num {
-  width: 139px;
-  text-align: center;
+	width: 139px;
+	text-align: center;
 }
 
 .board-table .th-subject {
-  width: 220px;
+	width: 220px;
 }
 
 .board-table .th-id {
-  width: 139px;
+	width: 139px;
 }
 
 .board-table .th-startdate {
-  width: 139px;
+	width: 139px;
 }
 
-
 .board-table .th-viewnum {
-  width: 139px;
+	width: 139px;
 }
 
 .board-table .th-userlike {
-  width: 139px;
+	width: 139px;
 }
 
-
 .board-table th, .board-table td {
-  padding: 14px 0;
+	padding: 14px 0;
 }
 
 .board-table tbody td {
-  border-top: 1px solid #e7e7e7;
-  text-align: center;
-} 
-
-.board-table tbody th {
-  padding-left: 28px;
-  padding-right: 14px;
-  border-top: 1px solid #e7e7e7;
-  text-align: left;
+	border-top: 1px solid #e7e7e7;
+	text-align: center;
 }
 
-.board-table tbody th p{
-  display: none;
+.board-table tbody th {
+	padding-left: 28px;
+	padding-right: 14px;
+	border-top: 1px solid #e7e7e7;
+	text-align: left;
+}
+
+.board-table tbody th p {
+	display: none;
 }
 
 .btn {
-  display: inline-block;
-  padding: 0 30px;
-  font-size: 15px;
-  font-weight: 400;
-  background: transparent;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border: 1px solid transparent;
-  text-transform: uppercase;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
+	display: inline-block;
+	padding: 0 30px;
+	font-size: 15px;
+	font-weight: 400;
+	background: transparent;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	text-transform: uppercase;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
 }
 
 .btn-dark {
-  background: #101D34;
-  color: #fff;
+	background: #101D34;
+	color: #fff;
 }
 
 .btn-dark:hover, .btn-dark:focus {
-  background: #373737;
-  border-color: #373737;
-  color: #fff;
+	background: #373737;
+	border-color: #373737;
+	color: #fff;
 }
 
 /* reset */
-
 * {
-  list-style: none;
-  text-decoration: none;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
+
 .clearfix:after {
-  content: '';
-  display: block;
-  clear: both;
+	content: '';
+	display: block;
+	clear: both;
 }
+
 .container {
-  width: 1100px;
-  margin: 0 auto;
+	width: 1100px;
+	margin: 0 auto;
 }
+
 .blind {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  margin: -1px;
-  width: 1px;
-  height: 1px;
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	margin: -1px;
+	width: 1px;
+	height: 1px;
 }
+</style>
 
 
-  
-  
-  
-  </style>
-  
-  
-  
-
-  
-  <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
-  </head>
-
-  <body>
-
-  <%@ include file="/WEB-INF/views/inc/header.jsp" %>
-
-  <!-- main -->
-
-<main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs" id=middlebar>
-      <div class="page-header d-flex align-items-center" style="background-image: url('<%=request.getContextPath() %>/resources/img/backgroundImg2.png');">
-        <div class="container position-relative">
-          <div class="row d-flex justify-content-center">
-            <div class="col-lg-6 text-center">
-              <h2>자유게시판</h2>
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <nav>
-        <div class="container">
-          <ol>
-            <!--<li><a href="index.html">관리 메뉴</a></li>
-            <li>회원 관리</li> -->
-          </ol>
-          <div class="search-window">
-                <form action="">
-                    <div class="search-wrap">
-                        <label for="search" class="blind">공지사항 내용 검색</label>
-                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                        <button type="submit" class="btn btn-dark">검색</button>                       
-                    </div>
-                </form>
-            </div>
-        </div>
-      </nav>
-    </div><!-- End Breadcrumbs -->
-
-   
-<section class="notice">
-  <div class="page-title">
-        <div class="container">
-        </div>
-    </div>
-
-    <!-- board seach area -->
-    <div id="board-search">
-        <div class="container">
-            
-        </div>
-    </div>
-   
-  <!-- board list area -->
-    <div id="board-list">
-        <div class="container">
-            <table class="board-table">
-                <thead>
-                
-                <tr>
-                    <th scope="col" class="th-num">번호</th>
-                    <th scope="col" class="th-subject">제목</th>
-                    <th scope="col" class="th-username">작성자</th>
-                    <th socpe="col" class="th-viewnum">조회수</th>
-                    <th scope="col" class="th-userlike">좋아요</th>                                   
-                    <th scope="col" class="th-startdate">작성일</th>                                                           
-                </tr>
-                </thead>
-                
-            <tbody>
-            	<!-- <tr>   
-            	      	
-            		<td></td>
-            		<td></td>
-            		<td></td>
-            		<td></td
-            		<td></td>
-            		<td></td>
-            		
-            	</tr>
- -->            	<c:forEach items="${list}" var="dto1" varStatus="status"> <!-- jstl  -->
-            	<tr> 
- 
-            		<td>${status.count}</td>
-            		<td><a href="/jr/board/boarddetail.do?boardSeq=${dto1.boardSeq}"> ${dto1.boardTitle} </a></td>
-            		<td>${dto1.id}</td>
-            		<td>${dto1.boardLike}</td>
-            		<td>${dto1.boardHits}</td>
-            		<td>${dto1.boardWriteDate}</td>
-            		
-            	</tr>
-            	</c:forEach>
-                  <%-- <c:forEach items="${list}" var="dto" varStatus="status">
-                    <tr>
-                       <td>${status.count}</td> <!-- 순번을 표시하는 부분 -->      
-                        <td><a href="/jr/user/admin/useradmindetail.do?id=${dto.id}">${dto.name}</td> <!-- 회원명 -->
-                        <td>${dto.id}</td> <!-- 사용자 아이디 -->
-                        <td>${dto.joinDate}</td> <!-- 가입 일자 --> <!--가입일 -->
-                    </tr>
-                </c:forEach> --%>
-            </tbody>
-            </table>
-            
-             <div id="pagebar-container">
-              <div id="pagebar" style ="text-align: center" >${pageBar}</div>
-          </div>
-       </div>
-        </div>
-    </div>
-
-</section>
-  
-  
-  
-
-  <!-- /main -->
-
-  <!-- ======= Footer ======= -->
-  <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
-  <!-- End Footer -->
-
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <div id="preloader"></div>
-  
-  
-  <%@ include file="/WEB-INF/views/inc/ad.jsp" %>
-  <%@ include file="/WEB-INF/views/inc/side.jsp" %>
-
-  <Script>
-  
-  
-  </Script>
 
 
+
+<%@ include file="/WEB-INF/views/inc/asset.jsp"%>
+</head>
+
+<body>
+
+	<%@ include file="/WEB-INF/views/inc/header.jsp"%>
+
+	<!-- ======= Breadcrumbs ======= -->
+	<div class="breadcrumbs" id=middlebar>
+		<div class="page-header d-flex align-items-center"
+			style="background-image: url('<%=request.getContextPath()%>/resources/img/backgroundImg2.png');">
+			<div class="container position-relative">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-6 text-center">
+						<h2>자유게시판</h2>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<ol>
+				<li><a href="/board/list.do">자유게시판</a></li>
+			</ol>
+			<div class="search-window">
+				<form>
+					<div class="search-wrap">
+						<select name="column" id="column">
+							<option value="boardTitle">제목</option>
+							<option value="boardContent">내용</option>
+							<option value="id">작성자</option>
+						</select> <input id="search" type="text" name="word"
+							placeholder="검색어를 입력해주세요." required>
+						<button type="submit" class="btn btn-dark">검색</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<!-- main -->
+
+	<main id="main">
+
+
+		<section class="notice">
+			<div class="page-title">
+				<div class="container"></div>
+			</div>
+
+			<!-- board seach area -->
+			<div id="board-search">
+				<div class="container"></div>
+			</div>
+
+			<!-- board list area -->
+			<div id="board-list">
+				<div class="container">
+					<input id="btnlist" type="button" value="목록"
+						onclick="location.href='/jr/board/boardlist.do'">
+					<c:if test="${ id != '' }">
+						<input id="btnadd" type="button" value="추가"
+							onclick="location.href='/jr/board/add.do'">
+					</c:if>
+					<table class="board-table">
+						<thead>
+
+							<tr>
+								<th scope="col" class="th-num">번호</th>
+								<th scope="col" class="th-subject">제목</th>
+								<th scope="col" class="th-username">작성자</th>
+								<th socpe="col" class="th-viewnum">조회수</th>
+								<th scope="col" class="th-userlike">좋아요</th>
+								<th scope="col" class="th-startdate">작성일</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<c:forEach items="${list}" var="dto1" varStatus="status">
+								<tr>
+									<td>${status.count}</td>
+									<td><a
+										href="/jr/board/boarddetail.do?boardSeq=${dto1.boardSeq}&search=${map.search}&column=${map.column}&word=${map.word}">
+											${dto1.boardTitle} </a> <c:if test="${ dto1.ccnt > 0 }">
+											<span class="comment-count">(${ dto1.ccnt })</span>
+										</c:if> <c:if test="${ dto.isnew == 1 }">
+											<span class="is-new">new</span>
+										</c:if></td>
+									<td>${dto1.id}</td>
+									<td>${dto1.boardHits}</td>
+									<td>${dto1.boardLike}</td>
+									<td>${dto1.boardWriteDate}</td>
+								</tr>
+							</c:forEach>
+							<c:if test="${ totalCount == 0 }">
+								<tr>
+									<td colspan="6">검색 결과가 없습니다.</td>
+								</tr>
+							</c:if>
+						</tbody>
+					</table>
+
+					<div id="pagebar-container">
+						<div id="pagebar" style="text-align: center">${pageBar}</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+		</section>
+
+
+
+
+		<!-- /main -->
+
+		<!-- ======= Footer ======= -->
+		<%@ include file="/WEB-INF/views/inc/footer.jsp"%>
+		<!-- End Footer -->
+
+		<a href="#"
+			class="scroll-top d-flex align-items-center justify-content-center"><i
+			class="bi bi-arrow-up-short"></i></a>
+
+		<div id="preloader"></div>
+
+
+		<%@ include file="/WEB-INF/views/inc/ad.jsp"%>
+		<%@ include file="/WEB-INF/views/inc/side.jsp"%>
+
+		<Script>
+			// 검색 중일 때 > select박스 값, text 값 유지
+			// #search, #column
+			<c:if test="${map.search == 'y'}">
+			$('select[name=column]').val('${map.column}');
+			$('input[name=word]').val('${map.word}');
+			</c:if>
+		</Script>
 </body>
 
 </html>

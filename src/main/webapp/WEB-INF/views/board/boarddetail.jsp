@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>자격증</title>
+<title>자랑이</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -59,14 +59,57 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 <style>
+
+.board-title {
+	margin: 10px;
+
+}
+
+.board-detail {
+	font-size: 1rem;
+	background-color: #F3F6FC;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 50px;
+	
+}
+
+.board-detail div {
+	justify-content: space-around;
+	display: flex;
+	
+}
+
+.board-detail .detail-writer {
+	width: 200px;
+}
+
+.board-detail .detail-date {
+	width: 300px;
+}
+
+.board-detail .detail-hits, .detail-report {
+	width: 150px;
+}
+
+.board-detail .name {
+	font-weight: bold;
+}
+
+#board-content {
+	font-size : 1rem;
+	padding: 30px;
+}
+
+.comment-container {
+	width: 70%;
+	padding: 10px;
+}
+
 </style>
 
 <%@ include file="/WEB-INF/views/inc/asset.jsp"%>
-<title>Board List</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--부트스트랩 css 추가-->
-<link rel="stylesheet" href="/css/lib/bootstrap.min.css">
 </head>
 
 <body>
@@ -95,70 +138,66 @@
 
 
 	<div class="container">
-		<%-- <c:forEach items="${list}" var="dto1"> --%>
-		<h1>Board View.</h1>
-
-		<div class="mb-3">
-			<label class="form-label">Title.</label> <input type="text"
-				class="form-control" name="boardTitle" readonly
-				value="${dto.boardTitle}">
-		</div>
-
-		<div class="mb-3">
-			<label class="form-label">Content</label>
-			<textarea class="form-control" rows="5" name="boardContent" readonly>${dto.boardContent}</textarea>
-		</div>
-
-		<div class="mb-3">
-			<label class="form-label">Writer.</label> <input type="text"
-				class="form-control" name="id" value="${dto.id}">
-		</div>
-
-		<button type="button" class="btn btn-success"
-			onclick="javascript:location.href='/jr/board/boardlist.do'">Previous</button>
-		<button type="button" class="btn btn-success"
-			onclick="javascript:location.href='/jr/board/edit.do'">수정하기</button>
-
-
-		<table id="list-comment">
-
-			<div id="comm">
-				<div class="card">
-					<form>
-						<input type="hidden" id="boardID" value="${board.id}" />
-						<div class="card-body">
-							<textarea id="reply-content" class="form-control" rows="1"></textarea>
-						</div>
-						<div class="card-footer">
-							<button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
-						</div>
-					</form>
-				</div>
-
-
-				<div class="card">
-					<div class="card-header">댓글 리스트 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-					&emsp; 아이디</div>
-					<ul id="reply--box" class="list-group">
-
-						<li id="reply--1"class="list-group-item d-flex justify-content-between">
-						<div>
-						</div>
-						<!-- <div>댓글내용</div>
-				<div class="d-flex">
-					<div class="">작성자</div>
-					<button class="badge">삭제</button>
-				</div> -->
-						</li>
-
-					</ul>
-				</div>
+	
+		<div class="board-title"><h1>${dto.boardTitle }</h1></div>
+		<div class="board-detail">
+			<div class="detail-writer">
+				<div class="name">작성자</div>
+				<div class="value">${dto.id }</div>
 			</div>
+			<div class="detail-date">
+				<div class="name">작성일</div>
+				<div class="value">${dto.boardWriteDate }</div>
+			</div>
+			<div class="detail-hits">
+				<div class="name">조회수</div>
+				<div class="value">${dto.boardHits }</div>
+			</div>
+			<div class="detail-report">
+				<div class="name">신고수</div>
+				<div class="value">${dto.boardReport }</div>
+			</div>
+		</div>
+		<div id="board-content">${dto.boardContent }</div>
+		
 
+		<button type="button" class="btn btn-success"
+			onclick="location.href='/jr/board/boardlist.do';">목록</button>
+		<c:if test="${ id == dto.id }">
+		<button type="button" class="btn btn-success"
+			onclick="location.href='/jr/board/edit.do?boardSeq=${dto.boardSeq}';">수정</button>
+		<button id="del-board" type="button" class="btn btn-success" >삭제</button>
+			<script>
+         	$('#del-board').click(function() {
+         		if (confirm('삭제 후 되돌릴 수 없습니다. 삭제하시겠습니까?')) {
+         			location.href='/jr/board/del.do?boardSeq=${dto.boardSeq}';
+         		}
+         	});
+         </script>
+		</c:if>
+
+	
+
+	</div>
+
+	<div class="container comment-container" >
+		<!-- 댓글 쓰기 -->
+		<c:if test="${ not empty id }">
+		<table id="add-comment">
+			<tr>
+				<td><input type="text" name="comment" id="new-comment"></td>
+				<td><button type="button" class="comment" id="btnComment">댓글쓰기</button></td>
+			</tr>
 		</table>
-
-
-		<%--  </c:forEach> --%>
+		</c:if>
+		
+		<!-- 댓글 목록 -->
+		<table id="list-comment">
+		<tbody>
+		
+		</tbody>
+		</table>
+	
 	</div>
 
 
@@ -169,11 +208,6 @@
 
 
 
-
-
-	<!--부트스트랩 js, jquery 추가-->
-	<script src="/js/lib/jquery.min.js"></script>
-	<script src="/js/lib/bootstrap.min.js"></script>
 
 
 
@@ -194,12 +228,37 @@
 
 
 	<Script>
- load();
-  
-
- 
-
-  
+	$('#btnComment').click(function() {
+		
+		if ($('#new-comment').val() == '') {
+			alert('댓글을 입력해 주세요.');
+			return false;
+		}
+		 $.ajax({
+			type: 'POST',
+			url: '/jr/board/comment.do',
+			data: {
+				bseq: ${dto.boardSeq},
+				content: $('#new-comment').val()
+			},
+			dataType: 'json',
+			success: function(result) {
+				
+				if(result.result) { 
+					load(); // 목록 새로고침
+					$('#new-comment').val('');
+				} else {
+					alert("\'" + result.word + "\'는 입력할 수 없는 단어입니다.");
+				}
+				
+			},
+			error: function(a, b, c) {
+				console.log(a, b, c);
+			}
+		}); 
+	});
+	
+  load();
   
   function load() { 
 		
@@ -211,19 +270,16 @@
 			success: function(result) {
 				//result == 댓글 목록
 				
-				$('#reply--1 > div').html(''); //기존 내용 삭제
+				$('#list-comment tbody').html(''); //기존 내용 삭제
 				
 				$(result).each((index, item) => {
 					
-					console.log(item);
+					//console.log(item);
 					//alert();
 					let temp = `
 						<tr>
 							<td width="800">
-								<div>
-									<div>\${item.content}</div>
-									
-								</div>
+								<div>\${item.content}</div>									
 							</td>
 							<td>
 							  	<div>\${item.id}</div>
@@ -231,12 +287,12 @@
 				 		
 					if (item.id == '${id}') {
 					temp += `
-							  	<c:if test="${not empty id}">
-								<div>
-									<button type="button" class="edit" onclick="editComment(\${item.seq});">수정</button>
-									<button type="button" class="del" onclick="delComment(\${item.seq});">삭제</button>
-								</div>					
-								</c:if>
+						  	<c:if test="${not empty id}">
+							<div>
+								<button type="button" class="edit" onclick="editComment(\${item.seq});">수정</button>
+								<button type="button" class="del" onclick="delComment(\${item.seq});">삭제</button>
+							</div>					
+							</c:if>
 						`;
 					}
 						
@@ -246,7 +302,7 @@
 						
 					`;
 					
-					$('#reply--1 > div').append(temp);
+					$('#list-comment tbody').append(temp);
 					
 					 
 				});
@@ -256,8 +312,76 @@
 				console.log(a,b,c);
 			}
 		});
+	}
+  
+  function editComment(seq) {
+	  
+		//기존 댓글 내용 찾기
+		let val = $(event.target).parent().parent().prev().children().eq(0).text();
+		
+		$('.edit-comment').remove();
+		
+		let temp = `
+			<tr class="edit-comment">
+			<td><input type="text" name="ecomment" id="ecomment" value="\${val}"></td>
+			<td>
+				<button type="button" class="edit" onclick="editCommentOk(\${seq});">완료</button>
+				<button type="button" class="cancle" onclick="$('.edit-comment').remove();">취소</button>
+			</td>
+			</tr>
+			`;
+		$(event.target).parent().parent().parent().after(temp);
+		$('.edit-comment').prev().html('');
+	  
+  }
+  
+  function editCommentOk(seq) {
+		//alert($('#ecomment').val());
+		//alert(seq);
+		
+		$.ajax({
+			type: 'POST',
+			url: '/jr/board/commentedit.do',
+			data: {
+				content: $('#ecomment').val(),
+				seq: seq
+			},
+			datatype: 'json',
+			success: function(result) {
+				if (result.result) {
+					load(); // 목록 새로고침
+				} else {
+					alert("\'" + result.word + "\'는 입력할 수 없는 단어입니다.");
+				}
+			},
+			error: function(a, b, c) {
+				console.log(a, b, c);
+			}
+		});
 		
 	}
+  
+  
+  function delComment(seq) {
+	  //alert(seq);
+	  if (confirm('삭제 후 되돌릴 수 없습니다. 삭제하시겠습니까?')) {
+			$.ajax({
+				type: 'POST',
+				url: '/jr/board/commentdel.do',
+				data: 'seq=' + seq,
+				dataType: 'json',
+				success: function(result) {
+					alert(result.result);
+					if (result.result) {
+						load(); // 목록 새로고침
+					}
+				},
+				erroe: function(a, b, c) {
+					console.log(a, b, c)
+				}
+			});
+		}
+  }
   
   </Script>
 

@@ -18,6 +18,7 @@ import org.json.simple.JSONObject;
 import com.project.jr.board.model.BoardDTO;
 import com.project.jr.board.model.CommentDTO;
 import com.project.jr.board.repository.BoardDAO;
+import com.project.jr.forbidden.repository.ForbiddenDAO;
 
 @WebServlet("/board/comment.do")
 public class Comment extends HttpServlet {
@@ -40,8 +41,6 @@ public class Comment extends HttpServlet {
     	
     	String boardSeq=req.getParameter("bseq");
         int seq =Integer.parseInt(boardSeq);
-        System.out.println(boardSeq);
-        
         
         //2.
         BoardDAO dao = new BoardDAO();
@@ -87,14 +86,33 @@ public class Comment extends HttpServlet {
         //4. 피드백 > ajax
 
         HttpSession session = req.getSession();
-        //1.
+        
         String content = req.getParameter("content");
         String bseq = req.getParameter("bseq");
-
-
-        //2.
         String id = session.getAttribute("id").toString();
 
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");
+        JSONObject obj = new JSONObject();
+        PrintWriter writer = resp.getWriter();
+        
+		// 금지어 검사
+		ForbiddenDAO fdao = new ForbiddenDAO();
+		ArrayList<String> flist = fdao.list();
+		for (String word : flist) {
+			if (content.contains(word)) {
+				
+				obj.put("result", 0);
+				obj.put("word", word);
+				
+				
+				writer.write(obj.toString());
+				writer.close();
+				return;
+			}
+		}
+        
+        
         //3.
         BoardDAO dao = new BoardDAO();
 
@@ -102,19 +120,14 @@ public class Comment extends HttpServlet {
         dto.setCommentContent(content);
         dto.setBoardSeq(Integer.parseInt(bseq));
         dto.setId(id);
+        
+        int result = dao.addComment(dto);
+		
+		obj.put("result", result);
+		
+		writer.write(obj.toString());
+		writer.close();
 
-//        int result = dao.addCommnet(dto);
-
-//        //3.
-//        resp.setContentType("application/json");
-//
-//        JSONObject obj = new JSONObject();
-//        obj.put("result", result);
-//
-//        PrintWriter writer = resp.getWriter();
-//        writer.write(obj.toString());
-//        writer.close();
-//    }
     }
 }
 

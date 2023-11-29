@@ -59,28 +59,38 @@
 
   <%@ include file="/WEB-INF/views/inc/header.jsp" %>
 
-  <!-- main -->
+	<div class="breadcrumbs" id=middlebar>
+		<div class="page-header d-flex align-items-center"
+			style="background-image: url('<%=request.getContextPath()%>/resources/img/backgroundImg2.png');">
+			<div class="container position-relative">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-6 text-center">
+						<h2>자유게시판</h2>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- main -->
 
 		
         <div class="container">
 		
-            <h1>Board add</h1>
+            <h1>글쓰기</h1>
             
             <form method="POST" action="/jr/board/add.do">
               <div class="mb-3">
-                    <label class="form-label">Title</label>
-                    <input type="text" class="form-control" name="title" id="title">
+                    <label class="form-label">제목</label>
+                    <input type="text" class="form-control" name="title" id="title" required maxlength="500">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Content</label>
-                    <textarea class="form-control" rows="5" name="content" id="content"></textarea>
+                    <label class="form-label">내용</label>
+                    <textarea class="form-control" rows="5" name="content" id="content" required maxlength="3000"></textarea>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Writer</label>
-                    <input type="text" class="form-control" name="id" id="id">
-                </div>
-                <button type="button" class="btn btn-success" onclick="javascript:location.href='/jr/board/boardlist'">Previous</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-success" onclick="location.href='/jr/board/boardlist.do';">목록</button>
+                <button type="submit" class="btn btn-primary">등록</button>
             </form>
         </div>
       

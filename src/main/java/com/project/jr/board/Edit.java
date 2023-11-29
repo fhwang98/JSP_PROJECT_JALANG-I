@@ -2,6 +2,7 @@ package com.project.jr.board;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.project.jr.board.model.BoardDTO;
 import com.project.jr.board.repository.BoardDAO;
+import com.project.jr.forbidden.repository.ForbiddenDAO;
 
 
 
@@ -32,26 +34,12 @@ import com.project.jr.board.repository.BoardDAO;
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 			//Edit.java
-			//- view.do > 수정하기 버튼 클릭 > edit.do?seq=5
-			//1. 데이터 가져오기(seq)
-			//2. DB 작업 > select
-			//3. 결과 + JSP 호출하기
-			
-		    //f ().check(req, resp)) {
-//				return;
-//			}
-			
-			
-			//1.
-			
-			String id = req.getParameter("id");
-			
-			
+			String boardSeq = req.getParameter("boardSeq");
 			
 			BoardDAO dao = new BoardDAO();			
-			BoardDTO dto = dao.getEdit(id);
+			BoardDTO dto = dao.getDetail(boardSeq);
 			
-		
+			req.setAttribute("boardSeq", boardSeq);
 			req.setAttribute("dto", dto);
 
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/edit.jsp");
@@ -66,46 +54,44 @@ import com.project.jr.board.repository.BoardDAO;
 			
 			//EditOk.java 역할
 			
-			//1. 데이터 가져오기
-			//2. DB 작업 > update
-			//3. 피드백
+			String title = req.getParameter("boardTitle");
+			String content = req.getParameter("boardContent");
+			String seq = req.getParameter("boardSeq");
 			
-			HttpSession session = req.getSession();		
-			
-			//1.
-			
-//			String subject = req.getParameter("subject");
-//			String content = req.getParameter("content");
-//			String seq = req.getParameter("seq"); //수정할 글번호
-			
-			
-			String title = req.getParameter("title");
-			String content = req.getParameter("content");
-			String id = req.getParameter("id");
+			//금지어 검사
+			ForbiddenDAO fdao = new ForbiddenDAO();
+			ArrayList<String> flist = fdao.list();
+			for (String word : flist) {
+				if (content.contains(word) || title.contains(word)) {
+					resp.setCharacterEncoding("UTF-8");
+					resp.setContentType("text/html; charset=UTF-8");
+					
+					PrintWriter writer = resp.getWriter();
+					writer.print("<script>alert('\\'" + word + "\\'는 입력할 수 없는 단어입니다.');history.back();</script>");
+					writer.close();
+					return;
+				}
+			}
 		
-			
-			
 			//2.
 			BoardDAO dao = new BoardDAO();
-			
 			BoardDTO dto = new BoardDTO();
 			
+			dto.setBoardSeq(Integer.parseInt(seq));
 			dto.setBoardTitle(title);
 			dto.setBoardContent(content); 
-			dto.setId(session.getAttribute("id").toString());
 			
-			
-			
-			int result = dao.editResult(dto);
+			int result = dao.editBoard(dto);
 			
 			//3.
 			if (result == 1) {
 					
-				resp.sendRedirect("/jr/board/boarddetail.do?id=" + id);
+				resp.sendRedirect("/jr/board/boarddetail.do?boardSeq=" + seq);
 				
 			} else {
 				PrintWriter writer = resp.getWriter();
 				writer.print("<script>alert('failed');history.back();</script>");
+				writer.close();
 			}
 			
 		}
